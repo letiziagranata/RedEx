@@ -27,17 +27,12 @@ class Priest: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //DIFESA
-    func defend() {
-        // Logica per la difesa del prete
-        isDefending = true
-    }
     
-    //STOP DIFESA
-    func stopDefending() {
-        // Logica per interrompere la difesa del prete
-        isDefending = false
-    }
+    //MOVIMENTO PRETE
+    func move(to position: CGPoint) {
+            let moveAction = SKAction.move(to: position, duration: 0.1)
+            run(moveAction)
+        }
     
 }
 
