@@ -9,6 +9,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -22,10 +23,12 @@ class GameViewController: UIViewController {
                 
                 // Present the scene
                 view.presentScene(scene)
+                print("GameScene presented successfully.")
+            } else {
+                print("Failed to load GameScene from file.")
             }
             
             view.ignoresSiblingOrder = true
-            
             view.showsFPS = true
             view.showsNodeCount = true
         }

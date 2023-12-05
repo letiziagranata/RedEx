@@ -13,28 +13,28 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
-    override func didMove(to view: SKView) {
-        
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
-        
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-        
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
-    }
+    /*   override func didMove(to view: SKView) {
+     
+     // Get label node from scene and store it for use later
+     self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
+     if let label = self.label {
+     label.alpha = 0.0
+     label.run(SKAction.fadeIn(withDuration: 2.0))
+     }
+     
+     // Create shape node to use during mouse interaction
+     let w = (self.size.width + self.size.height) * 0.05
+     self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
+     
+     if let spinnyNode = self.spinnyNode {
+     spinnyNode.lineWidth = 2.5
+     
+     spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
+     spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
+     SKAction.fadeOut(withDuration: 0.5),
+     SKAction.removeFromParent()]))
+     }
+     }*/
     
     
     func touchDown(atPoint pos : CGPoint) {
@@ -84,5 +84,24 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+    
+    
+    //PRETE
+    var prete: Priest!
+    
+    override func didMove(to view: SKView) {
+        // Crea un'istanza del prete
+        prete = Priest()
+        
+        // Imposta la posizione del prete nel centro della scena
+        prete.zPosition = 10 // o qualsiasi altro valore che assicuri che il personaggio sia davanti ad altri oggetti
+        prete.position = CGPoint(x: size.width / 150, y: size.height / 100000000000)
+            
+        // Aggiungi il prete alla scena
+        addChild(prete)
+        
+        prete.xScale = 4.0
+            prete.yScale = 4.0
     }
 }
