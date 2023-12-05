@@ -88,7 +88,9 @@ class GameScene: SKScene {
     
     
     //PRETE
+    //CHIESA
     var prete: Priest!
+    var chiesa: Church!
     
     override func didMove(to view: SKView) {
         // Crea un'istanza del prete
@@ -100,8 +102,21 @@ class GameScene: SKScene {
             
         // Aggiungi il prete alla scena
         addChild(prete)
+        addChild(chiesa)
+        
+        
+        chiesa = Church()
+        
+    
+        
+        chiesa.position = CGPoint(x: -50, y: -490)
+        chiesa.xScale = 0.4
+        chiesa.yScale = 0.4
         
         prete.xScale = 4.0
-            prete.yScale = 4.0
+        prete.yScale = 4.0
+        
+        
     }
+    
 }
