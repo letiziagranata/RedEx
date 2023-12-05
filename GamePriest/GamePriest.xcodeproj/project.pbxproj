@@ -15,7 +15,8 @@
 		4DB1405F2B1F1B2E007BF483 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB1405D2B1F1B2E007BF483 /* Main.storyboard */; };
 		4DB140612B1F1B2E007BF483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DB140602B1F1B2E007BF483 /* Assets.xcassets */; };
 		4DB140642B1F1B2E007BF483 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB140622B1F1B2E007BF483 /* LaunchScreen.storyboard */; };
-		66C1E2F22B1F2A7C001DA610 /* Demon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C1E2F12B1F2A7C001DA610 /* Demon.swift */; };
+		661CEF022B1F3F8D00E106E7 /* Church.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661CEF012B1F3F8D00E106E7 /* Church.swift */; };
+		E4ACCD812B1F2186003CB3EE /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACCD802B1F2186003CB3EE /* Priest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +29,8 @@
 		4DB1405E2B1F1B2E007BF483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4DB140602B1F1B2E007BF483 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DB140632B1F1B2E007BF483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		66C1E2F12B1F2A7C001DA610 /* Demon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demon.swift; sourceTree = "<group>"; };
+		661CEF012B1F3F8D00E106E7 /* Church.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Church.swift; sourceTree = "<group>"; };
+		E4ACCD802B1F2186003CB3EE /* Priest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +71,8 @@
 				4DB1405D2B1F1B2E007BF483 /* Main.storyboard */,
 				4DB140602B1F1B2E007BF483 /* Assets.xcassets */,
 				4DB140622B1F1B2E007BF483 /* LaunchScreen.storyboard */,
-				66C1E2F12B1F2A7C001DA610 /* Demon.swift */,
+				E4ACCD802B1F2186003CB3EE /* Priest.swift */,
+				661CEF012B1F3F8D00E106E7 /* Church.swift */,
 			);
 			path = GamePriest;
 			sourceTree = "<group>";
@@ -148,8 +151,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DB1405A2B1F1B2E007BF483 /* GameScene.swift in Sources */,
-				66C1E2F22B1F2A7C001DA610 /* Demon.swift in Sources */,
+				661CEF022B1F3F8D00E106E7 /* Church.swift in Sources */,
 				4DB1405C2B1F1B2E007BF483 /* GameViewController.swift in Sources */,
+				E4ACCD812B1F2186003CB3EE /* Priest.swift in Sources */,
 				4DB140542B1F1B2D007BF483 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +306,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9H86M4PWNK;
+				DEVELOPMENT_TEAM = 595ULKU252;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -315,7 +319,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mattiamarranzino.GamePriest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mariaconcettaarena.GamePriest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -330,7 +334,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9H86M4PWNK;
+				DEVELOPMENT_TEAM = 595ULKU252;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -343,7 +347,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mattiamarranzino.GamePriest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mariaconcettaarena.GamePriest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
