@@ -14,6 +14,7 @@ class Demon: SKSpriteNode {
     //attributi
     var hp: Int = 3
     var health: Int = 100
+    var prova: Int = 100
     var isAttacking: Bool = false
     
     //funzioni
