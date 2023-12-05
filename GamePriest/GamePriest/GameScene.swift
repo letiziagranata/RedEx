@@ -12,17 +12,11 @@ import GameplayKit
 class GameScene: SKScene {
     
     //PRETE
+    //CHIESA
     var prete: Priest!
+
       var isMoving = false
-      
-      override func didMove(to view: SKView) {
-          prete = Priest()
-          prete.zPosition = 10
-          prete.position = CGPoint(x: size.width / 150, y: size.height / 100000000000)
-          prete.xScale = 4.0
-          prete.yScale = 4.0
-          addChild(prete)
-      }
+     
       
       override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
           guard let touch = touches.first else { return }
@@ -47,5 +41,29 @@ class GameScene: SKScene {
       override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
           isMoving = false
       }
+    var chiesa: Church!
+    
+    override func didMove(to view: SKView) {
+        // Crea un'istanza del prete
+        prete = Priest()
+        chiesa = Church()
+        
+        // Imposta la posizione del prete nel centro della scena
+        prete.zPosition = 10 // o qualsiasi altro valore che assicuri che il personaggio sia davanti ad altri oggetti
+        prete.position = CGPoint(x: size.width / 150, y: size.height / 100000000000)
+            
+        
+        chiesa.position = CGPoint(x: -50, y: -460)
+        chiesa.xScale = 0.55
+        chiesa.yScale = 0.55
+        
+        prete.xScale = 4.0
+        prete.yScale = 4.0
+        
+        addChild(chiesa)
+        addChild(prete)
+    }
+    
+
 }
 
