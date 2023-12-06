@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14BC1DD92B1F2AB900E0C2FC /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC1DD82B1F2AB900E0C2FC /* Weapon.swift */; };
 		4DB140542B1F1B2D007BF483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB140532B1F1B2D007BF483 /* AppDelegate.swift */; };
 		4DB140562B1F1B2E007BF483 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4DB140552B1F1B2E007BF483 /* GameScene.sks */; };
 		4DB140582B1F1B2E007BF483 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4DB140572B1F1B2E007BF483 /* Actions.sks */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14BC1DD82B1F2AB900E0C2FC /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		4DB140502B1F1B2D007BF483 /* GamePriest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamePriest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB140532B1F1B2D007BF483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DB140552B1F1B2E007BF483 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				4DB140572B1F1B2E007BF483 /* Actions.sks */,
 				4DB140592B1F1B2E007BF483 /* GameScene.swift */,
 				4DB1405B2B1F1B2E007BF483 /* GameViewController.swift */,
+				14BC1DD82B1F2AB900E0C2FC /* Weapon.swift */,
 				4DB1405D2B1F1B2E007BF483 /* Main.storyboard */,
 				4DB140602B1F1B2E007BF483 /* Assets.xcassets */,
 				4DB140622B1F1B2E007BF483 /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DB1405A2B1F1B2E007BF483 /* GameScene.swift in Sources */,
+				14BC1DD92B1F2AB900E0C2FC /* Weapon.swift in Sources */,
 				4DB1405C2B1F1B2E007BF483 /* GameViewController.swift in Sources */,
 				4DB140542B1F1B2D007BF483 /* AppDelegate.swift in Sources */,
 			);
