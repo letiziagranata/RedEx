@@ -43,18 +43,14 @@ class GameScene: SKScene {
         prete = Priest()
         prete.zPosition = 10
         prete.position = CGPoint(x: size.width / 150, y: size.height / 100000000000)
-        prete.xScale = 0.8
-        prete.yScale = 0.8
+        prete.xScale = 4.0
+        prete.yScale = 4.0
         
         let texture = SKTexture(imageNamed: "PriestMain") //immagine (statica) del prete appena parte il gioco
         prete.texture = texture
         
-        addChild(prete)
-        
         view.showsPhysics = false
-        
-        
-        // Crea un'istanza del prete
+    
         chiesa = Church()
         demon = Demon()
         
@@ -63,7 +59,6 @@ class GameScene: SKScene {
         
         demon.zPosition = 10
             
-        
         chiesa.position = CGPoint(x: -50, y: -460)
         chiesa.xScale = 0.55
         chiesa.yScale = 0.55
@@ -71,6 +66,7 @@ class GameScene: SKScene {
         
         addChild(chiesa)
         addChild(demon)
+        addChild(prete)
     }
     
     
