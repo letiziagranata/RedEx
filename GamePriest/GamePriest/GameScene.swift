@@ -35,38 +35,52 @@ class GameScene: SKScene {
     
     var chiesa: Church!
     var demon : Demon!
-     
     
-    override func didMove(to view: SKView) {
+    private func initGame(){
+        self.spawnPriest()
+        self.spawnChurch()
+        self.spawnDemon()
         
-        //parte del prete
+        
+    }
+    
+    private func spawnChurch(){
+        chiesa = Church()
+        chiesa.zPosition = 5
+        chiesa.position = CGPoint(x: -50, y: -460)
+        chiesa.xScale = 0.55
+        chiesa.yScale = 0.55
+        addChild(chiesa)
+    }
+    
+    private func spawnDemon(){
+        
+        demon = Demon()
+        
+        demon.xScale = 0.1
+        demon.yScale = 0.1
+        demon.zPosition = 4
+        
+        
+        addChild(demon)
+    }
+    
+    private func spawnPriest(){
         prete = Priest()
         prete.zPosition = 10
         prete.position = CGPoint(x: size.width / 150, y: size.height / 100000000000)
         prete.xScale = 4.0
         prete.yScale = 4.0
+        addChild(prete)
         
-        let texture = SKTexture(imageNamed: "PriestMain") //immagine (statica) del prete appena parte il gioco
-        prete.texture = texture
+    }
+    override func didMove(to view: SKView) {
+        self.initGame()
         
-        view.showsPhysics = false
+       
     
-        chiesa = Church()
-        demon = Demon()
-        
-        demon.xScale = 0.1
-        demon.yScale = 0.1
-        
-        demon.zPosition = 10
-            
-        chiesa.position = CGPoint(x: -50, y: -460)
-        chiesa.xScale = 0.55
-        chiesa.yScale = 0.55
 
         
-        addChild(chiesa)
-        addChild(demon)
-        addChild(prete)
     }
     
     
