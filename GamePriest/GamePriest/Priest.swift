@@ -27,12 +27,9 @@ class Priest: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     //MOVIMENTO PRETE
     func move(to position: CGPoint) {
             let moveAction = SKAction.move(to: position, duration: 0.1)
             run(moveAction)
         }
-    
 }
-
