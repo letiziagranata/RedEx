@@ -35,11 +35,13 @@ class GameScene: SKScene {
     
     var chiesa: Church!
     var demon : Demon!
+    var fontana: Fountain!
     
     private func initGame(){
         self.spawnPriest()
         self.spawnChurch()
         self.spawnDemon()
+        self.spawnFountain()
         
         
     }
@@ -51,6 +53,15 @@ class GameScene: SKScene {
         chiesa.xScale = 0.55
         chiesa.yScale = 0.55
         addChild(chiesa)
+    }
+    
+    private func spawnFountain(){
+        fontana = Fountain()
+        fontana.zPosition = 7
+        fontana.position = CGPoint(x: 90, y: -530)
+        fontana.xScale = 0.2
+        fontana.yScale = 0.2
+        addChild(fontana)
     }
     
     private func spawnDemon(){
