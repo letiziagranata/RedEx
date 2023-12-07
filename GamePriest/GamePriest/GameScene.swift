@@ -35,11 +35,13 @@ class GameScene: SKScene {
     
     var chiesa: Church!
     var demon : Demon!
+    var fontana: Fountain!
     
     private func initGame(){
         self.spawnPriest()
         self.spawnChurch()
         self.spawnDemon()
+        self.spawnFountain()
         
         
     }
@@ -52,6 +54,15 @@ class GameScene: SKScene {
         chiesa.xScale = 0.55
         chiesa.yScale = 0.55
         addChild(chiesa)
+    }
+    
+    private func spawnFountain(){
+        fontana = Fountain()
+        fontana.zPosition = 7
+        fontana.position = CGPoint(x: 90, y: -530)
+        fontana.xScale = 0.2
+        fontana.yScale = 0.2
+        addChild(fontana)
     }
     
     private func spawnDemon(){
@@ -109,15 +120,20 @@ class GameScene: SKScene {
                 let delta = touchLocation - previousPosition
                 
                 // Cambia le immagini in base alla direzione del movimento
-                if delta.x > 0 {
-                    changeTexture(for: .right)
-                } else if delta.x < 0 {
-                    changeTexture(for: .left)
-                } else if delta.y > 0 {
-                    changeTexture(for: .up)
+                if abs(delta.x) > abs(delta.y){
+                    if delta.x > 0 {
+                        changeTexture(for: .right)
+                    } else {
+                        changeTexture(for: .left)
+                    }
                 } else {
-                    changeTexture(for: .straight)
+                    if delta.y > 0 {
+                        changeTexture(for: .up)
+                    } else {
+                        changeTexture(for: .straight)
+                    }
                 }
+                
             }
             // Aggiorna la posizione precedente del tocco
             previousTouchPosition = touchLocation
