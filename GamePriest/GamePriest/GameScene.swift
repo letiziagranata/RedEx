@@ -44,6 +44,7 @@ class GameScene: SKScene {
         
     }
     
+    
     private func spawnChurch(){
         chiesa = Church()
         chiesa.zPosition = 5
@@ -77,9 +78,6 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         self.initGame()
         
-       
-    
-
         
     }
     
