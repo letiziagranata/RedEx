@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import SwiftUI
 
 class GameScene: SKScene {
     
@@ -43,16 +44,19 @@ class GameScene: SKScene {
         self.cycleSpawnDemon()
         self.spawnFountain()
         
-        
+        physicsWorld.contactDelegate = self
     }
     
     
     private func spawnChurch(){
         chiesa = Church()
+        
         chiesa.zPosition = 5
         chiesa.position = CGPoint(x: -50, y: -460)
         chiesa.xScale = 0.55
         chiesa.yScale = 0.55
+        
+        
         addChild(chiesa)
     }
     
@@ -85,13 +89,24 @@ class GameScene: SKScene {
     private func spawnDemon(at position : CGPoint){
         
         demon = Demon()
-        
+        demon.name = "demon"
         demon.xScale = 0.1
         demon.yScale = 0.1
         demon.position = position
         demon.zPosition = 4
 
+        demon.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 38, height: 60))
+        demon.physicsBody?.affectedByGravity = false
+        demon.physicsBody?.allowsRotation = false
         
+        demon.physicsBody?.categoryBitMask = PhysicsCategory.demon
+        
+        demon.physicsBody?.contactTestBitMask = PhysicsCategory.priest
+        
+        demon.physicsBody?.collisionBitMask = PhysicsCategory.priest
+        
+        
+
         demon.move()
         
         addChild(demon)
@@ -115,10 +130,25 @@ class GameScene: SKScene {
     
     private func spawnPriest(){
         prete = Priest()
+        prete.name = "prete"
         prete.zPosition = 10
         prete.position = CGPoint(x: size.width / 150, y: size.height / 100000000000)
         prete.xScale = 4.0
         prete.yScale = 4.0
+        
+        
+        prete.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 90, height: 120))
+        prete.physicsBody?.affectedByGravity = false
+        prete.physicsBody?.allowsRotation = false
+        
+        prete.physicsBody?.categoryBitMask = PhysicsCategory.priest
+        
+        prete.physicsBody?.contactTestBitMask = PhysicsCategory.demon
+        
+        prete.physicsBody?.collisionBitMask = PhysicsCategory.demon | PhysicsCategory.fountain
+        
+       
+        
         addChild(prete)
         
     }
