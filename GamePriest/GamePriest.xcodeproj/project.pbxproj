@@ -14,10 +14,12 @@
 		4DB1405A2B1F1B2E007BF483 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB140592B1F1B2E007BF483 /* GameScene.swift */; };
 		4DB1405C2B1F1B2E007BF483 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1405B2B1F1B2E007BF483 /* GameViewController.swift */; };
 		4DB1405F2B1F1B2E007BF483 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB1405D2B1F1B2E007BF483 /* Main.storyboard */; };
-		4DB140612B1F1B2E007BF483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DB140602B1F1B2E007BF483 /* Assets.xcassets */; };
 		4DB140642B1F1B2E007BF483 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DB140622B1F1B2E007BF483 /* LaunchScreen.storyboard */; };
 		661CEF022B1F3F8D00E106E7 /* Church.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661CEF012B1F3F8D00E106E7 /* Church.swift */; };
 		663DCC9E2B20D7460092FC10 /* Fountain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663DCC9D2B20D7460092FC10 /* Fountain.swift */; };
+		668021152B21D83A00065721 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 668021132B21D83A00065721 /* MyParticle.sks */; };
+		668021162B21D83A00065721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 668021142B21D83A00065721 /* Assets.xcassets */; };
+		668021182B21D85A00065721 /* SmokeIncense.sks in Resources */ = {isa = PBXBuildFile; fileRef = 668021172B21D85A00065721 /* SmokeIncense.sks */; };
 		66C1E2F42B1F4815001DA610 /* Demon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C1E2F32B1F4815001DA610 /* Demon.swift */; };
 		E4ACCD812B1F2186003CB3EE /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACCD802B1F2186003CB3EE /* Priest.swift */; };
 /* End PBXBuildFile section */
@@ -31,10 +33,12 @@
 		4DB140592B1F1B2E007BF483 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		4DB1405B2B1F1B2E007BF483 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		4DB1405E2B1F1B2E007BF483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4DB140602B1F1B2E007BF483 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DB140632B1F1B2E007BF483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		661CEF012B1F3F8D00E106E7 /* Church.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Church.swift; sourceTree = "<group>"; };
 		663DCC9D2B20D7460092FC10 /* Fountain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fountain.swift; sourceTree = "<group>"; };
+		668021132B21D83A00065721 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		668021142B21D83A00065721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		668021172B21D85A00065721 /* SmokeIncense.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeIncense.sks; sourceTree = "<group>"; };
 		66C1E2F32B1F4815001DA610 /* Demon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demon.swift; sourceTree = "<group>"; };
 		E4ACCD802B1F2186003CB3EE /* Priest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,9 +79,11 @@
 				4DB140592B1F1B2E007BF483 /* GameScene.swift */,
 				4DB1405B2B1F1B2E007BF483 /* GameViewController.swift */,
 				4DB1405D2B1F1B2E007BF483 /* Main.storyboard */,
-				4DB140602B1F1B2E007BF483 /* Assets.xcassets */,
 				4DB140622B1F1B2E007BF483 /* LaunchScreen.storyboard */,
 				E4ACCD802B1F2186003CB3EE /* Priest.swift */,
+				668021132B21D83A00065721 /* MyParticle.sks */,
+				668021172B21D85A00065721 /* SmokeIncense.sks */,
+				668021142B21D83A00065721 /* Assets.xcassets */,
 				661CEF012B1F3F8D00E106E7 /* Church.swift */,
 				663DCC9D2B20D7460092FC10 /* Fountain.swift */,
 				66C1E2F32B1F4815001DA610 /* Demon.swift */,
@@ -146,9 +152,11 @@
 			files = (
 				4DB1405F2B1F1B2E007BF483 /* Main.storyboard in Resources */,
 				4DB140562B1F1B2E007BF483 /* GameScene.sks in Resources */,
-				4DB140612B1F1B2E007BF483 /* Assets.xcassets in Resources */,
 				4DB140642B1F1B2E007BF483 /* LaunchScreen.storyboard in Resources */,
 				4DB140582B1F1B2E007BF483 /* Actions.sks in Resources */,
+				668021162B21D83A00065721 /* Assets.xcassets in Resources */,
+				668021182B21D85A00065721 /* SmokeIncense.sks in Resources */,
+				668021152B21D83A00065721 /* MyParticle.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

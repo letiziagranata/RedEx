@@ -37,13 +37,11 @@ class GameScene: SKScene {
     var demon : Demon!
     var fontana: Fountain!
     
-    private func initGame(){
+    private func initGame() {
         self.spawnPriest()
         self.spawnChurch()
         self.spawnDemon()
         self.spawnFountain()
-        
-        
     }
     
     private func spawnChurch(){
@@ -87,14 +85,7 @@ class GameScene: SKScene {
     }
     override func didMove(to view: SKView) {
         self.initGame()
-        
-       
-    
-
-        
     }
-    
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
