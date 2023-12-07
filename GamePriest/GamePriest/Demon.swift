@@ -15,6 +15,7 @@ class Demon: SKSpriteNode {
     var hp: Int = 3
     var health: Int = 100
     var isAttacking: Bool = false
+    var isMoving : Bool = false
     
     //funzioni
     
@@ -38,6 +39,11 @@ class Demon: SKSpriteNode {
         // Logica per interrompere la difesa del prete
         isAttacking = false
     }
+    
+    func move() {
+        let moveAction = SKAction.move(to: CGPoint(x:-50,y:-460), duration: 8)
+            run(moveAction)
+        }
     
 }
 

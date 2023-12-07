@@ -11,18 +11,45 @@ import SpriteKit
 class Croce: SKSpriteNode{
     var damege: Int = 10
     var range: Int = 1
-    var sprite: String = ""
+    
+    //INIZIALIZZAZIONE
+    init() {
+        let texture = SKTexture(imageNamed: "Spada")
+        super.init(texture: texture, color: .clear, size: texture.size())
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }
 
 class Granata: SKSpriteNode{
     var damege: Int = 5
-    var ragne: Int = 20
-    var sprite: String = ""
+    var range: Int = 20
+    
+    //INIZIALIZZAZIONE
+    init() {
+        let texture = SKTexture(imageNamed: "Granata")
+        super.init(texture: texture, color: .clear, size: texture.size())
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }
 
-class Incensiere: SKSpriteNode{
+class Aspersorio: SKSpriteNode{
     var damege: Int = 1
     var range: Int = 5
-    var sprite: String = ""
+    
+    //INIZIALIZZAZIONE
+    init() {
+        let texture = SKTexture(imageNamed: "Acqua_Santa")
+        super.init(texture: texture, color: .clear, size: texture.size())
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }
 

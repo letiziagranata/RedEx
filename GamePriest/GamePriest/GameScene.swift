@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import SwiftUI
 
 class GameScene: SKScene {
     
@@ -36,56 +37,158 @@ class GameScene: SKScene {
     var chiesa: Church!
     var demon : Demon!
     var fontana: Fountain!
+    var acqua: Aspersorio!
+    var spada: Croce!
     
-    private func initGame() {
+    private func initGame(){
         self.spawnPriest()
         self.spawnChurch()
-        self.spawnDemon()
+        self.cycleSpawnDemon()
         self.spawnFountain()
+        self.spawnAcqua()
+        self.spawnSpada()
+        self.spawnCorner()
+        physicsWorld.contactDelegate = self
+
+    }
+    
+    private func spawnCorner(){
+        var cornice = SKSpriteNode(imageNamed: "Cornice")
+        cornice.zPosition = 19
+        cornice.position = CGPoint(x: 210, y: -530)
+        cornice.xScale = 0.8
+        cornice.yScale = 0.8
+        addChild(cornice)
+
+    }
+    private func spawnSpada(){
+        spada = Croce()
+        spada.zPosition = 20
+        spada.position = CGPoint(x: 240, y: -500)
+        spada.xScale = 0.25
+        spada.yScale = 0.25
+        addChild(spada)
+    }
+    private func spawnAcqua(){
+        acqua = Aspersorio()
+        acqua.zPosition = 20
+        acqua.position = CGPoint(x: 195, y: -545)
+        acqua.xScale = 0.6
+        acqua.yScale = 0.6
+        addChild(acqua)
     }
     
     private func spawnChurch(){
         chiesa = Church()
+        
         chiesa.zPosition = 5
-        chiesa.position = CGPoint(x: -50, y: -460)
-        chiesa.xScale = 0.55
-        chiesa.yScale = 0.55
+        chiesa.position = CGPoint(x: -120, y: -490)
+        chiesa.xScale = 0.8
+        chiesa.yScale = 0.8
+
         addChild(chiesa)
     }
     
     private func spawnFountain(){
         fontana = Fountain()
         fontana.zPosition = 7
-        fontana.position = CGPoint(x: 90, y: -530)
+        fontana.position = CGPoint(x: 50, y: -530)
         fontana.xScale = 0.2
         fontana.yScale = 0.2
         addChild(fontana)
     }
     
-    private func spawnDemon(){
+     func cycleSpawnDemon(){
+        let createDemon = SKAction.run(createDemon)
+         let waitAction = SKAction.wait(forDuration: 2)
+        
+        let createAndWaitAction = SKAction.sequence([createDemon, waitAction])
+        let CycleAction = SKAction.repeatForever(createAndWaitAction)
+        
+        run(CycleAction)
+    }
+    
+    func createDemon(){
+        
+        let positionDemon = self.randomPickDemon()
+        spawnDemon(at: positionDemon)
+        
+    }
+    
+    private func spawnDemon(at position : CGPoint){
         
         demon = Demon()
-        
+        demon.name = "demon"
         demon.xScale = 0.1
         demon.yScale = 0.1
+        demon.position = position
         demon.zPosition = 4
+
+        demon.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 38, height: 60))
+        demon.physicsBody?.affectedByGravity = false
+        demon.physicsBody?.allowsRotation = false
         
+        demon.physicsBody?.categoryBitMask = PhysicsCategory.demon
+        
+        demon.physicsBody?.contactTestBitMask = PhysicsCategory.priest
+        
+        demon.physicsBody?.collisionBitMask = PhysicsCategory.priest
+        
+        
+
+        demon.move()
         
         addChild(demon)
     }
     
+    private func randomPickDemon() ->CGPoint{
+        
+        let initialX: CGFloat = -self.frame.width
+        let finalX: CGFloat = self.frame.width
+        
+        let initialY : CGFloat = 0
+        let finalY: CGFloat = self.frame.height
+        
+        let positionX = CGFloat.random(in: initialX...finalX)
+        let positionY = CGFloat.random(in: initialY...finalY)
+        
+        
+        return CGPoint(x: positionX , y: positionY)
+    }
+    
+    
     private func spawnPriest(){
         prete = Priest()
+        prete.name = "prete"
         prete.zPosition = 10
         prete.position = CGPoint(x: size.width / 150, y: size.height / 100000000000)
         prete.xScale = 4.0
         prete.yScale = 4.0
+        
+        
+        prete.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 90, height: 120))
+        prete.physicsBody?.affectedByGravity = false
+        prete.physicsBody?.allowsRotation = false
+        
+        prete.physicsBody?.categoryBitMask = PhysicsCategory.priest
+        
+        prete.physicsBody?.contactTestBitMask = PhysicsCategory.demon
+        
+        prete.physicsBody?.collisionBitMask = PhysicsCategory.demon | PhysicsCategory.fountain
+        
+       
+        
         addChild(prete)
         
     }
+    
     override func didMove(to view: SKView) {
         self.initGame()
+        
+        
     }
+    
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
