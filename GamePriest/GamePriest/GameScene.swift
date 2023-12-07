@@ -40,7 +40,7 @@ class GameScene: SKScene {
     private func initGame(){
         self.spawnPriest()
         self.spawnChurch()
-        self.spawnDemon()
+        self.cycleSpawnDemon()
         self.spawnFountain()
         
         
@@ -65,17 +65,53 @@ class GameScene: SKScene {
         addChild(fontana)
     }
     
-    private func spawnDemon(){
+     func cycleSpawnDemon(){
+        let createDemon = SKAction.run(createDemon)
+         let waitAction = SKAction.wait(forDuration: 2)
+        
+        let createAndWaitAction = SKAction.sequence([createDemon, waitAction])
+        let CycleAction = SKAction.repeatForever(createAndWaitAction)
+        
+        run(CycleAction)
+    }
+    
+    func createDemon(){
+        
+        let positionDemon = self.randomPickDemon()
+        spawnDemon(at: positionDemon)
+        
+    }
+    
+    private func spawnDemon(at position : CGPoint){
         
         demon = Demon()
         
         demon.xScale = 0.1
         demon.yScale = 0.1
+        demon.position = position
         demon.zPosition = 4
+
         
+        demon.move()
         
         addChild(demon)
     }
+    
+    private func randomPickDemon() ->CGPoint{
+        
+        let initialX: CGFloat = -self.frame.width
+        let finalX: CGFloat = self.frame.width
+        
+        let initialY : CGFloat = 0
+        let finalY: CGFloat = self.frame.height
+        
+        let positionX = CGFloat.random(in: initialX...finalX)
+        let positionY = CGFloat.random(in: initialY...finalY)
+        
+        
+        return CGPoint(x: positionX , y: positionY)
+    }
+    
     
     private func spawnPriest(){
         prete = Priest()
@@ -86,6 +122,7 @@ class GameScene: SKScene {
         addChild(prete)
         
     }
+    
     override func didMove(to view: SKView) {
         self.initGame()
         
