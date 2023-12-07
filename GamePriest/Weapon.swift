@@ -44,7 +44,7 @@ class Aspersorio: SKSpriteNode{
     
     //INIZIALIZZAZIONE
     init() {
-        let texture = SKTexture(imageNamed: "Acqua Santa")
+        let texture = SKTexture(imageNamed: "Acqua_Santa")
         super.init(texture: texture, color: .clear, size: texture.size())
     }
     required init?(coder aDecoder: NSCoder) {

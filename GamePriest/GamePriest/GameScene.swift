@@ -37,33 +37,62 @@ class GameScene: SKScene {
     var chiesa: Church!
     var demon : Demon!
     var fontana: Fountain!
+    var acqua: Aspersorio!
+    var spada: Croce!
     
     private func initGame(){
         self.spawnPriest()
         self.spawnChurch()
         self.cycleSpawnDemon()
         self.spawnFountain()
-        
+        self.spawnAcqua()
+        self.spawnSpada()
+        self.spawnCorner()
         physicsWorld.contactDelegate = self
+
     }
     
+    private func spawnCorner(){
+        var cornice = SKSpriteNode(imageNamed: "Cornice")
+        cornice.zPosition = 19
+        cornice.position = CGPoint(x: 210, y: -530)
+        cornice.xScale = 0.8
+        cornice.yScale = 0.8
+        addChild(cornice)
+
+    }
+    private func spawnSpada(){
+        spada = Croce()
+        spada.zPosition = 20
+        spada.position = CGPoint(x: 240, y: -500)
+        spada.xScale = 0.25
+        spada.yScale = 0.25
+        addChild(spada)
+    }
+    private func spawnAcqua(){
+        acqua = Aspersorio()
+        acqua.zPosition = 20
+        acqua.position = CGPoint(x: 195, y: -545)
+        acqua.xScale = 0.6
+        acqua.yScale = 0.6
+        addChild(acqua)
+    }
     
     private func spawnChurch(){
         chiesa = Church()
         
         chiesa.zPosition = 5
-        chiesa.position = CGPoint(x: -50, y: -460)
-        chiesa.xScale = 0.55
-        chiesa.yScale = 0.55
-        
-        
+        chiesa.position = CGPoint(x: -120, y: -490)
+        chiesa.xScale = 0.8
+        chiesa.yScale = 0.8
+
         addChild(chiesa)
     }
     
     private func spawnFountain(){
         fontana = Fountain()
         fontana.zPosition = 7
-        fontana.position = CGPoint(x: 90, y: -530)
+        fontana.position = CGPoint(x: 50, y: -530)
         fontana.xScale = 0.2
         fontana.yScale = 0.2
         addChild(fontana)
