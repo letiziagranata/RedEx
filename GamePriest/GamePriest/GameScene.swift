@@ -58,8 +58,21 @@ class GameScene: SKScene {
     
     private func spawnGoccia(){
         let gocciaScale: CGFloat = 0.05
+        
         goccia = Drop(scale: gocciaScale)
         goccia.position = prete.position
+        goccia.name = "goccia"
+        
+        goccia.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 9, height: 12))
+        goccia.physicsBody?.affectedByGravity = false
+        goccia.physicsBody?.allowsRotation = false
+        
+        goccia.physicsBody?.categoryBitMask = PhysicsCategory.priest
+        
+        goccia.physicsBody?.contactTestBitMask = PhysicsCategory.demon
+        
+        goccia.physicsBody?.collisionBitMask = PhysicsCategory.demon | PhysicsCategory.fountain
+        
         addChild(goccia)
     }
     

@@ -14,38 +14,50 @@ extension GameScene {
     struct PhysicsCategory {
         static let none : UInt32 = 0
         static let all : UInt32 = UInt32.max
-        static let priest : UInt32 = 0b1
-        static let demon : UInt32 = 0b10
+        static let priest : UInt32 = 0b10
+        static let demon : UInt32 = 0b10 //come goccia
         static let church : UInt32 = 0b100
         static let fountain : UInt32 = 0b101
+        static let goccia : UInt32 = 0b10 //stessa del demone, per la collisione
         }
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
 
 extension GameScene : SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
-        let firstBody : SKPhysicsBody = contact.bodyA
+       let firstBody : SKPhysicsBody = contact.bodyA
         let secondBody : SKPhysicsBody = contact.bodyB
         
         if let node = firstBody.node,node.name == "prete"{
-        
-            
         }
         
         if let node = secondBody.node, node.name == "prete"{
-            
-            
-        }
+  }
         
+        //let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+
+            // Verifica se la collisione coinvolge la goccia e il demone
+        if let node = firstBody.node, node.name == "goccia" {
+                // Rimuovi la goccia
+               // contact.bodyA.node?.removeFromParent()
+                
+                // Cambia la texture del demone
+                if let demonNode = contact.bodyB.node as? Demon {
+                    demonNode.explode()
+                }
+            }
+        
+        
+        if let node = secondBody.node, node.name == "goccia" {
+                // Rimuovi la goccia
+                //contact.bodyA.node?.removeFromParent()
+                
+                // Cambia la texture del demone
+                if let demonNode = contact.bodyB.node as? Demon {
+                    demonNode.explode()
+                }
+            }
         
     }
 }

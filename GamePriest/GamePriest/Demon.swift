@@ -45,5 +45,27 @@ class Demon: SKSpriteNode {
             run(moveAction)
         }
     
+    
+    func explode() {
+            // Cambia la texture con l'immagine "expl1"
+            let explosionTexture = SKTexture(imageNamed: "Expl1")
+            self.texture = explosionTexture
+        delay(0.5){
+            let explosionTexture2 = SKTexture(imageNamed: "Expl2")
+            self.texture = explosionTexture2
+            delay(0.5){
+                self.removeFromParent()
+            }
+        }
+      
+        
+      
+        }
+    
 }
 
+func delay(_ delay: TimeInterval, closure: @escaping () -> Void) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+        closure()
+    }
+}
