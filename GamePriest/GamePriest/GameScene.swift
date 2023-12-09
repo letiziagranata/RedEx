@@ -4,17 +4,15 @@
 //
 //  Created by Mattia Marranzino on 05/12/23.
 //
-
-
 import SpriteKit
 import GameplayKit
 import SwiftUI
+import AudioToolbox
 
 class GameScene: SKScene {
     
-    
     //PRETE
-    var prete: Priest!
+   
     var isMoving = false //inizialmente a false poichè parte da fermo
     var previousTouchPosition: CGPoint? //CGPoint: rappresentazione di un punto in uno spazio cartesiano x,y
     var textureTimer: Timer? //timer per il cambio delle immagini
@@ -24,6 +22,7 @@ class GameScene: SKScene {
     var textureNamesUp = ["PriestBack1", "PriestBack2"]
     var currentTextureIndex = 0
     var previousDirection: Direction = .straight
+    var gocciaSound: SystemSoundID = 0 //suono goccia
     
     //struttura enum con tutte le possibili direzioni del prete
     enum Direction {
@@ -33,12 +32,17 @@ class GameScene: SKScene {
         case up
     }
     
+    //Var per prete e goccia
+    var isTouchingPriest = false
+    var dropTimer: Timer?
     
+    var prete: Priest!
     var chiesa: Church!
     var demon : Demon!
     var fontana: Fountain!
     var acqua: Aspersorio!
     var spada: Croce!
+    var goccia: Drop!
     
     private func initGame(){
         self.spawnPriest()
@@ -50,6 +54,13 @@ class GameScene: SKScene {
         self.spawnCorner()
         physicsWorld.contactDelegate = self
 
+    }
+    
+    private func spawnGoccia(){
+        let gocciaScale: CGFloat = 0.05
+        goccia = Drop(scale: gocciaScale)
+        goccia.position = prete.position
+        addChild(goccia)
     }
     
     private func spawnCorner(){
@@ -76,6 +87,8 @@ class GameScene: SKScene {
         acqua.xScale = 0.6
         acqua.yScale = 0.6
         addChild(acqua)
+        
+        //dropGoccia()
     }
     
     private func spawnChurch(){
@@ -190,21 +203,30 @@ class GameScene: SKScene {
     
     
     
+    //PARTE RELATIVA AL PRETE E ALLA GOCCIA
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+     
         guard let touch = touches.first else { return }
         let touchLocation = touch.location(in: self)
         
-        // Controlla se il tocco è inizializzato nella posizione del prete
-        if prete.contains(touchLocation) {
+        // Calcola la distanza tra il tocco e la posizione del prete
+        let distanceToPriest = touchLocation.distance(to: prete.position)
+        
+        // Imposta una distanza massima consentita per considerare il tocco come sul prete
+        let maxDistanceToPriest: CGFloat = 50.0
+        
+        // Controlla se il tocco è abbastanza vicino alla posizione del prete
+        if distanceToPriest <= maxDistanceToPriest {
             isMoving = true
             previousTouchPosition = touchLocation
-            // Avvia il cambio continuo delle immagini
             startTextureChangeTimer()
+            isTouchingPriest = true
+            startDropTimer(interval: 0.2)
         }
     }
     //TOCCO SUL PRETE: se sto continuando a tenerlo premuto
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard isMoving, let touch = touches.first else { return }
+        guard isTouchingPriest, let touch = touches.first else { return }
         let touchLocation = touch.location(in: self)
         
         // Chiamare la funzione move(to:) solo se il tocco è ancora sulla scena
@@ -216,31 +238,29 @@ class GameScene: SKScene {
                 let delta = touchLocation - previousPosition
                 
                 // Cambia le immagini in base alla direzione del movimento
-                if abs(delta.x) > abs(delta.y){
-                    if delta.x > 0 {
-                        changeTexture(for: .right)
-                    } else {
-                        changeTexture(for: .left)
-                    }
+                if delta.x > 0 {
+                    changeTexture(for: .right)
+                } else if delta.x < 0 {
+                    changeTexture(for: .left)
+                } else if delta.y > 0 {
+                    changeTexture(for: .up)
                 } else {
-                    if delta.y > 0 {
-                        changeTexture(for: .up)
-                    } else {
-                        changeTexture(for: .straight)
-                    }
+                    changeTexture(for: .straight)
                 }
-                
             }
             // Aggiorna la posizione precedente del tocco
             previousTouchPosition = touchLocation
         }
     }
+    
     //TOCCO SUL PRETE: appena lo rilascio
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         isMoving = false
         previousTouchPosition = nil
-        // Arresta il cambio continuo delle immagini quando il tocco termina
+        stopDropTimer()
+        
         stopTextureChangeTimer()
+        isTouchingPriest = false
     }
     
     // Cambia continuamente l'immagine del prete
@@ -281,10 +301,72 @@ class GameScene: SKScene {
             currentTextureIndex = 0
         }
     }
+    
+    //parte relativa allo sparo della goccia
+    func stopDropTimer() {
+        removeAction(forKey: "dropGocciaAction")
+    }
+    
+    //PARTE RELATIVA ALLA GOCCIA
+    
+    func dropGoccia() {
+        spawnGoccia()
+        let moveDistance: CGFloat = 500
+        let moveDuration = 0.5 // Imposta questo valore in base alla velocità desiderata
+        
+        // Move the goccia with a faster duration
+        let moveAction = SKAction.moveBy(x: 0, y: moveDistance, duration: moveDuration)
+        let removeAction = SKAction.removeFromParent()
+        
+        // Run the actions sequentially
+        let sequence = SKAction.sequence([moveAction, removeAction])
+        
+        //sound
+        let suono = SKAction.playSoundFileNamed("dropOfWater.mp3", waitForCompletion: false)
+        
+        // Run the sequence once
+        goccia.run(sequence)
+        goccia.run(suono)
+        
+        // Start the timer more frequently
+        let dropInterval = 0.15
+        startDropTimer(interval: dropInterval)
+
+    }
+    
+    deinit {
+        AudioServicesDisposeSystemSoundID(gocciaSound)
+    }
+    
+    //start timer per il lancio goccia
+    func startDropTimer(interval: TimeInterval) {
+        let waitAction = SKAction.wait(forDuration: interval)
+        let dropAction = SKAction.run {
+            self.dropGoccia()
+            
+           
+        }
+        let sequence = SKAction.sequence([waitAction, dropAction])
+        let repeatAction = SKAction.repeatForever(sequence)
+        run(repeatAction, withKey: "dropGocciaAction")
+    }
+    
+    
+    
+    
+    
+    
 }
 // Operazione di sottrazione tra due CGPoint
 func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
 }
-
+// Calcolo la distanza tra due punti
+extension CGPoint {
+    func distance(to point: CGPoint) -> CGFloat {
+        let deltaX = self.x - point.x
+        let deltaY = self.y - point.y
+        return sqrt(deltaX * deltaX + deltaY * deltaY)
+    }
+}
 
