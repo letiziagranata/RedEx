@@ -12,7 +12,7 @@ import AudioToolbox
 class GameScene: SKScene {
     
     //PRETE
-   
+    
     var isMoving = false //inizialmente a false poichè parte da fermo
     var previousTouchPosition: CGPoint? //CGPoint: rappresentazione di un punto in uno spazio cartesiano x,y
     var textureTimer: Timer? //timer per il cambio delle immagini
@@ -22,7 +22,15 @@ class GameScene: SKScene {
     var textureNamesUp = ["PriestBack1", "PriestBack2"]
     var currentTextureIndex = 0
     var previousDirection: Direction = .straight
+    
     var gocciaSound: SystemSoundID = 0 //suono goccia
+    var explSound: SystemSoundID = 0 //suono esplosione
+    
+    //punteggio
+
+    var punteggioLabel: SKLabelNode!
+    var punteggio: Int = 0
+    
     
     //struttura enum con tutte le possibili direzioni del prete
     enum Direction {
@@ -45,6 +53,8 @@ class GameScene: SKScene {
     var goccia: Drop!
     
     private func initGame(){
+        
+        self.spawnScore()
         self.spawnPriest()
         self.spawnChurch()
         self.cycleSpawnDemon()
@@ -53,7 +63,29 @@ class GameScene: SKScene {
         self.spawnSpada()
         self.spawnCorner()
         physicsWorld.contactDelegate = self
+        
+    }
+    
+    
+    private func spawnScore()
+    {
+        punteggioLabel = SKLabelNode(fontNamed: "Impact")
+        punteggioLabel.text = "SCORE: \(punteggio)"
+        punteggioLabel.fontSize = 40
+        punteggioLabel.fontColor = SKColor.white
+        punteggioLabel.position = CGPoint(x: size.width / 90, y: size.height / 3)
+        punteggioLabel.zPosition = 50
+        punteggioLabel.horizontalAlignmentMode = .center
+        punteggioLabel.verticalAlignmentMode = .center
+        
+        let colorizeAction = SKAction.colorize(with: SKColor.purple, colorBlendFactor: 0.8, duration: 0.8)
+        let colorizeBackAction = SKAction.colorize(withColorBlendFactor: 0.0, duration: 0.8)
+        let colorizeSequence = SKAction.sequence([colorizeAction, colorizeBackAction])
+        let colorizeRepeat = SKAction.repeatForever(colorizeSequence)
+        punteggioLabel.run(colorizeRepeat)
 
+        
+        addChild(punteggioLabel)
     }
     
     private func spawnGoccia(){
@@ -61,6 +93,7 @@ class GameScene: SKScene {
         
         goccia = Drop(scale: gocciaScale)
         goccia.position = prete.position
+        goccia.zPosition = 100  // Imposta una zPosition elevata
         goccia.name = "goccia"
         
         goccia.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 9, height: 12))
@@ -83,7 +116,7 @@ class GameScene: SKScene {
         cornice.xScale = 0.8
         cornice.yScale = 0.8
         addChild(cornice)
-
+        
     }
     private func spawnSpada(){
         spada = Croce()
@@ -111,7 +144,7 @@ class GameScene: SKScene {
         chiesa.position = CGPoint(x: -120, y: -490)
         chiesa.xScale = 0.8
         chiesa.yScale = 0.8
-
+        
         addChild(chiesa)
     }
     
@@ -124,10 +157,9 @@ class GameScene: SKScene {
         addChild(fontana)
     }
     
-     func cycleSpawnDemon(){
+    func cycleSpawnDemon(){
         let createDemon = SKAction.run(createDemon)
-         let waitAction = SKAction.wait(forDuration: 2)
-        
+        let waitAction = SKAction.wait(forDuration: 1.5)
         let createAndWaitAction = SKAction.sequence([createDemon, waitAction])
         let CycleAction = SKAction.repeatForever(createAndWaitAction)
         
@@ -149,7 +181,7 @@ class GameScene: SKScene {
         demon.yScale = 0.1
         demon.position = position
         demon.zPosition = 4
-
+        
         demon.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 38, height: 60))
         demon.physicsBody?.affectedByGravity = false
         demon.physicsBody?.allowsRotation = false
@@ -161,7 +193,7 @@ class GameScene: SKScene {
         demon.physicsBody?.collisionBitMask = PhysicsCategory.priest
         
         
-
+        
         demon.move()
         
         addChild(demon)
@@ -202,7 +234,7 @@ class GameScene: SKScene {
         
         prete.physicsBody?.collisionBitMask = PhysicsCategory.demon | PhysicsCategory.fountain
         
-       
+        
         
         addChild(prete)
         
@@ -218,7 +250,7 @@ class GameScene: SKScene {
     
     //PARTE RELATIVA AL PRETE E ALLA GOCCIA
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-     
+        
         guard let touch = touches.first else { return }
         let touchLocation = touch.location(in: self)
         
@@ -344,11 +376,12 @@ class GameScene: SKScene {
         // Start the timer more frequently
         let dropInterval = 0.15
         startDropTimer(interval: dropInterval)
-
+        
     }
     
     deinit {
         AudioServicesDisposeSystemSoundID(gocciaSound)
+        AudioServicesDisposeSystemSoundID(explSound)
     }
     
     //start timer per il lancio goccia
@@ -357,12 +390,14 @@ class GameScene: SKScene {
         let dropAction = SKAction.run {
             self.dropGoccia()
             
-           
+            
         }
         let sequence = SKAction.sequence([waitAction, dropAction])
         let repeatAction = SKAction.repeatForever(sequence)
         run(repeatAction, withKey: "dropGocciaAction")
     }
+    
+
     
     
     

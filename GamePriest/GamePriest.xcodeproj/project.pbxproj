@@ -25,6 +25,7 @@
 		E408F7412B24D10E002F1CE2 /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E408F7402B24D10E002F1CE2 /* Drop.swift */; };
 		E408F7432B24D268002F1CE2 /* dropOfWater.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E408F7422B24D268002F1CE2 /* dropOfWater.mp3 */; };
 		E4ACCD812B1F2186003CB3EE /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACCD802B1F2186003CB3EE /* Priest.swift */; };
+		E4B284632B25D62C008BC853 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4B284622B25D62C008BC853 /* explosion.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		E408F7402B24D10E002F1CE2 /* Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drop.swift; sourceTree = "<group>"; };
 		E408F7422B24D268002F1CE2 /* dropOfWater.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dropOfWater.mp3; path = ../../../../Downloads/dropOfWater.mp3; sourceTree = "<group>"; };
 		E4ACCD802B1F2186003CB3EE /* Priest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priest.swift; sourceTree = "<group>"; };
+		E4B284622B25D62C008BC853 /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = explosion.mp3; path = ../../../../Downloads/explosion.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				4D0E3FDE2B21D90000B5F909 /* Physics.swift */,
 				E408F7402B24D10E002F1CE2 /* Drop.swift */,
 				E408F7422B24D268002F1CE2 /* dropOfWater.mp3 */,
+				E4B284622B25D62C008BC853 /* explosion.mp3 */,
 			);
 			path = GamePriest;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				4DB140642B1F1B2E007BF483 /* LaunchScreen.storyboard in Resources */,
 				4DB140582B1F1B2E007BF483 /* Actions.sks in Resources */,
 				668021162B21D83A00065721 /* Assets.xcassets in Resources */,
+				E4B284632B25D62C008BC853 /* explosion.mp3 in Resources */,
 				668021182B21D85A00065721 /* SmokeIncense.sks in Resources */,
 				668021152B21D83A00065721 /* MyParticle.sks in Resources */,
 			);

@@ -8,6 +8,7 @@
 import Foundation
 import GameplayKit
 import SpriteKit
+import AudioToolbox
 
 class Demon: SKSpriteNode {
     
@@ -16,6 +17,7 @@ class Demon: SKSpriteNode {
     var health: Int = 100
     var isAttacking: Bool = false
     var isMoving : Bool = false
+    var explSound: SystemSoundID = 0 //suono esplosione
     
     //funzioni
     
@@ -42,14 +44,16 @@ class Demon: SKSpriteNode {
     
     func move() {
         let moveAction = SKAction.move(to: CGPoint(x:-50,y:-460), duration: 8)
-            run(moveAction)
-        }
+        run(moveAction)
+    }
     
     
     func explode() {
-            // Cambia la texture con l'immagine "expl1"
-            let explosionTexture = SKTexture(imageNamed: "Expl1")
-            self.texture = explosionTexture
+        let suonoexpl = SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false)
+        self.run(suonoexpl)
+        let explosionTexture = SKTexture(imageNamed: "Expl1")
+        self.texture = explosionTexture
+        
         delay(0.5){
             let explosionTexture2 = SKTexture(imageNamed: "Expl2")
             self.texture = explosionTexture2
@@ -57,10 +61,11 @@ class Demon: SKSpriteNode {
                 self.removeFromParent()
             }
         }
-      
         
-      
-        }
+    }
+    
+    
+    
     
 }
 
