@@ -27,7 +27,7 @@ class GameScene: SKScene {
     var explSound: SystemSoundID = 0 //suono esplosione
     
     //punteggio
-
+    
     var punteggioLabel: SKLabelNode!
     var punteggio: Int = 0
     
@@ -83,7 +83,7 @@ class GameScene: SKScene {
         let colorizeSequence = SKAction.sequence([colorizeAction, colorizeBackAction])
         let colorizeRepeat = SKAction.repeatForever(colorizeSequence)
         punteggioLabel.run(colorizeRepeat)
-
+        
         
         addChild(punteggioLabel)
     }
@@ -139,11 +139,21 @@ class GameScene: SKScene {
     
     private func spawnChurch(){
         chiesa = Church()
-        
+        chiesa.name = "chiesa"
         chiesa.zPosition = 5
         chiesa.position = CGPoint(x: -120, y: -490)
         chiesa.xScale = 0.8
         chiesa.yScale = 0.8
+        
+        chiesa.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 38, height: 60))
+        chiesa.physicsBody?.affectedByGravity = false
+        chiesa.physicsBody?.allowsRotation = false
+        
+        chiesa.physicsBody?.categoryBitMask = PhysicsCategory.church
+        
+        chiesa.physicsBody?.contactTestBitMask = PhysicsCategory.demon
+        
+        chiesa.physicsBody?.collisionBitMask = PhysicsCategory.demon
         
         addChild(chiesa)
     }
@@ -191,8 +201,6 @@ class GameScene: SKScene {
         demon.physicsBody?.contactTestBitMask = PhysicsCategory.priest
         
         demon.physicsBody?.collisionBitMask = PhysicsCategory.priest
-        
-        
         
         demon.move()
         
@@ -243,7 +251,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         self.initGame()
         
-        
+        physicsWorld.contactDelegate = self
     }
     
     
@@ -379,6 +387,20 @@ class GameScene: SKScene {
         
     }
     
+//    func didBegin(_ contact: SKPhysicsContact) {
+//           handleCollision(contact)
+//       }
+//    
+//    private func handleCollision(_ contact: SKPhysicsContact) {
+//            let maskA = contact.bodyA.categoryBitMask
+//            let maskB = contact.bodyB.categoryBitMask
+//            
+//            // Controlla se uno dei due oggetti è esplosivo
+//            if maskA == PhysicsCategory.demon || maskB == PhysicsCategory.demon {
+//                explodeObject(with: maskA == PhysicsCategory.demon ? contact.bodyA : contact.bodyB)
+//            }
+//        }
+    
     deinit {
         AudioServicesDisposeSystemSoundID(gocciaSound)
         AudioServicesDisposeSystemSoundID(explSound)
@@ -396,13 +418,6 @@ class GameScene: SKScene {
         let repeatAction = SKAction.repeatForever(sequence)
         run(repeatAction, withKey: "dropGocciaAction")
     }
-    
-
-    
-    
-    
-    
-    
     
 }
 // Operazione di sottrazione tra due CGPoint
