@@ -14,6 +14,7 @@ class GameScene: SKScene {
     //PRETE
     
     var isMoving = false //inizialmente a false poichè parte da fermo
+    var melee = false
     var previousTouchPosition: CGPoint? //CGPoint: rappresentazione di un punto in uno spazio cartesiano x,y
     var textureTimer: Timer? //timer per il cambio delle immagini
     var textureNamesWalking = ["PriestWalking1", "PriestWalking2"]
