@@ -32,10 +32,10 @@ extension GameScene {
     }
     
     func spawnGoccia(){
-        let gocciaScale: CGFloat = 0.05
+        let gocciaScale: CGFloat = 0.08
         
         goccia = Drop(scale: gocciaScale)
-        goccia.position = prete.position
+        goccia.position = CGPoint(x: prete.position.x, y: prete.position.y + prete.size.height * 0.5 + goccia.size.height * 0.5)
         goccia.zPosition = 100  // Imposta una zPosition elevata
         goccia.name = "goccia"
         

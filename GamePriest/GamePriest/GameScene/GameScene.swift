@@ -19,7 +19,7 @@ class GameScene: SKScene {
     var textureNamesWalking = ["PriestWalking1", "PriestWalking2"]
     var textureNamesRight = ["PriestWalkingRight1", "PriestWalkingRight2"]
     var textureNamesLeft = ["PriestWalkingLeft1", "PriestWalkingLeft2"]
-    var textureNamesUp = ["PriestBack1", "PriestBack2"]
+    var textureNamesUp = ["PriestWalking1", "PriestWalking2"]
     var currentTextureIndex = 0
     var previousDirection: Direction = .straight
     
@@ -77,6 +77,10 @@ class GameScene: SKScene {
     
     // Cambia continuamente l'immagine del prete
     @objc func changePriestTexture() {
+        guard !isPriestPaused else {
+                           // Se il prete è bloccato, esci dalla funzione senza cambiare la texture
+                           return
+                       }
         let currentTextureNames: [String]
         
         switch previousDirection {
@@ -108,6 +112,7 @@ class GameScene: SKScene {
     
     // Cambia la direzione del prete e aggiorna l'indice dell'immagine
     func changeTexture(for direction: Direction) {
+       
         if previousDirection != direction {
             previousDirection = direction
             currentTextureIndex = 0
@@ -122,6 +127,10 @@ class GameScene: SKScene {
     //PARTE RELATIVA ALLA GOCCIA
     
     func dropGoccia() {
+        guard !isPriestPaused else {
+                       return
+                   }
+        
         spawnGoccia()
         let moveDistance: CGFloat = 500
         let moveDuration = 0.5 // Imposta questo valore in base alla velocità desiderata
@@ -141,7 +150,7 @@ class GameScene: SKScene {
         goccia.run(suono)
         
         // Start the timer more frequently
-        let dropInterval = 0.15
+        let dropInterval = 0.30
         startDropTimer(interval: dropInterval)
         
     }
@@ -164,7 +173,31 @@ class GameScene: SKScene {
         run(repeatAction, withKey: "dropGocciaAction")
     }
     
+    //BLOCCO DEL PRETE PER LA COLLISIONE
+    var pauseDuration: TimeInterval = 2.0
+    var isPriestPaused = false
+    
+    
+    func handleDemonCollision() {
+        // Verifica se il prete è già in pausa
+        guard !isPriestPaused else {
+            return
+        }
 
+        // Metti in pausa solo il prete
+        isPriestPaused = true
+        isMoving = false
+
+        // Cambia texture (se necessario)
+        // Esempio:
+        prete.texture = SKTexture(imageNamed: "PriestBack1")
+
+        // Dopo il periodo di pausa, riprendi solo il prete
+        DispatchQueue.main.asyncAfter(deadline: .now() + pauseDuration) {
+            self.isPriestPaused = false
+            self.prete.isMoving = true
+        }
+    }
     
     
     
