@@ -60,8 +60,8 @@ class GameScene: SKScene {
         self.cycleSpawnDemon()
         self.spawnFountain()
         self.spawnAcqua()
-        self.spawnSpada()
-        self.spawnCorner()
+        //self.spawnSpada()
+        //self.spawnCorner()
         physicsWorld.contactDelegate = self
         
     }
@@ -110,9 +110,9 @@ class GameScene: SKScene {
     }
     
     private func spawnCorner(){
-        var cornice = SKSpriteNode(imageNamed: "Cornice")
+        let cornice = SKSpriteNode(imageNamed: "Cornice")
         cornice.zPosition = 19
-        cornice.position = CGPoint(x: 210, y: -530)
+        cornice.position = CGPoint(x: 210, y: 530)
         cornice.xScale = 0.8
         cornice.yScale = 0.8
         addChild(cornice)
@@ -121,17 +121,17 @@ class GameScene: SKScene {
     private func spawnSpada(){
         spada = Croce()
         spada.zPosition = 20
-        spada.position = CGPoint(x: 240, y: -500)
-        spada.xScale = 0.25
-        spada.yScale = 0.25
+        spada.position = CGPoint(x: 210, y: 500)
+        spada.xScale = 0.8
+        spada.yScale = 0.8
         addChild(spada)
     }
     private func spawnAcqua(){
         acqua = Aspersorio()
         acqua.zPosition = 20
-        acqua.position = CGPoint(x: 195, y: -545)
-        acqua.xScale = 0.6
-        acqua.yScale = 0.6
+        acqua.position = CGPoint(x: 210, y: 530)
+        acqua.xScale = 0.8
+        acqua.yScale = 0.8
         addChild(acqua)
         
         //dropGoccia()
