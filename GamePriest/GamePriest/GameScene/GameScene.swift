@@ -174,7 +174,7 @@ class GameScene: SKScene {
     }
     
     //BLOCCO DEL PRETE PER LA COLLISIONE
-    var pauseDuration: TimeInterval = 2.0
+    var pauseDuration: TimeInterval = 1.5
     var isPriestPaused = false
     func handleDemonCollision() {
         // Verifica se il prete è già in pausa
@@ -186,14 +186,15 @@ class GameScene: SKScene {
         isPriestPaused = true
         isMoving = false
 
-        // Cambia texture (se necessario)
-        // Esempio:
+        // Cambia texture
         prete.texture = SKTexture(imageNamed: "PriestBack1")
+        prete.alpha = 0.5
 
         // Dopo il periodo di pausa, riprendi solo il prete
         DispatchQueue.main.asyncAfter(deadline: .now() + pauseDuration) {
             self.isPriestPaused = false
             self.prete.isMoving = true
+            self.prete.alpha = 1.0
         }
     }
     
