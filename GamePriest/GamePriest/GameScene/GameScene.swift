@@ -52,6 +52,7 @@ class GameScene: SKScene {
     var acqua: Aspersorio!
     var spada: Croce!
     var goccia: Drop!
+    var cuore: Heart!
     
     private func initGame(){
         
@@ -61,6 +62,7 @@ class GameScene: SKScene {
         self.cycleSpawnDemon()
         self.spawnFountain()
         self.spawnAcqua()
+        self.spawnHeart()
         //self.spawnSpada()
         //self.spawnCorner()
         physicsWorld.contactDelegate = self
