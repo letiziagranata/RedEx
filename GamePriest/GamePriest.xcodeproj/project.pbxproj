@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		14BC1DDB2B20719A00E0C2FC /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC1DDA2B20719A00E0C2FC /* Weapon.swift */; };
+		14EF286F2B27136700B6B79A /* TouchActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF286E2B27136700B6B79A /* TouchActions.swift */; };
+		14EF28752B27153800B6B79A /* Inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF28742B27153800B6B79A /* Inits.swift */; };
 		4D0E3FDF2B21D90000B5F909 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3FDE2B21D90000B5F909 /* Physics.swift */; };
 		4DB140542B1F1B2D007BF483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB140532B1F1B2D007BF483 /* AppDelegate.swift */; };
 		4DB140562B1F1B2E007BF483 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4DB140552B1F1B2E007BF483 /* GameScene.sks */; };
@@ -29,7 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		14BC1DDA2B20719A00E0C2FC /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Weapon.swift; path = ../Weapon.swift; sourceTree = "<group>"; };
+		14BC1DDA2B20719A00E0C2FC /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		14EF286E2B27136700B6B79A /* TouchActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchActions.swift; sourceTree = "<group>"; };
+		14EF28742B27153800B6B79A /* Inits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inits.swift; sourceTree = "<group>"; };
 		4D0E3FDE2B21D90000B5F909 /* Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
 		4DB140502B1F1B2D007BF483 /* GamePriest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamePriest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB140532B1F1B2D007BF483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14EF28722B27145600B6B79A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				661CEF012B1F3F8D00E106E7 /* Church.swift */,
+				663DCC9D2B20D7460092FC10 /* Fountain.swift */,
+				66C1E2F32B1F4815001DA610 /* Demon.swift */,
+				E4ACCD802B1F2186003CB3EE /* Priest.swift */,
+				14BC1DDA2B20719A00E0C2FC /* Weapon.swift */,
+				E408F7402B24D10E002F1CE2 /* Drop.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		14EF28732B2714D400B6B79A /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				4DB140592B1F1B2E007BF483 /* GameScene.swift */,
+				4D0E3FDE2B21D90000B5F909 /* Physics.swift */,
+				14EF286E2B27136700B6B79A /* TouchActions.swift */,
+				14EF28742B27153800B6B79A /* Inits.swift */,
+			);
+			path = GameScene;
+			sourceTree = "<group>";
+		};
 		4DB140472B1F1B2D007BF483 = {
 			isa = PBXGroup;
 			children = (
@@ -82,22 +110,16 @@
 			isa = PBXGroup;
 			children = (
 				4DB140532B1F1B2D007BF483 /* AppDelegate.swift */,
+				4DB1405B2B1F1B2E007BF483 /* GameViewController.swift */,
 				4DB140552B1F1B2E007BF483 /* GameScene.sks */,
 				4DB140572B1F1B2E007BF483 /* Actions.sks */,
-				4DB140592B1F1B2E007BF483 /* GameScene.swift */,
-				4DB1405B2B1F1B2E007BF483 /* GameViewController.swift */,
 				4DB1405D2B1F1B2E007BF483 /* Main.storyboard */,
 				4DB140622B1F1B2E007BF483 /* LaunchScreen.storyboard */,
-				E4ACCD802B1F2186003CB3EE /* Priest.swift */,
 				668021132B21D83A00065721 /* MyParticle.sks */,
 				668021172B21D85A00065721 /* SmokeIncense.sks */,
 				668021142B21D83A00065721 /* Assets.xcassets */,
-				661CEF012B1F3F8D00E106E7 /* Church.swift */,
-				663DCC9D2B20D7460092FC10 /* Fountain.swift */,
-				66C1E2F32B1F4815001DA610 /* Demon.swift */,
-				14BC1DDA2B20719A00E0C2FC /* Weapon.swift */,
-				4D0E3FDE2B21D90000B5F909 /* Physics.swift */,
-				E408F7402B24D10E002F1CE2 /* Drop.swift */,
+				14EF28722B27145600B6B79A /* Models */,
+				14EF28732B2714D400B6B79A /* GameScene */,
 				E4B284652B270D26008BC853 /* dropOfWater.mp3 */,
 				E4B284642B270D26008BC853 /* explosion.mp3 */,
 			);
@@ -182,11 +204,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DB1405A2B1F1B2E007BF483 /* GameScene.swift in Sources */,
+				14EF28752B27153800B6B79A /* Inits.swift in Sources */,
 				4D0E3FDF2B21D90000B5F909 /* Physics.swift in Sources */,
 				661CEF022B1F3F8D00E106E7 /* Church.swift in Sources */,
 				4DB1405C2B1F1B2E007BF483 /* GameViewController.swift in Sources */,
 				14BC1DDB2B20719A00E0C2FC /* Weapon.swift in Sources */,
 				E4ACCD812B1F2186003CB3EE /* Priest.swift in Sources */,
+				14EF286F2B27136700B6B79A /* TouchActions.swift in Sources */,
 				663DCC9E2B20D7460092FC10 /* Fountain.swift in Sources */,
 				4DB140542B1F1B2D007BF483 /* AppDelegate.swift in Sources */,
 				E408F7412B24D10E002F1CE2 /* Drop.swift in Sources */,
