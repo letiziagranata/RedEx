@@ -84,7 +84,7 @@ extension GameScene {
         chiesa = Church()
         
         chiesa.zPosition = 5
-        chiesa.position = CGPoint(x: -120, y: -490)
+        chiesa.position = CGPoint(x: -70, y: -490)
         chiesa.xScale = 0.8
         chiesa.yScale = 0.8
         
@@ -94,7 +94,7 @@ extension GameScene {
     func spawnFountain(){
         fontana = Fountain()
         fontana.zPosition = 7
-        fontana.position = CGPoint(x: 50, y: -530)
+        fontana.position = CGPoint(x: 100, y: -530)
         fontana.xScale = 0.2
         fontana.yScale = 0.2
         addChild(fontana)

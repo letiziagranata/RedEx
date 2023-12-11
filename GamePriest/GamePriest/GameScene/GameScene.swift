@@ -176,6 +176,8 @@ class GameScene: SKScene {
     //BLOCCO DEL PRETE PER LA COLLISIONE
     var pauseDuration: TimeInterval = 1.5
     var isPriestPaused = false
+    
+    
     func handleDemonCollision() {
         // Verifica se il prete è già in pausa
         guard !isPriestPaused else {
