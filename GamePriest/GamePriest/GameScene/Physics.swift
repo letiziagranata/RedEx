@@ -39,18 +39,22 @@ extension GameScene : SKPhysicsContactDelegate {
         if let node = firstBody.node, node.name == "goccia" {
             //Caso firstbody = goccia e bodyB = demone
             if let demonNode = contact.bodyB.node as? Demon {
-                punteggio += 1
-                punteggioLabel.text = "SCORE: \(punteggio)"
-                demonNode.explode()
+                if !demonNode.isExploded{
+                    demonNode.explode()
+                    punteggio += 1
+                    punteggioLabel.text = "SCORE: \(punteggio)"
+                    }
             }
         }
         else if let node = secondBody.node, node.name == "goccia" {
             
             //Caso Secondbody = goccia e bodyA = demone
             if let demonNode = contact.bodyA.node as? Demon {
-                punteggio += 1
-                punteggioLabel.text = "SCORE: \(punteggio)"
-                demonNode.explode()
+                if !demonNode.isExploded{
+                    demonNode.explode()
+                    punteggio += 1
+                    punteggioLabel.text = "SCORE: \(punteggio)"
+                   }
             }
         }
         // Verifica se la collisione coinvolge il prete e il demone
