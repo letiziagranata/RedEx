@@ -27,7 +27,6 @@ class GameScene: SKScene {
     var explSound: SystemSoundID = 0 //suono esplosione
     
     //punteggio
-
     var punteggioLabel: SKLabelNode!
     var punteggio: Int = 0
     
@@ -83,18 +82,21 @@ class GameScene: SKScene {
         let colorizeSequence = SKAction.sequence([colorizeAction, colorizeBackAction])
         let colorizeRepeat = SKAction.repeatForever(colorizeSequence)
         punteggioLabel.run(colorizeRepeat)
-
+        
         
         addChild(punteggioLabel)
     }
     
     private func spawnGoccia(){
-        let gocciaScale: CGFloat = 0.05
+        let gocciaScale: CGFloat = 0.08
         
         goccia = Drop(scale: gocciaScale)
-        goccia.position = prete.position
+        //goccia.position = prete.position
         goccia.zPosition = 100  // Imposta una zPosition elevata
         goccia.name = "goccia"
+        
+        goccia.position = CGPoint(x: prete.position.x, y: prete.position.y + prete.size.height * 0.5 + goccia.size.height * 0.5)
+        
         
         goccia.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 9, height: 12))
         goccia.physicsBody?.affectedByGravity = false
@@ -310,6 +312,11 @@ class GameScene: SKScene {
     
     // Cambia continuamente l'immagine del prete
     @objc func changePriestTexture() {
+        guard !isPriestPaused else {
+                    // Se il prete è bloccato, esci dalla funzione senza cambiare la texture
+                    return
+                }
+        
         let currentTextureNames: [String]
         
         switch previousDirection {
@@ -355,6 +362,10 @@ class GameScene: SKScene {
     //PARTE RELATIVA ALLA GOCCIA
     
     func dropGoccia() {
+        guard !isPriestPaused else {
+                return
+            }
+        
         spawnGoccia()
         let moveDistance: CGFloat = 500
         let moveDuration = 0.5 // Imposta questo valore in base alla velocità desiderata
@@ -374,7 +385,7 @@ class GameScene: SKScene {
         goccia.run(suono)
         
         // Start the timer more frequently
-        let dropInterval = 0.15
+        let dropInterval = 0.30
         startDropTimer(interval: dropInterval)
         
     }
@@ -397,7 +408,32 @@ class GameScene: SKScene {
         run(repeatAction, withKey: "dropGocciaAction")
     }
     
+    //BLOCCO DEL PRETE PER LA COLLISIONE
+    var pauseDuration: TimeInterval = 2.0
+    var isPriestPaused = false
+    func handleDemonCollision() {
+        // Verifica se il prete è già in pausa
+        guard !isPriestPaused else {
+            return
+        }
 
+        // Metti in pausa solo il prete
+        isPriestPaused = true
+        isMoving = false
+
+        // Cambia texture (se necessario)
+        // Esempio:
+        prete.texture = SKTexture(imageNamed: "Priest")
+
+        // Dopo il periodo di pausa, riprendi solo il prete
+        DispatchQueue.main.asyncAfter(deadline: .now() + pauseDuration) {
+            self.isPriestPaused = false
+            self.prete.isMoving = true
+        }
+    }
+
+    
+    
     
     
     
@@ -409,6 +445,7 @@ class GameScene: SKScene {
 func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
 }
+
 // Calcolo la distanza tra due punti
 extension CGPoint {
     func distance(to point: CGPoint) -> CGFloat {

@@ -42,7 +42,6 @@ extension GameScene : SKPhysicsContactDelegate {
                 punteggio += 1
                 punteggioLabel.text = "SCORE: \(punteggio)"
                 demonNode.explode()
-                
             }
         }
         else if let node = secondBody.node, node.name == "goccia" {
@@ -52,6 +51,21 @@ extension GameScene : SKPhysicsContactDelegate {
                 punteggio += 1
                 punteggioLabel.text = "SCORE: \(punteggio)"
                 demonNode.explode()
+            }
+        }
+        // Verifica se la collisione coinvolge il prete e il demone
+        if let node = firstBody.node, node.name == "prete" {
+            //Caso firstbody = goccia e bodyB = demone
+            if let demonNode = contact.bodyB.node as? Demon {
+               handleDemonCollision()
+            }
+        }
+        else if let node = secondBody.node, node.name == "prete" {
+            
+            //Caso Secondbody = goccia e bodyA = demone
+            if let demonNode = contact.bodyA.node as? Demon {
+                handleDemonCollision()
+                
             }
         }
         
@@ -64,3 +78,5 @@ extension GameScene : SKPhysicsContactDelegate {
     
     
 }
+
+
