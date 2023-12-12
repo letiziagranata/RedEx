@@ -19,7 +19,7 @@ import SpriteKit
 class Heart: SKSpriteNode {
     
     //attributi
-    var textureNames = ["heart1", "heart2", "heart3", "heart4", "heart5", "heart6"/*, "heart7"*/]
+    var textureNames = ["heart1", "heart2", "heart3", "heart4", "heart5", "heart6", "heart7"]
     var currentTextureIndex = 0
 
     //funzioni

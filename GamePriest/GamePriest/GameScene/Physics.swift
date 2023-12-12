@@ -70,25 +70,12 @@ extension GameScene : SKPhysicsContactDelegate {
         
         //COLLISIONE TRA CHIESA E DEMONE
         if let node = firstBody.node, node.name == "chiesa" {
-            //Caso firstbody = goccia e bodyB = demone
-            if let demonNode = contact.bodyB.node as? Demon {
-                cuore.changeHTexture()
-            }
-        }
-        else if let node = secondBody.node, node.name == "chiesa" {
-            
-            //Caso Secondbody = goccia e bodyA = demone
-            if let demonNode = contact.bodyA.node as? Demon {
-                cuore.changeHTexture()
-            }
-        }
-        
-        if let node = firstBody.node, node.name == "chiesa" {
             
             if let nodeDemone =  contact.bodyB.node as? Demon {
                 nodeDemone.removeFromParent()
                 chiesa.hp -= 1
                 print(chiesa.hp)
+                cuore.changeHTexture()
             }
             
         } else
@@ -98,6 +85,7 @@ extension GameScene : SKPhysicsContactDelegate {
             if let nodeDemone =  contact.bodyA.node as? Demon {
                 nodeDemone.removeFromParent()
                 chiesa.hp -= 1
+                cuore.changeHTexture()
                 
             }
         }

@@ -231,11 +231,22 @@ extension GameScene {
         cuore = Heart()
         cuore.name = "cuore"
         cuore.zPosition = 5
-        cuore.position = CGPoint(x: -180, y: -400)
-        cuore.xScale = 0.5
-        cuore.yScale = 0.5
+        cuore.position = CGPoint(x: -180, y: -385)
+        cuore.xScale = 0.6
+        cuore.yScale = 0.6
         
         addChild(cuore)
     }
+    
+    func audioStart(){
+        
+        if let Url = Bundle.main.url(forResource: "Soundtrack", withExtension: "wav"){
+            soundtrack = SKAudioNode(url : Url)
+            soundtrack.autoplayLooped = true
+            addChild(soundtrack)
+        }
+        
+    }
+
     
 }
