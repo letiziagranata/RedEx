@@ -18,6 +18,8 @@ class Demon: SKSpriteNode {
     var isAttacking: Bool = false
     var isMoving : Bool = false
     var explSound: SystemSoundID = 0 //suono esplosione
+    var isExploded = false
+
     
     //funzioni
     
@@ -47,9 +49,16 @@ class Demon: SKSpriteNode {
         run(moveAction)
     }
     
-    
+  
     func explode() {
-      
+        guard !isExploded else {
+            return
+        }
+        
+        isExploded = true
+        
+        let suonoexpl = SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false)
+        self.run(suonoexpl)
         
         let explosionTexture = SKTexture(imageNamed: "Expl1")
         self.texture = explosionTexture
@@ -58,11 +67,12 @@ class Demon: SKSpriteNode {
             let explosionTexture2 = SKTexture(imageNamed: "Expl2")
             self.texture = explosionTexture2
             delay(0.5){
+                self.physicsBody?.categoryBitMask = 0 // Disattiva il corpo fisico
                 self.removeFromParent()
             }
         }
-        
     }
+
     
     
     

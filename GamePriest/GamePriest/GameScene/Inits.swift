@@ -83,10 +83,16 @@ extension GameScene {
     func spawnChurch(){
         chiesa = Church()
         
+        chiesa.name = "chiesa"
         chiesa.zPosition = 5
-        chiesa.position = CGPoint(x: -120, y: -490)
+        chiesa.position = CGPoint(x: -70, y: -490)
         chiesa.xScale = 0.8
         chiesa.yScale = 0.8
+        
+        chiesa.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 9, height: 12))
+        chiesa.physicsBody?.isDynamic = false
+        chiesa.physicsBody?.affectedByGravity = false
+        chiesa.physicsBody?.allowsRotation = false
         
         addChild(chiesa)
     }
@@ -94,7 +100,7 @@ extension GameScene {
     func spawnFountain(){
         fontana = Fountain()
         fontana.zPosition = 7
-        fontana.position = CGPoint(x: 50, y: -530)
+        fontana.position = CGPoint(x: 100, y: -530)
         fontana.xScale = 0.2
         fontana.yScale = 0.2
         addChild(fontana)
@@ -182,4 +188,16 @@ extension GameScene {
         addChild(prete)
         
     }
+    
+    func spawnHeart(){
+        cuore = Heart()
+        cuore.name = "cuore"
+        cuore.zPosition = 5
+        cuore.position = CGPoint(x: -140, y: -400)
+        cuore.xScale = 0.5
+        cuore.yScale = 0.5
+        
+        addChild(cuore)
+    }
+    
 }

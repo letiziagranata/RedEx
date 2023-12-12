@@ -14,6 +14,7 @@ class GameScene: SKScene {
     //PRETE
     
     var isMoving = false //inizialmente a false poichè parte da fermo
+    var melee = false
     var previousTouchPosition: CGPoint? //CGPoint: rappresentazione di un punto in uno spazio cartesiano x,y
     var textureTimer: Timer? //timer per il cambio delle immagini
     var textureNamesWalking = ["PriestWalking1", "PriestWalking2"]
@@ -50,6 +51,7 @@ class GameScene: SKScene {
     var acqua: Aspersorio!
     var spada: Croce!
     var goccia: Drop!
+    var cuore: Heart!
     
     private func initGame(){
         
@@ -59,6 +61,7 @@ class GameScene: SKScene {
         self.cycleSpawnDemon()
         self.spawnFountain()
         self.spawnAcqua()
+        self.spawnHeart()
         //self.spawnSpada()
         //self.spawnCorner()
         physicsWorld.contactDelegate = self
@@ -169,7 +172,7 @@ class GameScene: SKScene {
     }
     
     //BLOCCO DEL PRETE PER LA COLLISIONE
-    var pauseDuration: TimeInterval = 2.0
+    var pauseDuration: TimeInterval = 1.5
     var isPriestPaused = false
     
     
@@ -183,14 +186,15 @@ class GameScene: SKScene {
         isPriestPaused = true
         isMoving = false
 
-        // Cambia texture (se necessario)
-        // Esempio:
+        // Cambia texture
         prete.texture = SKTexture(imageNamed: "PriestBack1")
+        prete.alpha = 0.5
 
         // Dopo il periodo di pausa, riprendi solo il prete
         DispatchQueue.main.asyncAfter(deadline: .now() + pauseDuration) {
             self.isPriestPaused = false
             self.prete.isMoving = true
+            self.prete.alpha = 1.0
         }
     }
     
