@@ -11,16 +11,14 @@ import SpriteKit
 
 class Priest: SKSpriteNode {
     
-    //attributi
+    //ATTRIBUTES
     var hp: Int = 3
     var health: Int = 100
     var canShoot: Bool = false
     var isMoving: Bool = false
     
     
-    //funzioni
-    
-    //INIZIALIZZAZIONE
+    //FUNCTIONS
     init() {
         let texture = SKTexture(imageNamed: "Priest")
         super.init(texture: texture, color: .clear, size: texture.size())
@@ -29,7 +27,7 @@ class Priest: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MOVIMENTO PRETE
+    //PRIEST MOVEMENT
     func move(to position: CGPoint) {
             let moveAction = SKAction.move(to: position, duration: 0.1)
             run(moveAction)

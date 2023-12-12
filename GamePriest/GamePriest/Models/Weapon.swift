@@ -27,7 +27,7 @@ class Granata: SKSpriteNode{
     var damege: Int = 5
     var range: Int = 20
     
-    //INIZIALIZZAZIONE
+    //INITIALIZATIION
     init() {
         let texture = SKTexture(imageNamed: "Granata")
         super.init(texture: texture, color: .clear, size: texture.size())
@@ -42,9 +42,9 @@ class Aspersorio: SKSpriteNode{
     var damege: Int = 1
     var range: Int = 5
     
-    //INIZIALIZZAZIONE
+    //INITIALIZATIION
     init() {
-        let texture = SKTexture(imageNamed: "Acqua_Santa1")
+        let texture = SKTexture(imageNamed: "HolyWater1")
         super.init(texture: texture, color: .clear, size: texture.size())
     }
     required init?(coder aDecoder: NSCoder) {

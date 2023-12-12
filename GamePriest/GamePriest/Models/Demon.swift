@@ -17,9 +17,6 @@ class Demon: SKSpriteNode {
     var health: Int = 100
     var isAttacking: Bool = false
     var isMoving : Bool = false
-    
-    
-    
     var isExploded = false
 
     
@@ -34,17 +31,7 @@ class Demon: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //DIFESA
-    func defend() {
-        // Logica per la difesa del prete
-        isAttacking = true
-    }
-    
-    //STOP DIFESA
-    func stopDefending() {
-        // Logica per interrompere la difesa del prete
-        isAttacking = false
-    }
+   
     
     func move() {
         let moveAction = SKAction.move(to: CGPoint(x:-50,y:-460), duration: 8)

@@ -75,7 +75,7 @@ extension GameScene : SKPhysicsContactDelegate {
                 nodeDemone.removeFromParent()
                 chiesa.hp -= 1
                 print(chiesa.hp)
-                cuore.changeHTexture()
+                vita.changeLTexture()
             }
             
         } else
@@ -85,7 +85,7 @@ extension GameScene : SKPhysicsContactDelegate {
             if let nodeDemone =  contact.bodyA.node as? Demon {
                 nodeDemone.removeFromParent()
                 chiesa.hp -= 1
-                cuore.changeHTexture()
+                vita.changeLTexture()
                 
             }
         }

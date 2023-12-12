@@ -234,15 +234,15 @@ extension GameScene {
         
     }
     
-    func spawnHeart(){
-        cuore = Heart()
-        cuore.name = "cuore"
-        cuore.zPosition = 5
-        cuore.position = CGPoint(x: -113, y: -393)
-        cuore.xScale = 0.6
-        cuore.yScale = 0.6
+    func spawnLife(){
+        vita = Life()
+        vita.name = "vita"
+        vita.zPosition = 5
+        vita.position = CGPoint(x: -113, y: -393)
+        vita.xScale = 0.6
+        vita.yScale = 0.6
         
-        addChild(cuore)
+        addChild(vita)
     }
     
     func audioStart(){
