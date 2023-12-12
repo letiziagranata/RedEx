@@ -7,7 +7,8 @@
 import SpriteKit
 import GameplayKit
 import SwiftUI
-import AudioToolbox
+
+
 
 class GameScene: SKScene {
     
@@ -25,14 +26,13 @@ class GameScene: SKScene {
     var previousDirection: Direction = .straight
     
     
-    //Audio
-    
-    
     //punteggio
 
     var punteggioLabel: SKLabelNode!
     var punteggio: Int = 0
     
+    //Suono
+    var soundtrack : SKAudioNode!
     
     //struttura enum con tutte le possibili direzioni del prete
     enum Direction {
@@ -64,6 +64,8 @@ class GameScene: SKScene {
         self.spawnFountain()
         self.spawnAcqua()
         self.spawnHeart()
+        self.audioStart()
+     
         //self.spawnSpada()
         //self.spawnCorner()
         physicsWorld.contactDelegate = self
