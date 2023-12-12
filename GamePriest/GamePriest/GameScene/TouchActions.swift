@@ -109,5 +109,10 @@ extension GameScene {
     //Azione eseguita sul double tap
     func handleDoubleTap() {
         melee.toggle()
+        if melee{
+            acqua.texture = SKTexture(imageNamed: "Spada")
+        }else{
+            acqua.texture = SKTexture(imageNamed: "Acqua_Santa")
+        }
     }
 }
