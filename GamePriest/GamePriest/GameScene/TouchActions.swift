@@ -33,7 +33,24 @@ extension GameScene {
             isTouchingPriest = true
             startDropTimer(interval: 0.2)
         }
+        
+        
+        if chiesa.contains(touchLocation) {
+                handleFountainTap()
+            }
     }
+    
+    //fontana per ricarica
+    @objc func handleFountainTap() {
+        // Rimuovi il gesto alla chiesa
+        view?.gestureRecognizers?.forEach { view?.removeGestureRecognizer($0) }
+
+        // Termina la modalità di ricarica
+        endRicaricaMode()
+    }
+    
+    
+    
     //TOCCO SUL PRETE: se sto continuando a tenerlo premuto
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         //guard isTouchingPriest, let touch = touches.first else { return }
@@ -79,6 +96,7 @@ extension GameScene {
 
         let currentTime = touch.timestamp
 
+        // Controllo se il double tap è avvenuto
         // Controllo se il double tap è avvenuto
         if currentTime - lastTapTime < 0.5 {
             tapCount += 1

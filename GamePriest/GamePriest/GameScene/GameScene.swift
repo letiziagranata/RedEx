@@ -25,6 +25,10 @@ class GameScene: SKScene {
     var currentTextureIndex = 0
     var previousDirection: Direction = .straight
     
+    var gocceSparate = 0
+    var isRicaricaMode: Bool = false
+
+    
     //Variabili per il doppio tap
     var lastTapTime: TimeInterval = 0
     var tapCount: Int = 0
@@ -153,16 +157,26 @@ class GameScene: SKScene {
             // Run the actions sequentially
             let sequence = SKAction.sequence([moveAction, removeAction])
             
-            //sound
-            
-            
             // Run the sequence once
             goccia.run(sequence)
+            
+            
+            gocceSparate += 1
+            
             
             // Start the timer more frequently
             let dropInterval = 0.30
             startDropTimer(interval: dropInterval)
-        }else{
+            
+            
+            if gocceSparate >= 20 {
+                startRicaricaMode()
+                return
+            }}
+        
+        
+        
+        else{
             //Attacca melee
             let delta = prete.position - previousTouchPosition!
             if abs(delta.x) > abs(delta.y){
@@ -189,9 +203,6 @@ class GameScene: SKScene {
             // Run the actions sequentially
             let sequence = SKAction.sequence([moveAction, removeAction])
             
-            //sound
-            
-            
             // Run the sequence once
             swipe.run(sequence)
             
@@ -199,7 +210,6 @@ class GameScene: SKScene {
             let swipeInterval = 1.00
             startSwipeTimer(interval: swipeInterval)
         }
-        
     }
     
   
@@ -253,6 +263,29 @@ class GameScene: SKScene {
             self.prete.isMoving = true
             self.prete.alpha = 1.0
         }
+    }
+    
+    //CONTO GOCCE
+    
+    
+    func startRicaricaMode() {
+        if gocceSparate >= 5 {
+             isPriestPaused = true
+             prete.isMoving = false
+
+             // Aggiungi un tap gesture alla chiesa
+             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleFountainTap))
+             view?.addGestureRecognizer(tapGesture)
+         }
+    }
+
+    
+
+    // Funzione per terminare la modalità di ricarica
+    func endRicaricaMode() {
+        isPriestPaused = false
+        prete.isMoving = true
+        gocceSparate = 0
     }
     
     
