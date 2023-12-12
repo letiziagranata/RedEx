@@ -28,6 +28,9 @@ class GameScene: SKScene {
     //Variabili per il doppio tap
     var lastTapTime: TimeInterval = 0
     var tapCount: Int = 0
+
+    //Audio
+
     
     
     //punteggio
@@ -237,8 +240,6 @@ class GameScene: SKScene {
             self.prete.alpha = 1.0
         }
     }
-    
-    
     
     
     

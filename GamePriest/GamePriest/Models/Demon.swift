@@ -17,7 +17,9 @@ class Demon: SKSpriteNode {
     var health: Int = 100
     var isAttacking: Bool = false
     var isMoving : Bool = false
-    var explSound: SystemSoundID = 0 //suono esplosione
+    
+    
+    
     var isExploded = false
 
     
@@ -56,9 +58,7 @@ class Demon: SKSpriteNode {
         }
         
         isExploded = true
-        
-        let suonoexpl = SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false)
-        self.run(suonoexpl)
+    
         
         let explosionTexture = SKTexture(imageNamed: "Expl1")
         self.texture = explosionTexture
