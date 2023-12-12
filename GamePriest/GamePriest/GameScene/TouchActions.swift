@@ -51,15 +51,20 @@ extension GameScene {
                 let delta = touchLocation - previousPosition
                 
                 // Cambia le immagini in base alla direzione del movimento
-                if delta.x > 0 {
-                    changeTexture(for: .right)
-                } else if delta.x < 0 {
-                    changeTexture(for: .left)
-                } else if delta.y > 0 {
-                    changeTexture(for: .up)
+                if abs(delta.x) > abs(delta.y){
+                    if delta.x > 0 {
+                        changeTexture(for: .right)
+                    } else {
+                        changeTexture(for: .left)
+                    }
                 } else {
-                    changeTexture(for: .straight)
+                    if delta.y > 0 {
+                        changeTexture(for: .up)
+                    } else {
+                        changeTexture(for: .straight)
+                    }
                 }
+                
             }
             // Aggiorna la posizione precedente del tocco
             previousTouchPosition = touchLocation

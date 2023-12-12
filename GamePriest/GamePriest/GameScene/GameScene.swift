@@ -164,7 +164,21 @@ class GameScene: SKScene {
             startDropTimer(interval: dropInterval)
         }else{
             //Attacca melee
-            spawnMelee()
+            let delta = prete.position - previousTouchPosition!
+            if abs(delta.x) > abs(delta.y){
+                if delta.x > 0 {
+                    spawnMelee(for: .left)
+                } else {
+                    spawnMelee(for: .right)
+                }
+            } else {
+                if delta.y > 0 {
+                    spawnMelee(for: .straight)
+                } else {
+                    spawnMelee(for: .up)
+                }
+            }
+            
             let moveDistance: CGFloat = 0
             let moveDuration = 0.7 // Imposta questo valore in base alla velocità desiderata
             

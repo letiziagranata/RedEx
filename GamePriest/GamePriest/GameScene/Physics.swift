@@ -15,10 +15,10 @@ extension GameScene {
         static let none : UInt32 = 0
         static let all : UInt32 = UInt32.max
         static let priest : UInt32 = 0b10
-        static let demon : UInt32 = 0b10 //come goccia
+        static let demon : UInt32 = 0b11 
         static let church : UInt32 = 0b100
         static let fountain : UInt32 = 0b101
-        static let goccia : UInt32 = 0b10 //stessa del demone, per la collisione
+        static let goccia : UInt32 = 0b110
     }
     
 }

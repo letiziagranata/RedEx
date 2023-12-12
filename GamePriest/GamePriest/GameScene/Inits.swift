@@ -52,11 +52,21 @@ extension GameScene {
         addChild(goccia)
     }
     
-    func spawnMelee(){
-        
+    func spawnMelee(for direction: Direction){
         
         swipe = Swipe(scale: 0.8)
-        swipe.position = CGPoint(x: prete.position.x, y: prete.position.y + prete.size.height * 0.5 + swipe.size.height * 0.5)
+        
+        if direction == .up{
+            swipe.position = CGPoint(x: prete.position.x, y: prete.position.y + prete.size.height * 0.5 + swipe.size.height * 0.5)
+        }else if direction == .right{
+            swipe.position = CGPoint(x: prete.position.x + prete.size.width * 0.5 + swipe.size.width * 0.5, y: prete.position.y)
+        } else if direction == .left{
+            swipe.position = CGPoint(x: prete.position.x - prete.size.width * 0.5 - swipe.size.width * 0.5, y:prete.position.y )
+        }else{
+            swipe.position = CGPoint(x: prete.position.x, y: prete.position.y - prete.size.height * 0.5 - swipe.size.height * 0.5)
+
+        }
+        
         swipe.zPosition = 100  // Imposta una zPosition elevata
         swipe.name = "goccia"
         
