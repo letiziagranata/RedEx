@@ -52,6 +52,28 @@ extension GameScene {
         addChild(goccia)
     }
     
+    func spawnMelee(){
+        
+        
+        swipe = Swipe(scale: 0.8)
+        swipe.position = CGPoint(x: prete.position.x, y: prete.position.y + prete.size.height * 0.5 + swipe.size.height * 0.5)
+        swipe.zPosition = 100  // Imposta una zPosition elevata
+        swipe.name = "goccia"
+        
+        swipe.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 70, height: 70))
+        swipe.physicsBody?.affectedByGravity = false
+        swipe.physicsBody?.allowsRotation = false
+        
+        swipe.physicsBody?.categoryBitMask = PhysicsCategory.priest
+        
+        swipe.physicsBody?.contactTestBitMask = PhysicsCategory.demon
+        
+        swipe.physicsBody?.collisionBitMask = PhysicsCategory.demon | PhysicsCategory.fountain
+        
+        addChild(swipe)
+
+    }
+    
     func spawnCorner(){
         let cornice = SKSpriteNode(imageNamed: "Cornice")
         cornice.zPosition = 19
