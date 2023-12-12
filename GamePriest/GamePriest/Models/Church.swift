@@ -12,7 +12,7 @@ import SpriteKit
 class Church: SKSpriteNode {
     
     //attributi
-    var hp: Int = 1000
+    var hp: Int = 4
     
     //funzioni
     
@@ -24,4 +24,6 @@ class Church: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
 }

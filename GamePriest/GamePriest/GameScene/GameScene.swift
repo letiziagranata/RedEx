@@ -24,7 +24,9 @@ class GameScene: SKScene {
     var currentTextureIndex = 0
     var previousDirection: Direction = .straight
     
-  
+    
+    //Audio
+    
     
     //punteggio
 
