@@ -228,4 +228,15 @@ extension GameScene {
         addChild(cuore)
     }
     
+    func audioStart(){
+        
+        if let Url = Bundle.main.url(forResource: "Soundtrack", withExtension: "wav"){
+            soundtrack = SKAudioNode(url : Url)
+            soundtrack.autoplayLooped = true
+            addChild(soundtrack)
+        }
+        
+    }
+
+    
 }

@@ -12,6 +12,7 @@
 		14EF28752B27153800B6B79A /* Inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF28742B27153800B6B79A /* Inits.swift */; };
 		14EF287B2B272C8C00B6B79A /* Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF287A2B272C8C00B6B79A /* Swipe.swift */; };
 		4D0E3FDF2B21D90000B5F909 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3FDE2B21D90000B5F909 /* Physics.swift */; };
+		4DB04ADC2B2857C900177875 /* Soundtrack.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4DB04ADB2B2857C900177875 /* Soundtrack.wav */; };
 		4DB140542B1F1B2D007BF483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB140532B1F1B2D007BF483 /* AppDelegate.swift */; };
 		4DB140562B1F1B2E007BF483 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4DB140552B1F1B2E007BF483 /* GameScene.sks */; };
 		4DB140582B1F1B2E007BF483 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4DB140572B1F1B2E007BF483 /* Actions.sks */; };
@@ -38,6 +39,7 @@
 		14EF28742B27153800B6B79A /* Inits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inits.swift; sourceTree = "<group>"; };
 		14EF287A2B272C8C00B6B79A /* Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swipe.swift; sourceTree = "<group>"; };
 		4D0E3FDE2B21D90000B5F909 /* Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
+		4DB04ADB2B2857C900177875 /* Soundtrack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Soundtrack.wav; sourceTree = "<group>"; };
 		4DB140502B1F1B2D007BF483 /* GamePriest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamePriest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB140532B1F1B2D007BF483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DB140552B1F1B2E007BF483 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				14EF28732B2714D400B6B79A /* GameScene */,
 				E4B284652B270D26008BC853 /* dropOfWater.mp3 */,
 				E4B284642B270D26008BC853 /* explosion.mp3 */,
+				4DB04ADB2B2857C900177875 /* Soundtrack.wav */,
 			);
 			path = GamePriest;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				4DB140562B1F1B2E007BF483 /* GameScene.sks in Resources */,
 				4DB140642B1F1B2E007BF483 /* LaunchScreen.storyboard in Resources */,
 				E4B284672B270D26008BC853 /* dropOfWater.mp3 in Resources */,
+				4DB04ADC2B2857C900177875 /* Soundtrack.wav in Resources */,
 				4DB140582B1F1B2E007BF483 /* Actions.sks in Resources */,
 				E4B284662B270D26008BC853 /* explosion.mp3 in Resources */,
 				668021162B21D83A00065721 /* Assets.xcassets in Resources */,
@@ -374,7 +378,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 595ULKU252;
+				DEVELOPMENT_TEAM = 9H86M4PWNK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -387,7 +391,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mariaconcettaarena.GamePriest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mattiamarranzino.GamePriest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -402,7 +406,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 595ULKU252;
+				DEVELOPMENT_TEAM = 9H86M4PWNK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -415,7 +419,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mariaconcettaarena.GamePriest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mattiamarranzino.GamePriest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
