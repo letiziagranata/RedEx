@@ -51,6 +51,11 @@ class Demon: SKSpriteNode {
         run(moveAction)
     }
     
+    func stop(){
+        let stopAction = SKAction.stop()
+        run(stopAction)
+    }
+    
   
     func explode() {
         guard !isExploded else {
@@ -60,6 +65,7 @@ class Demon: SKSpriteNode {
         isExploded = true
     
         self.physicsBody = nil
+        self.stop()
         let explosionTexture = SKTexture(imageNamed: "Expl1")
         self.texture = explosionTexture
         

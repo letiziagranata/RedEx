@@ -25,6 +25,7 @@ class GameScene: SKScene {
     var currentTextureIndex = 0
     var previousDirection: Direction = .straight
     
+    
     //Variabili per il doppio tap
     var lastTapTime: TimeInterval = 0
     var tapCount: Int = 0
