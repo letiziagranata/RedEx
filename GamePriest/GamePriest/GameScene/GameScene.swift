@@ -25,18 +25,18 @@ class GameScene: SKScene {
     var currentTextureIndex = 0
     var previousDirection: Direction = .straight
     
-
+    
     var gocceSparate = 0
     var isRicaricaMode: Bool = false
-
-
+    
+    
     
     //Variabili per il doppio tap
     var lastTapTime: TimeInterval = 0
     var tapCount: Int = 0
-
+    
     //punteggio
-
+    
     var punteggioLabel: SKLabelNode!
     var punteggio: Int = 0
     
@@ -75,7 +75,7 @@ class GameScene: SKScene {
         self.spawnAcqua()
         self.spawnHeart()
         self.audioStart()
-     
+        
         //self.spawnSpada()
         //self.spawnCorner()
         physicsWorld.contactDelegate = self
@@ -94,9 +94,9 @@ class GameScene: SKScene {
     // Cambia continuamente l'immagine del prete
     @objc func changePriestTexture() {
         guard !isPriestPaused else {
-                           // Se il prete è bloccato, esci dalla funzione senza cambiare la texture
-                           return
-                       }
+            // Se il prete è bloccato, esci dalla funzione senza cambiare la texture
+            return
+        }
         let currentTextureNames: [String]
         
         switch previousDirection {
@@ -128,7 +128,7 @@ class GameScene: SKScene {
     
     // Cambia la direzione del prete e aggiorna l'indice dell'immagine
     func changeTexture(for direction: Direction) {
-       
+        
         if previousDirection != direction {
             previousDirection = direction
             currentTextureIndex = 0
@@ -143,78 +143,104 @@ class GameScene: SKScene {
     //PARTE RELATIVA ALLA GOCCIA
     
     func Attack() {
-        guard !isPriestPaused else {
-                       return
-                   }
-        if !melee{
-            //Spara le goccie
-            spawnGoccia()
-            let moveDistance: CGFloat = 500
-            let moveDuration = 0.5 // Imposta questo valore in base alla velocità desiderata
-            
-            // Move the goccia with a faster duration
-            let moveAction = SKAction.moveBy(x: 0, y: moveDistance, duration: moveDuration)
-            let removeAction = SKAction.removeFromParent()
-            
-            // Run the actions sequentially
-            let sequence = SKAction.sequence([moveAction, removeAction])
-            
-            // Run the sequence once
-            goccia.run(sequence)
-            
-            
-            gocceSparate += 1
-            
-            
-            // Start the timer more frequently
-            let dropInterval = 0.30
-            startDropTimer(interval: dropInterval)
-            
-            
-            if gocceSparate >= 20 {
-                startRicaricaMode()
+            guard !isPriestPaused else {
                 return
-            }}
-        
-        
-        
-        else{
-            //Attacca melee
-            let delta = prete.position - previousTouchPosition!
-            if abs(delta.x) > abs(delta.y){
-                if delta.x > 0 {
-                    spawnMelee(for: .left)
-                } else {
-                    spawnMelee(for: .right)
-                }
-            } else {
-                if delta.y > 0 {
-                    spawnMelee(for: .straight)
-                } else {
-                    spawnMelee(for: .up)
-                }
             }
+            if !melee{
+                //Spara le goccie
+                spawnGoccia()
+                let moveDistance: CGFloat = 500
+                let moveDuration = 0.5 // Imposta questo valore in base alla velocità desiderata
+                
+                // Move the goccia with a faster duration
+                let moveAction = SKAction.moveBy(x: 0, y: moveDistance, duration: moveDuration)
+                let removeAction = SKAction.removeFromParent()
+                
+                // Run the actions sequentially
+                let sequence = SKAction.sequence([moveAction, removeAction])
+                
+                // Run the sequence once
+                goccia.run(sequence)
+                
+                
+                gocceSparate += 1
+                
+                //CAMBIO DI IMMAGINI MAN MANO CHE L'ACQUA DIMINUISCE
+                if gocceSparate == 0{
+                    acqua.texture = SKTexture(imageNamed: "Acqua_Santa1")
+                }else if gocceSparate == 2{
+                    acqua.texture = SKTexture(imageNamed: "Acqua_Santa2")
+                }
+                else if gocceSparate == 4{
+                    acqua.texture = SKTexture(imageNamed: "Acqua_Santa3")
+                }
+                else if gocceSparate == 6{
+                    acqua.texture = SKTexture(imageNamed: "Acqua_Santa4")
+                }
+                else if gocceSparate == 8{
+                    acqua.texture = SKTexture(imageNamed: "Acqua_Santa5")
+                }
+                else if gocceSparate == 10{
+                    acqua.texture = SKTexture(imageNamed: "Acqua_Santa6")
+                    
+                }else if gocceSparate == 12{
+                    acqua.texture = SKTexture(imageNamed: "Acqua_Santa7")
+                    
+                }else if gocceSparate == 14{
+                    acqua.texture = SKTexture(imageNamed: "Acqua_Santa8")}
+              
+                
+                // Start the timer more frequently
+                let dropInterval = 0.30
+                startDropTimer(interval: dropInterval)
+                
+                
+                if gocceSparate >= 16 {
+                    acqua.texture = SKTexture(imageNamed: "Acqua_Santa9")
+                    prete.canShoot = false
+                    startRicaricaMode()
+                    return
+                }}
             
-            let moveDistance: CGFloat = 0
-            let moveDuration = 0.7 // Imposta questo valore in base alla velocità desiderata
             
-            // Move the goccia with a faster duration
-            let moveAction = SKAction.moveBy(x: 0, y: moveDistance, duration: moveDuration)
-            let removeAction = SKAction.removeFromParent()
             
-            // Run the actions sequentially
-            let sequence = SKAction.sequence([moveAction, removeAction])
-            
-            // Run the sequence once
-            swipe.run(sequence)
-            
-            // Start the timer more frequently
-            let swipeInterval = 1.00
-            startSwipeTimer(interval: swipeInterval)
-        }
+            else{
+                //Attacca melee
+                let delta = prete.position - previousTouchPosition!
+                if abs(delta.x) > abs(delta.y){
+                    if delta.x > 0 {
+                        spawnMelee(for: .left)
+                    } else {
+                        spawnMelee(for: .right)
+                    }
+                } else {
+                    if delta.y > 0 {
+                        spawnMelee(for: .straight)
+                    } else {
+                        spawnMelee(for: .up)
+                    }
+                }
+                
+                let moveDistance: CGFloat = 0
+                let moveDuration = 0.7 // Imposta questo valore in base alla velocità desiderata
+                
+                // Move the goccia with a faster duration
+                let moveAction = SKAction.moveBy(x: 0, y: moveDistance, duration: moveDuration)
+                let removeAction = SKAction.removeFromParent()
+                
+                // Run the actions sequentially
+                let sequence = SKAction.sequence([moveAction, removeAction])
+                
+                // Run the sequence once
+                swipe.run(sequence)
+                
+                // Start the timer more frequently
+                let swipeInterval = 1.00
+                startSwipeTimer(interval: swipeInterval)
+            }
     }
     
-  
+    
     
     //start timer per il lancio goccia
     func startDropTimer(interval: TimeInterval) {
@@ -250,15 +276,15 @@ class GameScene: SKScene {
         guard !isPriestPaused else {
             return
         }
-
+        
         // Metti in pausa solo il prete
         isPriestPaused = true
         isMoving = false
-
+        
         // Cambia texture
         prete.texture = SKTexture(imageNamed: "PriestBack1")
         prete.alpha = 0.5
-
+        
         // Dopo il periodo di pausa, riprendi solo il prete
         DispatchQueue.main.asyncAfter(deadline: .now() + pauseDuration) {
             self.isPriestPaused = false
@@ -271,22 +297,21 @@ class GameScene: SKScene {
     
     
     func startRicaricaMode() {
-        if gocceSparate >= 5 {
-             isPriestPaused = true
-             prete.isMoving = false
-
-             // Aggiungi un tap gesture alla chiesa
-             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleFountainTap))
-             view?.addGestureRecognizer(tapGesture)
-         }
+        if gocceSparate >= 18 {
+            isPriestPaused = true
+            prete.isMoving = false
+            prete.canShoot = false
+            
+        }
     }
-
     
-
+    
+    
     // Funzione per terminare la modalità di ricarica
     func endRicaricaMode() {
         isPriestPaused = false
         prete.isMoving = true
+        prete.canShoot = true
         gocceSparate = 0
     }
     

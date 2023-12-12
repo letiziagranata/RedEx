@@ -54,7 +54,7 @@ extension GameScene {
     //TOCCO SUL PRETE: se sto continuando a tenerlo premuto
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         //guard isTouchingPriest, let touch = touches.first else { return }
-        guard !isPriestPaused, isTouchingPriest, isMoving, let touch = touches.first else {
+        guard isTouchingPriest, isMoving, let touch = touches.first else {
                 return
             }
         let touchLocation = touch.location(in: self)

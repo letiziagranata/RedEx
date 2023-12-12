@@ -137,10 +137,17 @@ extension GameScene {
     
     func spawnFountain(){
         fontana = Fountain()
+        fontana.name = "fontana"
         fontana.zPosition = 7
         fontana.position = CGPoint(x: 100, y: -530)
         fontana.xScale = 0.2
         fontana.yScale = 0.2
+        
+        fontana.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 110, height: 110))
+        fontana.physicsBody?.affectedByGravity = false
+        fontana.physicsBody?.allowsRotation = false
+        fontana.physicsBody?.isDynamic = false
+        
         addChild(fontana)
     }
     

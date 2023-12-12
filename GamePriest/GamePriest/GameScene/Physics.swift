@@ -90,6 +90,31 @@ extension GameScene : SKPhysicsContactDelegate {
             }
         }
         
+        
+        //TOCCO TRA PRETE E FONTANA (PER LA RICARICA)
+        if let node = firstBody.node, node.name == "fontana" {
+            
+            if let nodePrete =  contact.bodyB.node as? Priest {
+              //fare
+                startRicaricaMode()
+                endRicaricaMode()
+            }
+            
+        } else
+        
+        if let  node = secondBody.node, node.name == "fontana" {
+            
+            if let nodePrete =  contact.bodyA.node as? Priest {
+            //fare
+                startRicaricaMode()
+                endRicaricaMode()
+            }
+        }
+        
+        
+        
+        
+        
     }
     
     

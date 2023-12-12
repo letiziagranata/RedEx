@@ -14,7 +14,7 @@ class Priest: SKSpriteNode {
     //attributi
     var hp: Int = 3
     var health: Int = 100
-    var isDefending: Bool = false
+    var canShoot: Bool = false
     var isMoving: Bool = false
     
     
