@@ -103,7 +103,7 @@ extension GameScene {
 
             //Richiama la funzione da eseguire sul double tap
             if tapCount == 2 {
-                handleDoubleTap()
+                //handleDoubleTap()
                 tapCount = 0
             }
         } else {
