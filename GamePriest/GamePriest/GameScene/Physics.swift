@@ -56,14 +56,14 @@ extension GameScene : SKPhysicsContactDelegate {
         // Verifica se la collisione coinvolge il prete e il demone
         if let node = firstBody.node, node.name == "prete" {
             //Caso firstbody = goccia e bodyB = demone
-            if let demonNode = contact.bodyB.node as? Demon {
+            if contact.bodyB.node is Demon {
                handleDemonCollision()
             }
         }
         else if let node = secondBody.node, node.name == "prete" {
             
             //Caso Secondbody = goccia e bodyA = demone
-            if let demonNode = contact.bodyA.node as? Demon {
+            if contact.bodyA.node is Demon {
                 handleDemonCollision()
                 
             }

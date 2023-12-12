@@ -49,8 +49,8 @@ class Demon: SKSpriteNode {
     
     
     func explode() {
-        let suonoexpl = SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false)
-        self.run(suonoexpl)
+      
+        
         let explosionTexture = SKTexture(imageNamed: "Expl1")
         self.texture = explosionTexture
         

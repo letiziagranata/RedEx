@@ -23,8 +23,7 @@ class GameScene: SKScene {
     var currentTextureIndex = 0
     var previousDirection: Direction = .straight
     
-    var gocciaSound: SystemSoundID = 0 //suono goccia
-    var explSound: SystemSoundID = 0 //suono esplosione
+  
     
     //punteggio
 
@@ -143,11 +142,10 @@ class GameScene: SKScene {
         let sequence = SKAction.sequence([moveAction, removeAction])
         
         //sound
-        let suono = SKAction.playSoundFileNamed("dropOfWater.mp3", waitForCompletion: false)
+        
         
         // Run the sequence once
         goccia.run(sequence)
-        goccia.run(suono)
         
         // Start the timer more frequently
         let dropInterval = 0.30
@@ -155,10 +153,7 @@ class GameScene: SKScene {
         
     }
     
-    deinit {
-        AudioServicesDisposeSystemSoundID(gocciaSound)
-        AudioServicesDisposeSystemSoundID(explSound)
-    }
+  
     
     //start timer per il lancio goccia
     func startDropTimer(interval: TimeInterval) {
@@ -176,6 +171,8 @@ class GameScene: SKScene {
     //BLOCCO DEL PRETE PER LA COLLISIONE
     var pauseDuration: TimeInterval = 2.0
     var isPriestPaused = false
+    
+    
     func handleDemonCollision() {
         // Verifica se il prete è già in pausa
         guard !isPriestPaused else {
