@@ -12,7 +12,7 @@ import SpriteKit
 class Church: SKSpriteNode {
     
     //attributi
-    var hp: Int = 3
+    var hp: Int = 1000
     
     //funzioni
     

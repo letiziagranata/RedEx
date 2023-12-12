@@ -82,17 +82,23 @@ extension GameScene {
     
     func spawnChurch(){
         chiesa = Church()
-        
         chiesa.name = "chiesa"
         chiesa.zPosition = 5
-        chiesa.position = CGPoint(x: -70, y: -490)
+        chiesa.position = CGPoint(x: -120, y: -490)
         chiesa.xScale = 0.8
         chiesa.yScale = 0.8
         
-        chiesa.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 9, height: 12))
-        chiesa.physicsBody?.isDynamic = false
+        chiesa.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 110, height: 110))
         chiesa.physicsBody?.affectedByGravity = false
         chiesa.physicsBody?.allowsRotation = false
+        chiesa.physicsBody?.isDynamic = false
+        
+        chiesa.physicsBody?.categoryBitMask = PhysicsCategory.church
+        
+        chiesa.physicsBody?.contactTestBitMask = PhysicsCategory.demon
+        
+        chiesa.physicsBody?.collisionBitMask = PhysicsCategory.demon
+        
         
         addChild(chiesa)
     }

@@ -29,11 +29,6 @@ extension GameScene : SKPhysicsContactDelegate {
         let firstBody : SKPhysicsBody = contact.bodyA
         let secondBody : SKPhysicsBody = contact.bodyB
         
-        if let node = firstBody.node,node.name == "prete"{
-        }
-        if let node = secondBody.node, node.name == "prete"{
-        }
-        
         //COLLISIONE TRA GOCCIA E DEMONE
         if let node = firstBody.node, node.name == "goccia" {
             //Caso firstbody = goccia e bodyB = demone
@@ -42,7 +37,7 @@ extension GameScene : SKPhysicsContactDelegate {
                     demonNode.explode()
                     punteggio += 1
                     punteggioLabel.text = "SCORE: \(punteggio)"
-                    }
+                }
             }
         }
         else if let node = secondBody.node, node.name == "goccia" {
@@ -53,14 +48,14 @@ extension GameScene : SKPhysicsContactDelegate {
                     demonNode.explode()
                     punteggio += 1
                     punteggioLabel.text = "SCORE: \(punteggio)"
-                   }
+                }
             }
         }
         // COLLISIONE TRA DEMONE E PRETE
         if let node = firstBody.node, node.name == "prete" {
             //Caso firstbody = goccia e bodyB = demone
             if contact.bodyB.node is Demon {
-               handleDemonCollision()
+                handleDemonCollision()
             }
         }
         else if let node = secondBody.node, node.name == "prete" {
@@ -88,20 +83,29 @@ extension GameScene : SKPhysicsContactDelegate {
             }
         }
         
+        if let node = firstBody.node, node.name == "chiesa" {
+            
+            if let nodeDemone =  contact.bodyB.node as? Demon {
+                nodeDemone.removeFromParent()
+                chiesa.hp -= 1
+                print(chiesa.hp)
+            }
+            
+        } else
         
+        if let  node = secondBody.node, node.name == "chiesa" {
+            
+            if let nodeDemone =  contact.bodyA.node as? Demon {
+                nodeDemone.removeFromParent()
+                chiesa.hp -= 1
+                
+            }
+        }
         
     }
     
     
-    
-    
-    
-    
-    
 }
-
-
-
 
 
 
