@@ -201,8 +201,6 @@ class GameScene: SKScene {
     
     
     
-    
-    
 }
 // Operazione di sottrazione tra due CGPoint
 func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
