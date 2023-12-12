@@ -11,6 +11,8 @@ import GameplayKit
 
 extension GameScene {
     
+    
+    
     //PARTE RELATIVA AL PRETE E ALLA GOCCIA
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -66,11 +68,41 @@ extension GameScene {
     
     //TOCCO SUL PRETE: appena lo rilascio
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        //Parte riguardante il rilevamento del double tap
+        guard let touch = touches.first else { return }
+
+        let currentTime = touch.timestamp
+
+        // Controllo se il double tap è avvenuto
+        if currentTime - lastTapTime < 0.5 {
+            tapCount += 1
+
+            //Richiama la funzione da eseguire sul double tap
+            if tapCount == 2 {
+                handleDoubleTap()
+                tapCount = 0
+            }
+        } else {
+            // Resetta il contatore se è passato troppo tempo
+            tapCount = 1
+        }
+
+        lastTapTime = currentTime
+        
+        //Fine parte double tap
+        //----------------------------------------------
         isMoving = false
         previousTouchPosition = nil
         stopDropTimer()
         
         stopTextureChangeTimer()
         isTouchingPriest = false
+    }
+    
+    
+    //Azione eseguita sul double tap
+    func handleDoubleTap() {
+        melee.toggle()
     }
 }

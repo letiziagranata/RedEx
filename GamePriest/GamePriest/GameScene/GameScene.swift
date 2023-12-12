@@ -24,7 +24,11 @@ class GameScene: SKScene {
     var currentTextureIndex = 0
     var previousDirection: Direction = .straight
     
-  
+    
+    //Variabili per il doppio tap
+    var lastTapTime: TimeInterval = 0
+    var tapCount: Int = 0
+    
     
     //punteggio
 
@@ -52,6 +56,7 @@ class GameScene: SKScene {
     var spada: Croce!
     var goccia: Drop!
     var cuore: Heart!
+    var swipe: Swipe!
     
     private func initGame(){
         
@@ -128,31 +133,55 @@ class GameScene: SKScene {
     
     //PARTE RELATIVA ALLA GOCCIA
     
-    func dropGoccia() {
+    func Attack() {
         guard !isPriestPaused else {
                        return
                    }
-        
-        spawnGoccia()
-        let moveDistance: CGFloat = 500
-        let moveDuration = 0.5 // Imposta questo valore in base alla velocità desiderata
-        
-        // Move the goccia with a faster duration
-        let moveAction = SKAction.moveBy(x: 0, y: moveDistance, duration: moveDuration)
-        let removeAction = SKAction.removeFromParent()
-        
-        // Run the actions sequentially
-        let sequence = SKAction.sequence([moveAction, removeAction])
-        
-        //sound
-        
-        
-        // Run the sequence once
-        goccia.run(sequence)
-        
-        // Start the timer more frequently
-        let dropInterval = 0.30
-        startDropTimer(interval: dropInterval)
+        if !melee{
+            //Spara le goccie
+            spawnGoccia()
+            let moveDistance: CGFloat = 500
+            let moveDuration = 0.5 // Imposta questo valore in base alla velocità desiderata
+            
+            // Move the goccia with a faster duration
+            let moveAction = SKAction.moveBy(x: 0, y: moveDistance, duration: moveDuration)
+            let removeAction = SKAction.removeFromParent()
+            
+            // Run the actions sequentially
+            let sequence = SKAction.sequence([moveAction, removeAction])
+            
+            //sound
+            
+            
+            // Run the sequence once
+            goccia.run(sequence)
+            
+            // Start the timer more frequently
+            let dropInterval = 0.30
+            startDropTimer(interval: dropInterval)
+        }else{
+            //Attacca melee
+            spawnMelee()
+            let moveDistance: CGFloat = 0
+            let moveDuration = 0.7 // Imposta questo valore in base alla velocità desiderata
+            
+            // Move the goccia with a faster duration
+            let moveAction = SKAction.moveBy(x: 0, y: moveDistance, duration: moveDuration)
+            let removeAction = SKAction.removeFromParent()
+            
+            // Run the actions sequentially
+            let sequence = SKAction.sequence([moveAction, removeAction])
+            
+            //sound
+            
+            
+            // Run the sequence once
+            swipe.run(sequence)
+            
+            // Start the timer more frequently
+            let swipeInterval = 1.00
+            startSwipeTimer(interval: swipeInterval)
+        }
         
     }
     
@@ -162,14 +191,25 @@ class GameScene: SKScene {
     func startDropTimer(interval: TimeInterval) {
         let waitAction = SKAction.wait(forDuration: interval)
         let dropAction = SKAction.run {
-            self.dropGoccia()
-            
-            
+            self.Attack()
         }
         let sequence = SKAction.sequence([waitAction, dropAction])
         let repeatAction = SKAction.repeatForever(sequence)
         run(repeatAction, withKey: "dropGocciaAction")
     }
+    
+    //start timer per lo swipe
+    func startSwipeTimer(interval: TimeInterval) {
+        let waitAction = SKAction.wait(forDuration: interval)
+        let dropAction = SKAction.run {
+            self.Attack()
+        }
+        let sequence = SKAction.sequence([waitAction, dropAction])
+        let repeatAction = SKAction.repeatForever(sequence)
+        run(repeatAction, withKey: "dropGocciaAction")
+    }
+    
+    
     
     //BLOCCO DEL PRETE PER LA COLLISIONE
     var pauseDuration: TimeInterval = 1.5
