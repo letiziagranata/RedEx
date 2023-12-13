@@ -198,7 +198,7 @@ extension GameScene {
         let initialX: CGFloat = -self.frame.width
         let finalX: CGFloat = self.frame.width
         
-        let initialY : CGFloat = 0
+        let initialY : CGFloat = self.frame.height/1.5
         let finalY: CGFloat = self.frame.height
         
         let positionX = CGFloat.random(in: initialX...finalX)
