@@ -18,20 +18,20 @@ class Demon: SKSpriteNode {
     var isAttacking: Bool = false
     var isMoving : Bool = false
     var isExploded = false
-
+    
     
     //funzioni
     
     //INIZIALIZZAZIONE
     init() {
-        let texture = SKTexture(imageNamed: "demon")
+        let texture = SKTexture(imageNamed: "Demon1")
         super.init(texture: texture, color: .clear, size: texture.size())
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-   
+    
     
     func move() {
         let moveAction = SKAction.move(to: CGPoint(x:-50,y:-460), duration: 8)
@@ -43,29 +43,34 @@ class Demon: SKSpriteNode {
         run(stopAction)
     }
     
-  
+    
     func explode() {
         guard !isExploded else {
             return
         }
         
         isExploded = true
-    
+        
         self.physicsBody = nil
         self.stop()
-        let explosionTexture = SKTexture(imageNamed: "Expl1")
+        let explosionTexture = SKTexture(imageNamed: "Demon2")
         self.texture = explosionTexture
         
-        delay(0.5){
-            let explosionTexture2 = SKTexture(imageNamed: "Expl2")
+        delay(0.3){
+            let explosionTexture2 = SKTexture(imageNamed: "Demon3")
             self.texture = explosionTexture2
-            delay(0.5){
-                self.physicsBody?.categoryBitMask = 0 // Disattiva il corpo fisico
-                self.removeFromParent()
-            }
+            delay(0.3)
+            {
+                let explosionTexture3 = SKTexture(imageNamed: "Demon4")
+                self.texture = explosionTexture3
+                
+                delay(0.3){
+                    self.physicsBody?.categoryBitMask = 0 // Disattiva il corpo fisico
+                    self.removeFromParent()
+                }}
         }
     }
-
+    
     
     
     

@@ -171,8 +171,8 @@ extension GameScene {
         
         demon = Demon()
         demon.name = "demon"
-        demon.xScale = 0.1
-        demon.yScale = 0.1
+        demon.xScale = 0.4
+        demon.yScale = 0.4
         demon.position = position
         demon.zPosition = 4
         
