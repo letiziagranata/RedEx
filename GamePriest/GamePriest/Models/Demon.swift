@@ -34,7 +34,7 @@ class Demon: SKSpriteNode {
     
     
     func move() {
-        let moveAction = SKAction.move(to: CGPoint(x:-50,y:-460), duration: 8)
+        let moveAction = SKAction.move(to: CGPoint(x:0,y:-460), duration: 8)
         run(moveAction)
     }
     

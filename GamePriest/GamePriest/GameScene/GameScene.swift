@@ -154,9 +154,6 @@ class GameScene: SKScene {
             // Run the sequence once
             goccia.run(sequence)
             
-            
-            gocceSparate += 1
-            
             //CAMBIO DI IMMAGINI MAN MANO CHE L'ACQUA DIMINUISCE
             if gocceSparate == 0{
                 acqua.texture = SKTexture(imageNamed: "HolyWater1")
@@ -180,6 +177,8 @@ class GameScene: SKScene {
                 
             }else if gocceSparate == 14{
                 acqua.texture = SKTexture(imageNamed: "HolyWater8")}
+            gocceSparate += 1
+            
             
             
             // Start the timer more frequently
