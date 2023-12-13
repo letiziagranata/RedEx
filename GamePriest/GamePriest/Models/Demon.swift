@@ -39,7 +39,7 @@ class Demon: SKSpriteNode {
     }
     
     func stop(){
-        let stopAction = SKAction.stop()
+        let stopAction = SKAction.move(to: CGPoint(x:self.position.x, y:self.position.y), duration: 8)
         run(stopAction)
     }
     
