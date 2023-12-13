@@ -228,6 +228,7 @@ extension GameScene {
         
         prete.physicsBody?.collisionBitMask = PhysicsCategory.demon | PhysicsCategory.fountain
         
+        prete.canShoot = true
         
         
         addChild(prete)

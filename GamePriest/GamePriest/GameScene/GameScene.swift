@@ -21,7 +21,7 @@ class GameScene: SKScene {
     var textureNamesWalking = ["PriestWalking1", "PriestWalking2"]
     var textureNamesRight = ["PriestWalkingRight1", "PriestWalkingRight2"]
     var textureNamesLeft = ["PriestWalkingLeft1", "PriestWalkingLeft2"]
-    var textureNamesUp = ["PriestWalking1", "PriestWalking2"]
+    var textureNamesUp = ["PriestBack1", "PriestBack2"]
     var currentTextureIndex = 0
     var previousDirection: Direction = .straight
     var gocceSparate = 0
@@ -138,6 +138,9 @@ class GameScene: SKScene {
         guard !isPriestPaused else {
             return
         }
+        guard prete.canShoot else {
+               return
+           }
         if !melee{
             //Spara le goccie
             spawnGoccia()
