@@ -120,7 +120,7 @@ extension GameScene {
         chiesa.xScale = 0.8
         chiesa.yScale = 0.8
         
-        chiesa.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 110, height: 110))
+        chiesa.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: chiesa.size.width, height: chiesa.size.height/1.5))
         chiesa.physicsBody?.affectedByGravity = false
         chiesa.physicsBody?.allowsRotation = false
         chiesa.physicsBody?.isDynamic = false
