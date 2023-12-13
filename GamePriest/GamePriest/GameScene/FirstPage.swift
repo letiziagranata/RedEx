@@ -17,7 +17,12 @@ enum GameState {
 
 struct FirstPage: View {
     
-   
+    var scene: SKScene{
+        let scene = GameScene()
+        scene.size = CGSize(width: 400, height: 800)
+        scene.scaleMode = .fill
+        return scene
+    }
     
     var body: some View {
         NavigationView {
@@ -38,6 +43,9 @@ struct FirstPage: View {
                     
                     
                     Button (action: {
+                        SpriteView(scene:scene).frame(width: 400, height: 800).ignoresSafeArea()
+                        
+                        
                     }, label: {
                         HStack {
                             Image(systemName: "play")

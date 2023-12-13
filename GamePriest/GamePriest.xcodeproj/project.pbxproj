@@ -94,11 +94,11 @@
 		14EF28732B2714D400B6B79A /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
+				4DB04ADD2B28800800177875 /* FirstPage.swift */,
 				4DB140592B1F1B2E007BF483 /* GameScene.swift */,
 				4D0E3FDE2B21D90000B5F909 /* Physics.swift */,
 				14EF286E2B27136700B6B79A /* TouchActions.swift */,
 				14EF28742B27153800B6B79A /* Inits.swift */,
-				4DB04ADD2B28800800177875 /* FirstPage.swift */,
 				4DB04ADF2B2880A700177875 /* GameOver.swift */,
 			);
 			path = GameScene;
