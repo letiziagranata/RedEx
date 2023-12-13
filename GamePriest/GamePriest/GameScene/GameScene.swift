@@ -303,6 +303,7 @@ class GameScene: SKScene {
     
     // Funzione per terminare la modalità di ricarica
     func endRicaricaMode() {
+        fontana.texture = SKTexture(imageNamed: "fountain1")
         isPriestPaused = false
         prete.isMoving = true
         prete.canShoot = true

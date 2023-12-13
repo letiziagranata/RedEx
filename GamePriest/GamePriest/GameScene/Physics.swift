@@ -15,7 +15,7 @@ extension GameScene {
         static let none : UInt32 = 0
         static let all : UInt32 = UInt32.max
         static let priest : UInt32 = 0b10
-        static let demon : UInt32 = 0b11 
+        static let demon : UInt32 = 0b11
         static let church : UInt32 = 0b100
         static let fountain : UInt32 = 0b101
         static let goccia : UInt32 = 0b110
@@ -92,20 +92,47 @@ extension GameScene : SKPhysicsContactDelegate {
         
         
         //TOCCO TRA PRETE E FONTANA (PER LA RICARICA)
-        if let node = firstBody.node, node.name == "fontana" {
+        if let node = firstBody.node, node.name == "prete" {
             
-            if let nodePrete =  contact.bodyB.node as? Priest {
-              //fare
+            if let nodeF =  contact.bodyB.node as? Fountain {
+                //fare
+                nodeF.texture = SKTexture(imageNamed: "fountain2")
+                delay(0.1){
+                    nodeF.texture = SKTexture(imageNamed: "fountain3")
+                    delay(0.1){
+                        nodeF.texture = SKTexture(imageNamed: "fountain4")
+                        delay(0.1){
+                            nodeF.texture = SKTexture(imageNamed: "fountain5")
+                            delay(0.1){
+                                nodeF.texture = SKTexture(imageNamed: "fountain1")
+                            
+                            }
+                        }
+                    }
+                }
                 startRicaricaMode()
                 endRicaricaMode()
+               
             }
             
         } else
         
-        if let  node = secondBody.node, node.name == "fontana" {
+        if let  node = secondBody.node, node.name == "prete" {
             
-            if let nodePrete =  contact.bodyA.node as? Priest {
-            //fare
+            if let nodeF =  contact.bodyA.node as? Priest {
+                //fare
+                nodeF.texture = SKTexture(imageNamed: "fountain2")
+                delay(0.1){
+                    nodeF.texture = SKTexture(imageNamed: "fountain3")
+                    delay(0.1){
+                        nodeF.texture = SKTexture(imageNamed: "fountain4")
+                        delay(0.1){
+                            nodeF.texture = SKTexture(imageNamed: "fountain5")
+                            delay(0.1){
+                                nodeF.texture = SKTexture(imageNamed: "fountain1")}
+                        }
+                    }
+                }
                 startRicaricaMode()
                 endRicaricaMode()
             }

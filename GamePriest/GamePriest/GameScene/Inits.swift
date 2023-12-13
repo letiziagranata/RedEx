@@ -119,8 +119,8 @@ extension GameScene {
         chiesa.name = "chiesa"
         chiesa.zPosition = 5
         chiesa.position = CGPoint(x: 0, y: -490)
-        chiesa.xScale = 0.8
-        chiesa.yScale = 0.8
+        chiesa.xScale = 0.9
+        chiesa.yScale = 0.9
         
         chiesa.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 110, height: 110))
         chiesa.physicsBody?.affectedByGravity = false
@@ -141,7 +141,7 @@ extension GameScene {
         fontana = Fountain()
         fontana.name = "fontana"
         fontana.zPosition = 7
-        fontana.position = CGPoint(x: -130, y: -520)
+        fontana.position = CGPoint(x: -160, y: -550)
         fontana.xScale = 0.4
         fontana.yScale = 0.4
         
