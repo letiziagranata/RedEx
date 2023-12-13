@@ -18,7 +18,7 @@ class Fountain: SKSpriteNode {
     
     //INIZIALIZZAZIONE
     init() {
-        let texture = SKTexture(imageNamed: "Fountain")
+        let texture = SKTexture(imageNamed: "fountain1")
         super.init(texture: texture, color: .clear, size: texture.size())
     }
     required init?(coder aDecoder: NSCoder) {

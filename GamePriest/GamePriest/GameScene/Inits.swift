@@ -141,9 +141,9 @@ extension GameScene {
         fontana = Fountain()
         fontana.name = "fontana"
         fontana.zPosition = 7
-        fontana.position = CGPoint(x: -180, y: -520)
-        fontana.xScale = 0.2
-        fontana.yScale = 0.2
+        fontana.position = CGPoint(x: -130, y: -520)
+        fontana.xScale = 0.4
+        fontana.yScale = 0.4
         
         fontana.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 110, height: 110))
         fontana.physicsBody?.affectedByGravity = false
