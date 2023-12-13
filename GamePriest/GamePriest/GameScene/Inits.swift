@@ -16,13 +16,15 @@ extension GameScene {
         punteggioLabel.text = "SCORE: \(punteggio)"
         punteggioLabel.fontSize = 40
         punteggioLabel.fontColor = SKColor.white
-        punteggioLabel.position = CGPoint(x: size.width / 90, y: size.height / 3)
+        punteggioLabel.position = CGPoint(x: size.width / 400, y: size.height / 2.6)
         punteggioLabel.zPosition = 50
         punteggioLabel.horizontalAlignmentMode = .center
         punteggioLabel.verticalAlignmentMode = .center
         
-        let colorizeAction = SKAction.colorize(with: SKColor.purple, colorBlendFactor: 0.8, duration: 0.8)
-        let colorizeBackAction = SKAction.colorize(withColorBlendFactor: 0.0, duration: 0.8)
+        
+        
+        let colorizeAction = SKAction.colorize(with: SKColor.purple, colorBlendFactor: 1.2, duration: 1.2)
+        let colorizeBackAction = SKAction.colorize(withColorBlendFactor: 0.0, duration: 1.2)
         let colorizeSequence = SKAction.sequence([colorizeAction, colorizeBackAction])
         let colorizeRepeat = SKAction.repeatForever(colorizeSequence)
         punteggioLabel.run(colorizeRepeat)
