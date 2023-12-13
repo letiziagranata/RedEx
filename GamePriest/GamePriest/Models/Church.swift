@@ -10,13 +10,9 @@ import GameplayKit
 import SpriteKit
 
 class Church: SKSpriteNode {
-    
-    //attributi
+   
     var hp: Int = 4
     
-    //funzioni
-    
-    //INIZIALIZZAZIONE
     init() {
         let texture = SKTexture(imageNamed: "Church")
         super.init(texture: texture, color: .clear, size: texture.size())

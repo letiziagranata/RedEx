@@ -1,12 +1,6 @@
-//
-//  Heart.swift
-//  GamePriest
-//
-//  Created by Maria Concetta on 11/12/23.
-//
 
 //
-//  Hearth.swift
+//  Life.swift
 //  GamePriest
 //
 //  Created by Maria Concetta on 11/12/23.
@@ -16,31 +10,24 @@ import Foundation
 import GameplayKit
 import SpriteKit
 
-class Heart: SKSpriteNode {
+class Life: SKSpriteNode {
     
-    //attributi
-    var textureNames = ["heart1", "heart2", "heart3", "heart4", "heart5", "heart6", "heart7"]
+    //ATTRIBUTES
+    var textureNames = ["Life1", "Life2", "Life3", "Life4", "Life5", "Life6", "Life7"]
     var currentTextureIndex = 0
 
-    //funzioni
-    
-    //INIZIALIZZAZIONE
+    //FUNCTIONS
     init() {
-        let texture = SKTexture(imageNamed: "heart1")
+        let texture = SKTexture(imageNamed: "Life1")
         super.init(texture: texture, color: .clear, size: texture.size())
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func changeHTexture() {
-        // Incrementa l'indice dell'immagine corrente
+    func changeLTexture() {
         currentTextureIndex = (currentTextureIndex + 1) % textureNames.count
-        
-        // Carica la nuova texture
         let newTexture = SKTexture(imageNamed: textureNames[currentTextureIndex])
-        
-        // Imposta la nuova texture
         self.texture = newTexture
     }
 }

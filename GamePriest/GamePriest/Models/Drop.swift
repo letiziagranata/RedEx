@@ -18,7 +18,6 @@ import GameplayKit
 import SpriteKit
 
 class Drop: SKSpriteNode {
-    // INIZIALIZZAZIONE
       init(scale: CGFloat) {
           let texture = SKTexture(imageNamed: "Drop")
           let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)

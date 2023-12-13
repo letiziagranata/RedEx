@@ -75,7 +75,7 @@ extension GameScene : SKPhysicsContactDelegate {
                 nodeDemone.removeFromParent()
                 chiesa.hp -= 1
                 print(chiesa.hp)
-                cuore.changeHTexture()
+                vita.changeLTexture()
             }
             
         } else
@@ -85,10 +85,35 @@ extension GameScene : SKPhysicsContactDelegate {
             if let nodeDemone =  contact.bodyA.node as? Demon {
                 nodeDemone.removeFromParent()
                 chiesa.hp -= 1
-                cuore.changeHTexture()
+                vita.changeLTexture()
                 
             }
         }
+        
+        
+        //TOCCO TRA PRETE E FONTANA (PER LA RICARICA)
+        if let node = firstBody.node, node.name == "fontana" {
+            
+            if let nodePrete =  contact.bodyB.node as? Priest {
+              //fare
+                startRicaricaMode()
+                endRicaricaMode()
+            }
+            
+        } else
+        
+        if let  node = secondBody.node, node.name == "fontana" {
+            
+            if let nodePrete =  contact.bodyA.node as? Priest {
+            //fare
+                startRicaricaMode()
+                endRicaricaMode()
+            }
+        }
+        
+        
+        
+        
         
     }
     

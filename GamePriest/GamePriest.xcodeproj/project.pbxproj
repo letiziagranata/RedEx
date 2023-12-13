@@ -32,7 +32,7 @@
 		E4ACCD812B1F2186003CB3EE /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACCD802B1F2186003CB3EE /* Priest.swift */; };
 		E4B284662B270D26008BC853 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4B284642B270D26008BC853 /* explosion.mp3 */; };
 		E4B284672B270D26008BC853 /* dropOfWater.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4B284652B270D26008BC853 /* dropOfWater.mp3 */; };
-		E4C872072B2770000009F581 /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C872062B2770000009F581 /* Heart.swift */; };
+		E4FE2D492B28AF1A0012B4AD /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FE2D482B28AF1A0012B4AD /* Life.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +62,7 @@
 		E4ACCD802B1F2186003CB3EE /* Priest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priest.swift; sourceTree = "<group>"; };
 		E4B284642B270D26008BC853 /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosion.mp3; sourceTree = "<group>"; };
 		E4B284652B270D26008BC853 /* dropOfWater.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dropOfWater.mp3; sourceTree = "<group>"; };
-		E4C872062B2770000009F581 /* Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
+		E4FE2D482B28AF1A0012B4AD /* Life.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 				14BC1DDA2B20719A00E0C2FC /* Weapon.swift */,
 				E408F7402B24D10E002F1CE2 /* Drop.swift */,
 				14EF287A2B272C8C00B6B79A /* Swipe.swift */,
-				E4C872062B2770000009F581 /* Heart.swift */,
+				E4FE2D482B28AF1A0012B4AD /* Life.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,7 +231,7 @@
 				4DB140542B1F1B2D007BF483 /* AppDelegate.swift in Sources */,
 				14EF287B2B272C8C00B6B79A /* Swipe.swift in Sources */,
 				4DB04ADE2B28800800177875 /* FirstPage.swift in Sources */,
-				E4C872072B2770000009F581 /* Heart.swift in Sources */,
+				E4FE2D492B28AF1A0012B4AD /* Life.swift in Sources */,
 				E408F7412B24D10E002F1CE2 /* Drop.swift in Sources */,
 				66C1E2F42B1F4815001DA610 /* Demon.swift in Sources */,
 				4DB04AE02B2880A700177875 /* GameOver.swift in Sources */,

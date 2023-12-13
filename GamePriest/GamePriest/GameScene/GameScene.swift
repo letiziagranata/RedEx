@@ -24,19 +24,15 @@ class GameScene: SKScene {
     var textureNamesUp = ["PriestWalking1", "PriestWalking2"]
     var currentTextureIndex = 0
     var previousDirection: Direction = .straight
-    
-
     var gocceSparate = 0
-    var isRicaricaMode: Bool = false
-
-
+    
     
     //Variabili per il doppio tap
     var lastTapTime: TimeInterval = 0
     var tapCount: Int = 0
-
+    
     //punteggio
-
+    
     var punteggioLabel: SKLabelNode!
     var punteggio: Int = 0
     
@@ -62,7 +58,7 @@ class GameScene: SKScene {
     var acqua: Aspersorio!
     var spada: Croce!
     var goccia: Drop!
-    var cuore: Heart!
+    var vita: Life!
     var swipe: Swipe!
     
     private func initGame(){
@@ -73,9 +69,9 @@ class GameScene: SKScene {
         self.cycleSpawnDemon()
         self.spawnFountain()
         self.spawnAcqua()
-        self.spawnHeart()
+        self.spawnLife()
         self.audioStart()
-     
+        
         //self.spawnSpada()
         //self.spawnCorner()
         physicsWorld.contactDelegate = self
@@ -84,19 +80,15 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         self.initGame()
-        
-        
     }
-    
     
     
     
     // Cambia continuamente l'immagine del prete
     @objc func changePriestTexture() {
         guard !isPriestPaused else {
-                           // Se il prete è bloccato, esci dalla funzione senza cambiare la texture
-                           return
-                       }
+            return
+        }
         let currentTextureNames: [String]
         
         switch previousDirection {
@@ -128,7 +120,7 @@ class GameScene: SKScene {
     
     // Cambia la direzione del prete e aggiorna l'indice dell'immagine
     func changeTexture(for direction: Direction) {
-       
+        
         if previousDirection != direction {
             previousDirection = direction
             currentTextureIndex = 0
@@ -144,8 +136,8 @@ class GameScene: SKScene {
     
     func Attack() {
         guard !isPriestPaused else {
-                       return
-                   }
+            return
+        }
         if !melee{
             //Spara le goccie
             spawnGoccia()
@@ -162,8 +154,31 @@ class GameScene: SKScene {
             // Run the sequence once
             goccia.run(sequence)
             
-            
+            //CAMBIO DI IMMAGINI MAN MANO CHE L'ACQUA DIMINUISCE
+            if gocceSparate == 0{
+                acqua.texture = SKTexture(imageNamed: "HolyWater1")
+            }else if gocceSparate == 2{
+                acqua.texture = SKTexture(imageNamed: "HolyWater2")
+            }
+            else if gocceSparate == 4{
+                acqua.texture = SKTexture(imageNamed: "HolyWater3")
+            }
+            else if gocceSparate == 6{
+                acqua.texture = SKTexture(imageNamed: "HolyWater4")
+            }
+            else if gocceSparate == 8{
+                acqua.texture = SKTexture(imageNamed: "HolyWater5")
+            }
+            else if gocceSparate == 10{
+                acqua.texture = SKTexture(imageNamed: "HolyWater6")
+                
+            }else if gocceSparate == 12{
+                acqua.texture = SKTexture(imageNamed: "HolyWater7")
+                
+            }else if gocceSparate == 14{
+                acqua.texture = SKTexture(imageNamed: "HolyWater8")}
             gocceSparate += 1
+            
             
             
             // Start the timer more frequently
@@ -171,7 +186,9 @@ class GameScene: SKScene {
             startDropTimer(interval: dropInterval)
             
             
-            if gocceSparate >= 20 {
+            if gocceSparate >= 16 {
+                acqua.texture = SKTexture(imageNamed: "HolyWater9")
+                prete.canShoot = false
                 startRicaricaMode()
                 return
             }}
@@ -214,7 +231,7 @@ class GameScene: SKScene {
         }
     }
     
-  
+    
     
     //start timer per il lancio goccia
     func startDropTimer(interval: TimeInterval) {
@@ -250,15 +267,15 @@ class GameScene: SKScene {
         guard !isPriestPaused else {
             return
         }
-
+        
         // Metti in pausa solo il prete
         isPriestPaused = true
         isMoving = false
-
+        
         // Cambia texture
         prete.texture = SKTexture(imageNamed: "PriestBack1")
         prete.alpha = 0.5
-
+        
         // Dopo il periodo di pausa, riprendi solo il prete
         DispatchQueue.main.asyncAfter(deadline: .now() + pauseDuration) {
             self.isPriestPaused = false
@@ -271,22 +288,21 @@ class GameScene: SKScene {
     
     
     func startRicaricaMode() {
-        if gocceSparate >= 5 {
-             isPriestPaused = true
-             prete.isMoving = false
-
-             // Aggiungi un tap gesture alla chiesa
-             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleFountainTap))
-             view?.addGestureRecognizer(tapGesture)
-         }
+        if gocceSparate >= 18 {
+            isPriestPaused = true
+            prete.isMoving = false
+            prete.canShoot = false
+            
+        }
     }
-
     
-
+    
+    
     // Funzione per terminare la modalità di ricarica
     func endRicaricaMode() {
         isPriestPaused = false
         prete.isMoving = true
+        prete.canShoot = true
         gocceSparate = 0
     }
     
