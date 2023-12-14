@@ -56,14 +56,13 @@ extension GameScene : SKPhysicsContactDelegate {
             //Caso firstbody = goccia e bodyB = demone
             if contact.bodyB.node is Demon {
                 handleDemonCollision()
+                
             }
         }
         else if let node = secondBody.node, node.name == "prete" {
-            
             //Caso Secondbody = goccia e bodyA = demone
             if contact.bodyA.node is Demon {
                 handleDemonCollision()
-                
             }
         }
         
@@ -97,22 +96,25 @@ extension GameScene : SKPhysicsContactDelegate {
         if let node = firstBody.node, node.name == "prete" {
             prete.physicsBody?.isDynamic = true
             if let nodeF =  contact.bodyB.node as? Fountain {
+                
                 startRicaricaMode()
                 
                 nodeF.texture = SKTexture(imageNamed: "fountain2")
-                delay(0.2){
+                delay(0.3){
                     nodeF.texture = SKTexture(imageNamed: "fountain3")
-                    delay(0.2){
+                    delay(0.3){
                         nodeF.texture = SKTexture(imageNamed: "fountain4")
-                        delay(0.2){
+                        delay(0.3){
                             nodeF.texture = SKTexture(imageNamed: "fountain5")
-                            delay(0.2){
+                            delay(0.3){
                                 nodeF.texture = SKTexture(imageNamed: "fountain1")
+                                
                             }
                         }
                     }
                 }
                 endRicaricaMode()
+                prete.physicsBody?.pinned = false
             }
             
         } else
@@ -124,14 +126,15 @@ extension GameScene : SKPhysicsContactDelegate {
                 startRicaricaMode()
                 
                 nodeF.texture = SKTexture(imageNamed: "fountain2")
-                delay(0.2){
+                delay(0.3){
                     nodeF.texture = SKTexture(imageNamed: "fountain3")
-                    delay(0.2){
+                    delay(0.3){
                         nodeF.texture = SKTexture(imageNamed: "fountain4")
-                        delay(0.2){
+                        delay(0.3){
                             nodeF.texture = SKTexture(imageNamed: "fountain5")
-                            delay(0.2){
+                            delay(0.3){
                                 nodeF.texture = SKTexture(imageNamed: "fountain1")
+                                node.physicsBody?.pinned = false
                             }
                         }
                     }

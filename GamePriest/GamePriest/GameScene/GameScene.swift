@@ -189,9 +189,9 @@ class GameScene: SKScene {
                 acqua.texture = SKTexture(imageNamed: "HolyWater7")
                 
             }else if gocceSparate == 14{
-                acqua.texture = SKTexture(imageNamed: "HolyWater8")}
+                acqua.texture = SKTexture(imageNamed: "HolyWater8")
+            }
             gocceSparate += 1
-            
             
             // Start the timer more frequently
             let dropInterval = 0.30
@@ -199,14 +199,12 @@ class GameScene: SKScene {
             
             
             if gocceSparate >= 16 {
-
                 acqua.texture = SKTexture(imageNamed: "HolyWater9")
                 prete.canShoot = false
                 startRicaricaMode()
                 return
-            }}
-        
-        
+            }
+        }
         
         else{
             //Attacca melee
@@ -245,7 +243,6 @@ class GameScene: SKScene {
             }
     
     
-    
     //start timer per il lancio goccia
     func startDropTimer(interval: TimeInterval) {
         let waitAction = SKAction.wait(forDuration: interval)
@@ -276,7 +273,6 @@ class GameScene: SKScene {
     
     
     func handleDemonCollision() {
-        
         isPriestPaused = true
         isMoving = false
         
@@ -284,18 +280,29 @@ class GameScene: SKScene {
         prete.texture = SKTexture(imageNamed: "PriestBack1")
         prete.alpha = 0.5
         
+        prete.physicsBody?.pinned = true
+        
         // Dopo il periodo di pausa, riprendi solo il prete
         DispatchQueue.main.asyncAfter(deadline: .now() + pauseDuration) {
             self.isPriestPaused = false
             self.prete.isMoving = true
             self.prete.alpha = 1.0
+            self.prete.physicsBody?.pinned = false
+            
+            
+            
         }
     }
-    
-    
 
 
+
+
+
+
+
     
+   
+
     
     
     func startRicaricaMode() {
@@ -346,9 +353,6 @@ class GameScene: SKScene {
         gocceSparate = 0
     }
 
-    
-    
-    
     
     
     

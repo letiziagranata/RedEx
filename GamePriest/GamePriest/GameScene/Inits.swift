@@ -183,12 +183,8 @@ extension GameScene {
         demon.physicsBody?.allowsRotation = false
         
         demon.physicsBody?.categoryBitMask = PhysicsCategory.demon
-        
         demon.physicsBody?.contactTestBitMask = PhysicsCategory.priest
-        
         demon.physicsBody?.collisionBitMask = PhysicsCategory.priest
-        
-        
         
         demon.move()
         
@@ -219,15 +215,12 @@ extension GameScene {
         prete.xScale = 4.0
         prete.yScale = 4.0
         
-        
         prete.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 90, height: 120))
         prete.physicsBody?.affectedByGravity = false
         prete.physicsBody?.allowsRotation = false
         
         prete.physicsBody?.categoryBitMask = PhysicsCategory.priest
-        
         prete.physicsBody?.contactTestBitMask = PhysicsCategory.demon
-        
         prete.physicsBody?.collisionBitMask = PhysicsCategory.demon | PhysicsCategory.fountain
         
         prete.canShoot = true
