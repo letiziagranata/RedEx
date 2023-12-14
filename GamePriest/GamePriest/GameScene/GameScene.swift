@@ -79,18 +79,10 @@ class GameScene: SKScene {
     }
     //GameStateMachine
     var stateMachine: GKStateMachine!
-    
 
     override func didMove(to view: SKView) {
-        self.initGame()
-        self.stateMachine = GKStateMachine(states: [
-            StartGameState(scene: self),
-            FirstPageState(scene: FirstPage())
-            
-        ])
-
-        self.stateMachine.enter(FirstPageState.self)
         
+        self.initGame()
         
     }
     

@@ -12,7 +12,6 @@
 		14EF28752B27153800B6B79A /* Inits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF28742B27153800B6B79A /* Inits.swift */; };
 		14EF287B2B272C8C00B6B79A /* Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EF287A2B272C8C00B6B79A /* Swipe.swift */; };
 		4D0E3FDF2B21D90000B5F909 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E3FDE2B21D90000B5F909 /* Physics.swift */; };
-		4D7667172B29C88A0040BB56 /* GameMachineSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7667162B29C88A0040BB56 /* GameMachineSetup.swift */; };
 		4DB04ADC2B2857C900177875 /* Soundtrack.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4DB04ADB2B2857C900177875 /* Soundtrack.wav */; };
 		4DB04ADE2B28800800177875 /* FirstPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB04ADD2B28800800177875 /* FirstPage.swift */; };
 		4DB04AE02B2880A700177875 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB04ADF2B2880A700177875 /* GameOver.swift */; };
@@ -42,7 +41,6 @@
 		14EF28742B27153800B6B79A /* Inits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inits.swift; sourceTree = "<group>"; };
 		14EF287A2B272C8C00B6B79A /* Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swipe.swift; sourceTree = "<group>"; };
 		4D0E3FDE2B21D90000B5F909 /* Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
-		4D7667162B29C88A0040BB56 /* GameMachineSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMachineSetup.swift; sourceTree = "<group>"; };
 		4DB04ADB2B2857C900177875 /* Soundtrack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Soundtrack.wav; sourceTree = "<group>"; };
 		4DB04ADD2B28800800177875 /* FirstPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPage.swift; sourceTree = "<group>"; };
 		4DB04ADF2B2880A700177875 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 			children = (
 				4DB04ADD2B28800800177875 /* FirstPage.swift */,
 				4DB140592B1F1B2E007BF483 /* GameScene.swift */,
-				4D7667162B29C88A0040BB56 /* GameMachineSetup.swift */,
 				4D0E3FDE2B21D90000B5F909 /* Physics.swift */,
 				14EF286E2B27136700B6B79A /* TouchActions.swift */,
 				14EF28742B27153800B6B79A /* Inits.swift */,
@@ -237,7 +234,6 @@
 				E4FE2D492B28AF1A0012B4AD /* Life.swift in Sources */,
 				E408F7412B24D10E002F1CE2 /* Drop.swift in Sources */,
 				66C1E2F42B1F4815001DA610 /* Demon.swift in Sources */,
-				4D7667172B29C88A0040BB56 /* GameMachineSetup.swift in Sources */,
 				4DB04AE02B2880A700177875 /* GameOver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
