@@ -79,6 +79,9 @@ class Demon: SKSpriteNode {
     
     //CAMBIO SKIN DEMONI
     @objc func changeDemonTexture() {
+        guard !isExploded else {
+            return
+        }
         let currentTextures: [String] = ["Demon1", "Demone_Left", "Demone_Right"]
 
         let newTexture = SKTexture(imageNamed: currentTextures[index])
@@ -97,10 +100,6 @@ class Demon: SKSpriteNode {
            
            self.run(repeatAction, withKey: "textureChangeAction")
        }
-    
-    
-    
-    
 }
 
 func delay(_ delay: TimeInterval, closure: @escaping () -> Void) {
