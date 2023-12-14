@@ -300,18 +300,13 @@ class GameScene: SKScene {
     }
     
     //CONTO GOCCE
-    
-    
-    func startRicaricaMode() {
+    /*func startRicaricaMode() {
         if gocceSparate >= 18 {
             isPriestPaused = true
             prete.isMoving = false
             prete.canShoot = false
-            
         }
     }
-    
-    
     
     // Funzione per terminare la modalità di ricarica
     func endRicaricaMode() {
@@ -320,7 +315,61 @@ class GameScene: SKScene {
         prete.isMoving = true
         prete.canShoot = true
         gocceSparate = 0
+    }*/
+    
+    
+    func startRicaricaMode() {
+            isPriestPaused = true
+            prete.isMoving = false
+            prete.canShoot = false
+            
+            let delayAction = SKAction.wait(forDuration: 0.4) // Ritardo di 1 secondo
+            
+            let pauseActions = SKAction.sequence([
+                SKAction.run { [weak self] in
+                    self?.isPriestPaused = true
+                },
+                delayAction,
+                SKAction.run { [weak self] in
+                    self?.prete.isMoving = false
+                },
+                delayAction,
+                SKAction.run { [weak self] in
+                    self?.prete.canShoot = false
+                }
+            ])
+            prete.run(pauseActions)
     }
+
+    // Funzione per terminare la modalità di ricarica
+    func endRicaricaMode() {
+        fontana.texture = SKTexture(imageNamed: "fountain1")
+        
+        let delayAction = SKAction.wait(forDuration: 0.4) // Ritardo di 1 secondo
+        
+        let resumeActions = SKAction.sequence([
+            delayAction,
+            SKAction.run { [weak self] in
+                self?.isPriestPaused = false
+            },
+            delayAction,
+            SKAction.run { [weak self] in
+                self?.prete.isMoving = true
+            },
+            delayAction,
+            SKAction.run { [weak self] in
+                self?.prete.canShoot = true
+            }
+        ])
+        
+        prete.run(resumeActions)
+        
+        gocceSparate = 0
+    }
+
+    
+    
+    
     
     
     
