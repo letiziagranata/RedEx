@@ -188,6 +188,8 @@ extension GameScene {
         
         demon.move()
         
+        demon.changeDemonTexture()
+        
         addChild(demon)
     }
     

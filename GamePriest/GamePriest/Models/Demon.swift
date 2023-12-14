@@ -18,6 +18,8 @@ class Demon: SKSpriteNode {
     var isAttacking: Bool = false
     var isMoving : Bool = false
     var isExploded = false
+    var textureTimer: Timer? //timer per il cambio delle immagini
+    var index: Int = 0
     
     
     //funzioni
@@ -26,6 +28,8 @@ class Demon: SKSpriteNode {
     init() {
         let texture = SKTexture(imageNamed: "Demon1")
         super.init(texture: texture, color: .clear, size: texture.size())
+        startTextureChangeAction()
+        
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -71,6 +75,28 @@ class Demon: SKSpriteNode {
         }
     }
     
+    
+    
+    //CAMBIO SKIN DEMONI
+    @objc func changeDemonTexture() {
+        let currentTextures: [String] = ["Demon1", "Demone_Left", "Demone_Right"]
+
+        let newTexture = SKTexture(imageNamed: currentTextures[index])
+        self.texture = newTexture
+        self.index = (index + 1) % currentTextures.count
+    }
+    
+    func startTextureChangeAction() {
+           let changeTextureAction = SKAction.run {
+               self.changeDemonTexture()
+           }
+           let waitAction = SKAction.wait(forDuration: 0.2) // regola la durata tra le immagini
+           
+           let sequence = SKAction.sequence([changeTextureAction, waitAction])
+           let repeatAction = SKAction.repeatForever(sequence)
+           
+           self.run(repeatAction, withKey: "textureChangeAction")
+       }
     
     
     

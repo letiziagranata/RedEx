@@ -267,6 +267,7 @@ class GameScene: SKScene {
     
     
     
+    
     //BLOCCO DEL PRETE PER LA COLLISIONE
     var pauseDuration: TimeInterval = 1.5
     var isPriestPaused = false
@@ -294,17 +295,6 @@ class GameScene: SKScene {
         }
     }
 
-
-
-
-
-
-
-    
-   
-
-    
-    
     func startRicaricaMode() {
            
             prete.canShoot = false
