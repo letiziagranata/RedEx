@@ -98,9 +98,6 @@ class GameScene: SKScene {
     
     // Cambia continuamente l'immagine del prete
     @objc func changePriestTexture() {
-        guard !isPriestPaused else {
-            return
-        }
         let currentTextureNames: [String]
         
         switch previousDirection {
@@ -153,6 +150,7 @@ class GameScene: SKScene {
         guard prete.canShoot else {
                return
            }
+        
         if !melee{
             //Spara le goccie
             spawnGoccia()
@@ -195,13 +193,13 @@ class GameScene: SKScene {
             gocceSparate += 1
             
             
-            
             // Start the timer more frequently
             let dropInterval = 0.30
             startDropTimer(interval: dropInterval)
             
             
             if gocceSparate >= 16 {
+
                 acqua.texture = SKTexture(imageNamed: "HolyWater9")
                 prete.canShoot = false
                 startRicaricaMode()
@@ -244,7 +242,7 @@ class GameScene: SKScene {
             let swipeInterval = 1.00
             startSwipeTimer(interval: swipeInterval)
         }
-    }
+            }
     
     
     
@@ -278,12 +276,7 @@ class GameScene: SKScene {
     
     
     func handleDemonCollision() {
-        // Verifica se il prete è già in pausa
-        guard !isPriestPaused else {
-            return
-        }
         
-        // Metti in pausa solo il prete
         isPriestPaused = true
         isMoving = false
         
@@ -299,28 +292,14 @@ class GameScene: SKScene {
         }
     }
     
-    //CONTO GOCCE
-    /*func startRicaricaMode() {
-        if gocceSparate >= 18 {
-            isPriestPaused = true
-            prete.isMoving = false
-            prete.canShoot = false
-        }
-    }
     
-    // Funzione per terminare la modalità di ricarica
-    func endRicaricaMode() {
-        fontana.texture = SKTexture(imageNamed: "fountain1")
-        isPriestPaused = false
-        prete.isMoving = true
-        prete.canShoot = true
-        gocceSparate = 0
-    }*/
+
+
+    
     
     
     func startRicaricaMode() {
-            isPriestPaused = true
-            prete.isMoving = false
+           
             prete.canShoot = false
             
             let delayAction = SKAction.wait(forDuration: 0.4) // Ritardo di 1 secondo

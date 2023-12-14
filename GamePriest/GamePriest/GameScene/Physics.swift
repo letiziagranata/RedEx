@@ -95,6 +95,7 @@ extension GameScene : SKPhysicsContactDelegate {
         
         //TOCCO TRA PRETE E FONTANA (PER LA RICARICA)
         if let node = firstBody.node, node.name == "prete" {
+            prete.physicsBody?.isDynamic = true
             if let nodeF =  contact.bodyB.node as? Fountain {
                 startRicaricaMode()
                 
@@ -117,6 +118,7 @@ extension GameScene : SKPhysicsContactDelegate {
         } else
         
         if let  node = secondBody.node, node.name == "prete" {
+            prete.physicsBody?.isDynamic = true
             if let nodeF =  contact.bodyA.node as? Priest {
                 
                 startRicaricaMode()

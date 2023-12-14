@@ -232,7 +232,6 @@ extension GameScene {
         
         prete.canShoot = true
         
-        
         addChild(prete)
         
     }
