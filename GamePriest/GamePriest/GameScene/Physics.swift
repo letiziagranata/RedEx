@@ -56,14 +56,13 @@ extension GameScene : SKPhysicsContactDelegate {
             //Caso firstbody = goccia e bodyB = demone
             if contact.bodyB.node is Demon {
                 handleDemonCollision()
+                
             }
         }
         else if let node = secondBody.node, node.name == "prete" {
-            
             //Caso Secondbody = goccia e bodyA = demone
             if contact.bodyA.node is Demon {
                 handleDemonCollision()
-                
             }
         }
         
@@ -91,49 +90,55 @@ extension GameScene : SKPhysicsContactDelegate {
         }
         
         
+        
+        
         //TOCCO TRA PRETE E FONTANA (PER LA RICARICA)
         if let node = firstBody.node, node.name == "prete" {
-            
+            prete.physicsBody?.isDynamic = true
             if let nodeF =  contact.bodyB.node as? Fountain {
-                //fare
+                
+                startRicaricaMode()
+                
                 nodeF.texture = SKTexture(imageNamed: "fountain2")
-                delay(0.1){
+                delay(0.3){
                     nodeF.texture = SKTexture(imageNamed: "fountain3")
-                    delay(0.1){
+                    delay(0.3){
                         nodeF.texture = SKTexture(imageNamed: "fountain4")
-                        delay(0.1){
+                        delay(0.3){
                             nodeF.texture = SKTexture(imageNamed: "fountain5")
-                            delay(0.1){
+                            delay(0.3){
                                 nodeF.texture = SKTexture(imageNamed: "fountain1")
-                            
+                                
                             }
                         }
                     }
                 }
-                startRicaricaMode()
                 endRicaricaMode()
-               
+                prete.physicsBody?.pinned = false
             }
             
         } else
         
         if let  node = secondBody.node, node.name == "prete" {
-            
+            prete.physicsBody?.isDynamic = true
             if let nodeF =  contact.bodyA.node as? Priest {
-                //fare
+                
+                startRicaricaMode()
+                
                 nodeF.texture = SKTexture(imageNamed: "fountain2")
-                delay(0.1){
+                delay(0.3){
                     nodeF.texture = SKTexture(imageNamed: "fountain3")
-                    delay(0.1){
+                    delay(0.3){
                         nodeF.texture = SKTexture(imageNamed: "fountain4")
-                        delay(0.1){
+                        delay(0.3){
                             nodeF.texture = SKTexture(imageNamed: "fountain5")
-                            delay(0.1){
-                                nodeF.texture = SKTexture(imageNamed: "fountain1")}
+                            delay(0.3){
+                                nodeF.texture = SKTexture(imageNamed: "fountain1")
+                                node.physicsBody?.pinned = false
+                            }
                         }
                     }
                 }
-                startRicaricaMode()
                 endRicaricaMode()
             }
         }

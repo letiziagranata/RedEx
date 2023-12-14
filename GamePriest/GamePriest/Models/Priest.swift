@@ -28,8 +28,9 @@ class Priest: SKSpriteNode {
     }
     
     //PRIEST MOVEMENT
-    func move(to position: CGPoint) {
+   func move(to position: CGPoint) {
             let moveAction = SKAction.move(to: position, duration: 0.1)
             run(moveAction)
         }
+    
 }

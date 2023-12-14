@@ -90,9 +90,6 @@ class GameScene: SKScene {
     
     // Cambia continuamente l'immagine del prete
     @objc func changePriestTexture() {
-        guard !isPriestPaused else {
-            return
-        }
         let currentTextureNames: [String]
         
         switch previousDirection {
@@ -145,6 +142,7 @@ class GameScene: SKScene {
         guard prete.canShoot else {
                return
            }
+        
         if !melee{
             //Spara le goccie
             spawnGoccia()
@@ -183,10 +181,9 @@ class GameScene: SKScene {
                 acqua.texture = SKTexture(imageNamed: "HolyWater7")
                 
             }else if gocceSparate == 14{
-                acqua.texture = SKTexture(imageNamed: "HolyWater8")}
+                acqua.texture = SKTexture(imageNamed: "HolyWater8")
+            }
             gocceSparate += 1
-            
-            
             
             // Start the timer more frequently
             let dropInterval = 0.30
@@ -198,9 +195,8 @@ class GameScene: SKScene {
                 prete.canShoot = false
                 startRicaricaMode()
                 return
-            }}
-        
-        
+            }
+        }
         
         else{
             //Attacca melee
@@ -236,8 +232,7 @@ class GameScene: SKScene {
             let swipeInterval = 1.00
             startSwipeTimer(interval: swipeInterval)
         }
-    }
-    
+            }
     
     
     //start timer per il lancio goccia
@@ -264,18 +259,13 @@ class GameScene: SKScene {
     
     
     
+    
     //BLOCCO DEL PRETE PER LA COLLISIONE
     var pauseDuration: TimeInterval = 1.5
     var isPriestPaused = false
     
     
     func handleDemonCollision() {
-        // Verifica se il prete è già in pausa
-        guard !isPriestPaused else {
-            return
-        }
-        
-        // Metti in pausa solo il prete
         isPriestPaused = true
         isMoving = false
         
@@ -283,36 +273,68 @@ class GameScene: SKScene {
         prete.texture = SKTexture(imageNamed: "PriestBack1")
         prete.alpha = 0.5
         
+        prete.physicsBody?.pinned = true
+        
         // Dopo il periodo di pausa, riprendi solo il prete
         DispatchQueue.main.asyncAfter(deadline: .now() + pauseDuration) {
             self.isPriestPaused = false
             self.prete.isMoving = true
             self.prete.alpha = 1.0
-        }
-    }
-    
-    //CONTO GOCCE
-    
-    
-    func startRicaricaMode() {
-        if gocceSparate >= 18 {
-            isPriestPaused = true
-            prete.isMoving = false
-            prete.canShoot = false
+            self.prete.physicsBody?.pinned = false
+            
+            
             
         }
     }
-    
-    
-    
+
+    func startRicaricaMode() {
+           
+            prete.canShoot = false
+            
+            let delayAction = SKAction.wait(forDuration: 0.4) // Ritardo di 1 secondo
+            
+            let pauseActions = SKAction.sequence([
+                SKAction.run { [weak self] in
+                    self?.isPriestPaused = true
+                },
+                delayAction,
+                SKAction.run { [weak self] in
+                    self?.prete.isMoving = false
+                },
+                delayAction,
+                SKAction.run { [weak self] in
+                    self?.prete.canShoot = false
+                }
+            ])
+            prete.run(pauseActions)
+    }
+
     // Funzione per terminare la modalità di ricarica
     func endRicaricaMode() {
         fontana.texture = SKTexture(imageNamed: "fountain1")
-        isPriestPaused = false
-        prete.isMoving = true
-        prete.canShoot = true
+        
+        let delayAction = SKAction.wait(forDuration: 0.4) // Ritardo di 1 secondo
+        
+        let resumeActions = SKAction.sequence([
+            delayAction,
+            SKAction.run { [weak self] in
+                self?.isPriestPaused = false
+            },
+            delayAction,
+            SKAction.run { [weak self] in
+                self?.prete.isMoving = true
+            },
+            delayAction,
+            SKAction.run { [weak self] in
+                self?.prete.canShoot = true
+            }
+        ])
+        
+        prete.run(resumeActions)
+        
         gocceSparate = 0
     }
+
     
     
     

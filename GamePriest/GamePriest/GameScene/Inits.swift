@@ -184,14 +184,12 @@ extension GameScene {
         demon.physicsBody?.allowsRotation = false
         
         demon.physicsBody?.categoryBitMask = PhysicsCategory.demon
-        
         demon.physicsBody?.contactTestBitMask = PhysicsCategory.priest
-        
         demon.physicsBody?.collisionBitMask = PhysicsCategory.priest
         
-        
-        
         demon.move()
+        
+        demon.changeDemonTexture()
         
         addChild(demon)
     }
@@ -220,19 +218,22 @@ extension GameScene {
         prete.xScale = 4.0
         prete.yScale = 4.0
         
-        
         prete.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 90, height: 120))
         prete.physicsBody?.affectedByGravity = false
         prete.physicsBody?.allowsRotation = false
         
         prete.physicsBody?.categoryBitMask = PhysicsCategory.priest
-        
         prete.physicsBody?.contactTestBitMask = PhysicsCategory.demon
-        
         prete.physicsBody?.collisionBitMask = PhysicsCategory.demon | PhysicsCategory.fountain
         
         prete.canShoot = true
         
+        let xRange = SKRange(lowerLimit: -frame.width/2+100, upperLimit: frame.width/2-100)
+        let yRange = SKRange(lowerLimit: -frame.height/2+100 , upperLimit: frame.height/2-100)
+        let xConstraint = SKConstraint.positionX(xRange)
+        let yConstraint = SKConstraint.positionY(yRange)
+        
+        self.prete.constraints = [xConstraint, yConstraint]
         
         addChild(prete)
         
