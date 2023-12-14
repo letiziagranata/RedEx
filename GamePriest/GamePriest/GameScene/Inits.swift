@@ -16,13 +16,15 @@ extension GameScene {
         punteggioLabel.text = "SCORE: \(punteggio)"
         punteggioLabel.fontSize = 40
         punteggioLabel.fontColor = SKColor.white
-        punteggioLabel.position = CGPoint(x: size.width / 90, y: size.height / 3)
+        punteggioLabel.position = CGPoint(x: size.width / 400, y: size.height / 2.6)
         punteggioLabel.zPosition = 50
         punteggioLabel.horizontalAlignmentMode = .center
         punteggioLabel.verticalAlignmentMode = .center
         
-        let colorizeAction = SKAction.colorize(with: SKColor.purple, colorBlendFactor: 0.8, duration: 0.8)
-        let colorizeBackAction = SKAction.colorize(withColorBlendFactor: 0.0, duration: 0.8)
+        
+        
+        let colorizeAction = SKAction.colorize(with: SKColor.purple, colorBlendFactor: 1.2, duration: 1.2)
+        let colorizeBackAction = SKAction.colorize(withColorBlendFactor: 0.0, duration: 1.2)
         let colorizeSequence = SKAction.sequence([colorizeAction, colorizeBackAction])
         let colorizeRepeat = SKAction.repeatForever(colorizeSequence)
         punteggioLabel.run(colorizeRepeat)
@@ -117,10 +119,10 @@ extension GameScene {
         chiesa.name = "chiesa"
         chiesa.zPosition = 5
         chiesa.position = CGPoint(x: 0, y: -490)
-        chiesa.xScale = 0.8
-        chiesa.yScale = 0.8
+        chiesa.xScale = 0.9
+        chiesa.yScale = 0.9
         
-        chiesa.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 110, height: 110))
+        chiesa.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: chiesa.size.width, height: chiesa.size.height/1.5))
         chiesa.physicsBody?.affectedByGravity = false
         chiesa.physicsBody?.allowsRotation = false
         chiesa.physicsBody?.isDynamic = false
@@ -139,9 +141,9 @@ extension GameScene {
         fontana = Fountain()
         fontana.name = "fontana"
         fontana.zPosition = 7
-        fontana.position = CGPoint(x: -180, y: -520)
-        fontana.xScale = 0.2
-        fontana.yScale = 0.2
+        fontana.position = CGPoint(x: -160, y: -550)
+        fontana.xScale = 0.4
+        fontana.yScale = 0.4
         
         fontana.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 110, height: 110))
         fontana.physicsBody?.affectedByGravity = false
