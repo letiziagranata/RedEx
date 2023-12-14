@@ -12,7 +12,7 @@ struct Game_over_view: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Image("grass")
+                Image("BackGround")
                     .resizable()
                     .ignoresSafeArea()
                 
