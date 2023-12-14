@@ -8,11 +8,7 @@
 import SwiftUI
 import SpriteKit
 
-enum GameState {
-    case mainScreen
-    case playing
-    case gameOver
-}
+
 
 
 struct FirstPage: View {

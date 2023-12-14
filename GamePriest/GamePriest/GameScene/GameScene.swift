@@ -77,9 +77,21 @@ class GameScene: SKScene {
         physicsWorld.contactDelegate = self
         
     }
+    //GameStateMachine
+    var stateMachine: GKStateMachine!
     
+
     override func didMove(to view: SKView) {
         self.initGame()
+        self.stateMachine = GKStateMachine(states: [
+            StartGameState(scene: self),
+            FirstPageState(scene: FirstPage())
+            
+        ])
+
+        self.stateMachine.enter(FirstPageState.self)
+        
+        
     }
     
     
