@@ -19,6 +19,7 @@ extension GameScene {
         pauseButton.position = CGPoint(x: -230, y: 550)
 
         pauseButton.name = "pauseButton"
+        
         addChild(pauseButton)
     }
     

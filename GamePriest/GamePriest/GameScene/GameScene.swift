@@ -46,6 +46,7 @@ class GameScene: SKScene {
         resumeGame()
         pauseView = nil
         isPaused = false
+        spawnPause()
     }
 
     
@@ -94,6 +95,7 @@ class GameScene: SKScene {
         self.spawnAcqua()
         self.spawnLife()
         self.audioStart()
+        
         self.spawnPause()
         
         //self.spawnSpada()

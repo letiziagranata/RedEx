@@ -44,7 +44,7 @@ extension GameScene {
              let location = touch.location(in: self)
 
              if let nodeTouched = atPoint(location) as? SKSpriteNode, nodeTouched.name == "pauseButton" {
-                 // Il pulsante di pausa è stato toccato
+                 nodeTouched.removeFromParent()
                  showPauseView()
                  pauseGame()
              }
@@ -58,6 +58,7 @@ extension GameScene {
         // Chiamato quando il pulsante Resume viene premuto
         hidePauseView()
         resumeGame()
+        
     }
     
     func resumeGame(){
