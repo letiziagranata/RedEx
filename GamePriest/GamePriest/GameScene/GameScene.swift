@@ -311,8 +311,6 @@ class GameScene: SKScene {
     }
 
     func startRicaricaMode() {
-           
-            prete.canShoot = false
             
             let delayAction = SKAction.wait(forDuration: 0.4) // Ritardo di 1 secondo
             
@@ -334,6 +332,7 @@ class GameScene: SKScene {
 
     // Funzione per terminare la modalità di ricarica
     func endRicaricaMode() {
+        
         fontana.texture = SKTexture(imageNamed: "fountain1")
         
         let delayAction = SKAction.wait(forDuration: 0.4) // Ritardo di 1 secondo

@@ -97,6 +97,8 @@ extension GameScene : SKPhysicsContactDelegate {
             prete.physicsBody?.isDynamic = true
             if let nodeF =  contact.bodyB.node as? Fountain {
                 
+                prete.isPaused = true
+                
                 startRicaricaMode()
                 
                 nodeF.texture = SKTexture(imageNamed: "fountain2")
@@ -108,13 +110,14 @@ extension GameScene : SKPhysicsContactDelegate {
                             nodeF.texture = SKTexture(imageNamed: "fountain5")
                             delay(0.3){
                                 nodeF.texture = SKTexture(imageNamed: "fountain1")
+                                node.isPaused = false
                                 
                             }
                         }
                     }
                 }
                 endRicaricaMode()
-                prete.physicsBody?.pinned = false
+                
             }
             
         } else
@@ -123,6 +126,8 @@ extension GameScene : SKPhysicsContactDelegate {
             prete.physicsBody?.isDynamic = true
             if let nodeF =  contact.bodyA.node as? Priest {
                 
+                prete.isPaused = true
+                
                 startRicaricaMode()
                 
                 nodeF.texture = SKTexture(imageNamed: "fountain2")
@@ -134,7 +139,7 @@ extension GameScene : SKPhysicsContactDelegate {
                             nodeF.texture = SKTexture(imageNamed: "fountain5")
                             delay(0.3){
                                 nodeF.texture = SKTexture(imageNamed: "fountain1")
-                                node.physicsBody?.pinned = false
+                                node.isPaused = false
                             }
                         }
                     }
