@@ -25,14 +25,17 @@ class PauseView: UIView {
 
     private func setupPauseView() {
             // Imposta uno sfondo con un colore più visibile
-            backgroundColor = UIColor(red: 0.2, green: 0.5, blue: 0.2, alpha: 0.5)
+
+        backgroundColor = UIColor(red: 0.2, green: 0.5, blue: 0.2, alpha: 0.9)
 
             // Aggiungi un pulsante Resume personalizzato
             resumeButton = UIButton(type: .system)
-            resumeButton.setTitle("RESUME", for: .normal)
-            resumeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
+            resumeButton.setTitle("Resume", for: .normal)
+        resumeButton.titleLabel?.font = UIFont.monospacedSystemFont(ofSize: 18.0, weight:.bold)
             resumeButton.setTitleColor(UIColor.white, for: .normal)
-            resumeButton.backgroundColor = UIColor(red: 0.2, green: 0.8, blue: 0.2, alpha: 1.0)
+        resumeButton.backgroundColor = UIColor(red: 1.0, green: 0.5, blue: 0.3, alpha: 1.0)
+
+        
             resumeButton.layer.cornerRadius = 8.0
             resumeButton.addTarget(self, action: #selector(resumeButtonTapped), for: .touchUpInside)
 
