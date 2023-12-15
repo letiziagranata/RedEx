@@ -52,10 +52,10 @@ class PauseView: UIView {
         
         //BOTTONE EXIT
         let QuitButton = UIButton(type: .system)
-        QuitButton.setTitle("QUIT", for: .normal)
-        QuitButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
+        QuitButton.setTitle("Quit", for: .normal)
+        QuitButton.titleLabel?.font = UIFont.monospacedSystemFont(ofSize: 18.0, weight:.bold)
         QuitButton.setTitleColor(UIColor.white, for: .normal)
-        QuitButton.backgroundColor = UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 1.0)
+        QuitButton.backgroundColor = UIColor(red: 1.8, green: 0.5, blue: 0.3, alpha: 1.0)
         QuitButton.layer.cornerRadius = 8.0
         QuitButton.addTarget(self, action: #selector(QuitButtonTapped), for: .touchUpInside)
 
