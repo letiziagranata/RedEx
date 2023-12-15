@@ -179,6 +179,7 @@ extension GameScene {
         demon.zPosition = 4
         
         demon.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 38, height: 60))
+        
         demon.physicsBody?.affectedByGravity = false
         demon.physicsBody?.allowsRotation = false
         

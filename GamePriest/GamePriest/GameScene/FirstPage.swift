@@ -28,10 +28,12 @@ struct FirstPage: View {
                     .ignoresSafeArea()
                 
                 VStack {
-                    Image("The exorcist")
+                    Image("Titlle")
                         .resizable()
-                        .frame(width: 350, height: 100, alignment:.topLeading)
-                        .offset(y:-80)
+                        .aspectRatio(contentMode: .fill)
+                        .foregroundColor(Color.white)
+                        .frame(width: 350, height: 150, alignment:.topLeading)
+                        .offset(y:-90)
                     Image("Priest")
                         .resizable()
                         .frame(width: 100, height: 120, alignment:.topLeading)
