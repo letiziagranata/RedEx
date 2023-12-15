@@ -260,6 +260,11 @@ extension GameScene {
         vita.xScale = 0.6
         vita.yScale = 0.6
         
+        vita.onGameover = { [weak self] in
+                // Esegui azioni per terminare il gioco e mostrare la schermata di Gameover
+                self?.showGameoverView()
+            }
+        
         addChild(vita)
     }
     

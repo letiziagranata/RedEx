@@ -15,6 +15,7 @@ class Life: SKSpriteNode {
     //ATTRIBUTES
     var textureNames = ["Life1", "Life2", "Life3", "Life4", "Life5", "Life6", "Life7"]
     var currentTextureIndex = 0
+    var onGameover: (() -> Void)?
 
     //FUNCTIONS
     init() {
@@ -26,9 +27,14 @@ class Life: SKSpriteNode {
     }
     
     func changeLTexture() {
-        currentTextureIndex = (currentTextureIndex + 1) % textureNames.count
-        let newTexture = SKTexture(imageNamed: textureNames[currentTextureIndex])
-        self.texture = newTexture
+        if currentTextureIndex == 5{
+            onGameover?()
+        }
+        else{
+            currentTextureIndex = (currentTextureIndex + 1) % textureNames.count
+            let newTexture = SKTexture(imageNamed: textureNames[currentTextureIndex])
+            self.texture = newTexture
+        }
     }
 }
 
