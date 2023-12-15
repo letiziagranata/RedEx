@@ -23,15 +23,19 @@ struct FirstPage: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Image("BackGround")
+                Image("BackGround2.png")
                     .resizable()
                     .ignoresSafeArea()
                 
                 VStack {
-                    Image("The exorcist")
-                        .resizable()
-                        .frame(width: 350, height: 100, alignment:.topLeading)
-                        .offset(y:-80)
+                    Image("TheExorcist")
+                        .foregroundColor(Color.white)
+                        .frame(width: 100, height: 150, alignment:.topLeading)
+                        .offset(x:-120, y:-40)
+                    Image("Redemption")
+                        .foregroundColor(Color.white)
+                        .frame(width: 100, height: 150, alignment:.topLeading)
+                        .offset(x:-90, y:-130)
                     Image("Priest")
                         .resizable()
                         .frame(width: 100, height: 120, alignment:.topLeading)

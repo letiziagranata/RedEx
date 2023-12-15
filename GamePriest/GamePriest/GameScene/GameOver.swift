@@ -12,15 +12,15 @@ struct Game_over_view: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Image("BackGround")
+                Image("BackGround2.png")
                     .resizable()
                     .ignoresSafeArea()
                 
                 VStack {
-                    Image("Game Over")
+                    Image("GOver")
                         .resizable()
                         .frame(width: 350, height: 100, alignment:.topLeading)
-                        .offset(y:-80)
+                        .offset(y:-150)
                     
                     Button(action: {
                     }, label: {
