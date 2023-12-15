@@ -29,29 +29,58 @@ class PauseView: UIView {
 
             // Aggiungi un pulsante Resume personalizzato
             resumeButton = UIButton(type: .system)
-            resumeButton.setTitle("Resume", for: .normal)
+            resumeButton.setTitle("RESUME", for: .normal)
             resumeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
             resumeButton.setTitleColor(UIColor.white, for: .normal)
-            resumeButton.backgroundColor = UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 1.0)
+            resumeButton.backgroundColor = UIColor(red: 0.2, green: 0.8, blue: 0.2, alpha: 1.0)
             resumeButton.layer.cornerRadius = 8.0
             resumeButton.addTarget(self, action: #selector(resumeButtonTapped), for: .touchUpInside)
 
             addSubview(resumeButton)
 
             // Layout del pulsante Resume
-            resumeButton.translatesAutoresizingMaskIntoConstraints = false
+        resumeButton.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 resumeButton.centerXAnchor.constraint(equalTo: centerXAnchor),
                 resumeButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-                resumeButton.widthAnchor.constraint(equalToConstant: 120.0),
-                resumeButton.heightAnchor.constraint(equalToConstant: 40.0)
+                resumeButton.widthAnchor.constraint(equalToConstant: 160.0), // Nuova larghezza
+                resumeButton.heightAnchor.constraint(equalToConstant: 60.0)   // Nuova altezza
             ])
+        
+        //BOTTONE EXIT
+        let QuitButton = UIButton(type: .system)
+        QuitButton.setTitle("QUIT", for: .normal)
+        QuitButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
+        QuitButton.setTitleColor(UIColor.white, for: .normal)
+        QuitButton.backgroundColor = UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 1.0)
+        QuitButton.layer.cornerRadius = 8.0
+        QuitButton.addTarget(self, action: #selector(QuitButtonTapped), for: .touchUpInside)
+
+           addSubview(QuitButton)
+
+           // Posiziona il nuovo pulsante
+        QuitButton.translatesAutoresizingMaskIntoConstraints = false
+           NSLayoutConstraint.activate([
+            QuitButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            QuitButton.topAnchor.constraint(equalTo: resumeButton.bottomAnchor, constant: 20.0), // Spostamento verso il basso
+            QuitButton.widthAnchor.constraint(equalToConstant: 160.0),
+            QuitButton.heightAnchor.constraint(equalToConstant: 60.0)
+           ])
+        
+        
+        
         }
 
     @objc private func resumeButtonTapped() {
         removeFromSuperview()
         
         onResume?()
+    }
+    
+    
+    @objc private func QuitButtonTapped() {
+      
+        
     }
 
     
