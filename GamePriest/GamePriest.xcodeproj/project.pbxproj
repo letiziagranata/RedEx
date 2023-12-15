@@ -33,6 +33,8 @@
 		E4ACCD812B1F2186003CB3EE /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACCD802B1F2186003CB3EE /* Priest.swift */; };
 		E4B284662B270D26008BC853 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4B284642B270D26008BC853 /* explosion.mp3 */; };
 		E4B284672B270D26008BC853 /* dropOfWater.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4B284652B270D26008BC853 /* dropOfWater.mp3 */; };
+		E4F08D8C2B2C45390077E071 /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F08D8B2B2C45390077E071 /* FirstScreen.swift */; };
+		E4F08D8E2B2C4DFF0077E071 /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F08D8D2B2C4DFF0077E071 /* PauseView.swift */; };
 		E4FE2D492B28AF1A0012B4AD /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FE2D482B28AF1A0012B4AD /* Life.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		E4ACCD802B1F2186003CB3EE /* Priest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priest.swift; sourceTree = "<group>"; };
 		E4B284642B270D26008BC853 /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosion.mp3; sourceTree = "<group>"; };
 		E4B284652B270D26008BC853 /* dropOfWater.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dropOfWater.mp3; sourceTree = "<group>"; };
+		E4F08D8B2B2C45390077E071 /* FirstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen.swift; sourceTree = "<group>"; };
+		E4F08D8D2B2C4DFF0077E071 /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		E4FE2D482B28AF1A0012B4AD /* Life.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +144,8 @@
 				E4B284652B270D26008BC853 /* dropOfWater.mp3 */,
 				E4B284642B270D26008BC853 /* explosion.mp3 */,
 				4DB04ADB2B2857C900177875 /* Soundtrack.wav */,
+				E4F08D8B2B2C45390077E071 /* FirstScreen.swift */,
+				E4F08D8D2B2C4DFF0077E071 /* PauseView.swift */,
 			);
 			path = GamePriest;
 			sourceTree = "<group>";
@@ -222,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4F08D8E2B2C4DFF0077E071 /* PauseView.swift in Sources */,
 				4DB1405A2B1F1B2E007BF483 /* GameScene.swift in Sources */,
 				14EF28752B27153800B6B79A /* Inits.swift in Sources */,
 				4D0E3FDF2B21D90000B5F909 /* Physics.swift in Sources */,
@@ -230,6 +237,7 @@
 				14BC1DDB2B20719A00E0C2FC /* Weapon.swift in Sources */,
 				E4ACCD812B1F2186003CB3EE /* Priest.swift in Sources */,
 				14EF286F2B27136700B6B79A /* TouchActions.swift in Sources */,
+				E4F08D8C2B2C45390077E071 /* FirstScreen.swift in Sources */,
 				663DCC9E2B20D7460092FC10 /* Fountain.swift in Sources */,
 				4DB140542B1F1B2D007BF483 /* AppDelegate.swift in Sources */,
 				660149782B2B24F1009493CA /* Objectives.swift in Sources */,

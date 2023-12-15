@@ -38,7 +38,32 @@ extension GameScene {
         if chiesa.contains(touchLocation) {
                 handleFountainTap()
             }
+        
+        //PAUSA
+        for touch in touches {
+             let location = touch.location(in: self)
+
+             if let nodeTouched = atPoint(location) as? SKSpriteNode, nodeTouched.name == "pauseButton" {
+                 // Il pulsante di pausa è stato toccato
+                 showPauseView()
+                 pauseGame()
+             }
+         }
     }
+    func pauseGame() {
+        isPaused = true
+    }
+    
+    @objc private func resumeButtonTapped() {
+        // Chiamato quando il pulsante Resume viene premuto
+        hidePauseView()
+        resumeGame()
+    }
+    
+    func resumeGame(){
+        isPaused = false
+    }
+    
     
     //fontana per ricarica
     @objc func handleFountainTap() {

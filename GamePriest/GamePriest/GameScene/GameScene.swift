@@ -26,6 +26,29 @@ class GameScene: SKScene {
     var previousDirection: Direction = .straight
     var gocceSparate = 0
     
+    var pauseView: PauseView?
+    
+    //PAUSA
+    
+    func showPauseView() {
+        if let view = self.view {
+            pauseView = PauseView(frame: view.bounds)
+            
+            pauseView?.onResume = { [weak self] in
+                self?.hidePauseView()
+                self?.resumeGame()
+            }
+            view.addSubview(pauseView!)
+        }
+    }
+    func hidePauseView() {
+        pauseView?.removeFromSuperview()
+        resumeGame()
+        pauseView = nil
+        isPaused = false
+    }
+
+    
     
     //Variabili per il doppio tap
     var lastTapTime: TimeInterval = 0
@@ -71,6 +94,7 @@ class GameScene: SKScene {
         self.spawnAcqua()
         self.spawnLife()
         self.audioStart()
+        self.spawnPause()
         
         //self.spawnSpada()
         //self.spawnCorner()
@@ -81,7 +105,6 @@ class GameScene: SKScene {
     var stateMachine: GKStateMachine!
 
     override func didMove(to view: SKView) {
-        
         self.initGame()
         
     }

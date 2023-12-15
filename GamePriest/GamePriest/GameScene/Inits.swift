@@ -10,6 +10,18 @@ import SpriteKit
 import GameplayKit
 
 extension GameScene {
+    
+    
+    func spawnPause(){
+        let pauseButton = SKSpriteNode(imageNamed: "pause")
+        pauseButton.alpha = 1.0
+        pauseButton.zPosition = 30
+        pauseButton.position = CGPoint(x: -230, y: 550)
+
+        pauseButton.name = "pauseButton"
+        addChild(pauseButton)
+    }
+    
     func spawnScore(){
         
         punteggioLabel = SKLabelNode(fontNamed: "Impact")

@@ -11,20 +11,19 @@ import GameplayKit
 
 class GameViewController: UIViewController {
     
-
+    var gameScene: GameScene?
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
        
-        
        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
+           
+            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
                 
-                // Present the scene
+                scene.scaleMode = .aspectFill
                 view.presentScene(scene)
+                gameScene = scene
+                
                 print("GameScene presented successfully.")
             } else {
                 print("Failed to load GameScene from file.")
