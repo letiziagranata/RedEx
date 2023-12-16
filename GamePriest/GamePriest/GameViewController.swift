@@ -13,12 +13,15 @@ class GameViewController: UIViewController {
     
     var gameScene: GameScene?
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
        if let view = self.view as! SKView? {
            
-            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
+            if let scene = SKScene(fileNamed: "FirstScene") as? GameScene {
                 
                 scene.scaleMode = .aspectFill
                 view.presentScene(scene)

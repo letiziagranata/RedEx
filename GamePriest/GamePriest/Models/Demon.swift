@@ -57,6 +57,7 @@ class Demon: SKSpriteNode {
         
         self.physicsBody = nil
         self.stop()
+        
         let explosionTexture = SKTexture(imageNamed: "Demon2")
         self.texture = explosionTexture
         
