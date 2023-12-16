@@ -46,6 +46,7 @@ class GameScene: SKScene {
         resumeGame()
         pauseView = nil
         isPaused = false
+        spawnPause()
     }
 
     
@@ -84,7 +85,7 @@ class GameScene: SKScene {
     var vita: Life!
     var swipe: Swipe!
     
-    private func initGame(){
+     func initGame(){
         
         self.spawnScore()
         self.spawnPriest()
@@ -94,6 +95,7 @@ class GameScene: SKScene {
         self.spawnAcqua()
         self.spawnLife()
         self.audioStart()
+        
         self.spawnPause()
         
         //self.spawnSpada()
@@ -357,8 +359,13 @@ class GameScene: SKScene {
         gocceSparate = 0
     }
 
-    
-    
+    func showGameoverView() {
+        // Implementa il codice per mostrare la schermata di Gameover
+        // Ad esempio, puoi presentare una nuova scena o una view di giocoover
+        // Puoi utilizzare PauseView come esempio per creare GameoverView
+        let gameoverView = GameOverView(frame: view?.bounds ?? CGRect.zero)
+        view?.addSubview(gameoverView)
+    }
     
     
 }

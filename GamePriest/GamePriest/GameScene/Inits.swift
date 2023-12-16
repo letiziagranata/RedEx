@@ -19,6 +19,7 @@ extension GameScene {
         pauseButton.position = CGPoint(x: -230, y: 550)
 
         pauseButton.name = "pauseButton"
+        
         addChild(pauseButton)
     }
     
@@ -258,6 +259,11 @@ extension GameScene {
         vita.position = CGPoint(x: 7, y: -393)
         vita.xScale = 0.6
         vita.yScale = 0.6
+        
+        vita.onGameover = { [weak self] in
+                // Esegui azioni per terminare il gioco e mostrare la schermata di Gameover
+                self?.showGameoverView()
+            }
         
         addChild(vita)
     }
