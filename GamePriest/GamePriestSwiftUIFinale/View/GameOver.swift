@@ -11,6 +11,8 @@ struct GameOver: View {
     
     @Binding var currentGameState: GameState
     
+    @StateObject var gameSettings : GameSettings = GameSettings.shared
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -26,14 +28,12 @@ struct GameOver: View {
                     
                     Button(action: {
                         self.currentGameState = .playing
+                        gameSettings.resetVariable()
                     }, label: {
                         HStack {
                             
                             
                             Text("Play again ")
-                                .foregroundColor(.white)
-                                .font(.system(size:30, weight:.bold, design: .monospaced))
-                            Image(systemName: "arrow.uturn.left.circle")
                                 .foregroundColor(.white)
                                 .font(.system(size:30, weight:.bold, design: .monospaced))
                         }
@@ -49,9 +49,7 @@ struct GameOver: View {
                             Text("Exit")
                                 .foregroundColor(.white)
                                 .font(.system(size:30, weight:.bold, design: .monospaced))
-                            Image(systemName: "arrow.right.circle")
-                                .foregroundColor(.white)
-                                .font(.system(size:30, weight:.bold, design: .monospaced))
+                         
                         })
                         
                         .frame(width: 255, height:80)

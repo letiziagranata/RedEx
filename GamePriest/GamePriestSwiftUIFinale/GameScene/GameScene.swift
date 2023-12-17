@@ -100,7 +100,6 @@ class GameScene: SKScene {
         self.audioStart()
         self.spawnBackground()
         self.spawnPause()
-         gameSettings.isGameOver = false
         //self.spawnSpada()
         //self.spawnCorner()
         physicsWorld.contactDelegate = self
@@ -110,6 +109,7 @@ class GameScene: SKScene {
     var stateMachine: GKStateMachine!
 
     override func didMove(to view: SKView) {
+        
         self.initGame()
         
     }

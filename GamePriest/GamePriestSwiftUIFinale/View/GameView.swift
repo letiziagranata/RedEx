@@ -46,7 +46,9 @@ struct GameView : View {
                 
         }.onChange(of: gameSettings.isGameOver) { _ in
             gameOverState()
-        }
+        }.onAppear(perform: {
+            gameSettings.resetVariable()
+        })
          
         
     }
