@@ -104,9 +104,8 @@ class GameScene: SKScene {
         //self.spawnCorner()
         physicsWorld.contactDelegate = self
         
+        
     }
-    //GameStateMachine
-    var stateMachine: GKStateMachine!
 
     override func didMove(to view: SKView) {
         

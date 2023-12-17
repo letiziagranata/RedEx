@@ -80,7 +80,6 @@ class PauseView: UIView {
     
     @objc private func QuitButtonTapped() {
         
-        
     }
     
     

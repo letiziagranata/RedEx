@@ -45,6 +45,7 @@ struct GameOver: View {
                     HStack{
                         Button(action: {
                             self.currentGameState = .mainScreen
+                            gameSettings.resetVariable()
                         },label: {
                             Text("Exit")
                                 .foregroundColor(.white)

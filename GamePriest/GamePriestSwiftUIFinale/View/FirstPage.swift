@@ -33,7 +33,7 @@ struct FirstPage: View {
                         .offset(y:-80)
                     Image("Priest")
                         .resizable()
-                        .frame(width: 100, height: 120, alignment:.topLeading)
+                        .frame(width: 96, height: 128, alignment:.topLeading)
                         .offset(y:-70)
                     
                     
