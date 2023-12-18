@@ -25,11 +25,11 @@ struct FirstPage: View {
                 VStack {
                     Image("Titolo1")
                         .resizable()
-                        .frame(width: 350, height: 100, alignment:.topLeading)
+                        .frame(width: 350/1.1, height: 100/1.1, alignment:.topLeading)
                         .offset(y:-80)
                     Image("Titolo2")
                         .resizable()
-                        .frame(width: 350, height: 100, alignment:.topLeading)
+                        .frame(width: 350/1.1, height: 100/1.1, alignment:.topLeading)
                         .offset(y:-80)
                     Image("Priest")
                         .resizable()
@@ -54,9 +54,20 @@ struct FirstPage: View {
                             .background(Color.orange)
                             .cornerRadius(10)
                             .offset(y:-40)
-                    })
-                    
-                    
+                    }).padding()
+                    NavigationLink {
+                        Tutorial()
+                    } label: {
+                        HStack {
+                            Text("Tutorial")
+                                .foregroundColor(.white)
+                                .font(.system(size:30, weight:.bold, design: .monospaced))
+                        }
+                            .frame(width: 250, height:80)
+                            .background(Color.orange)
+                            .cornerRadius(10)
+                            .offset(y:-40)
+                    }.navigationBarBackButtonHidden()
                 }
                 
             }

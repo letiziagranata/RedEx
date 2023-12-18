@@ -31,6 +31,7 @@
 		4D10A2092B2DE3B300CD965E /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D10A2082B2DE3B300CD965E /* GameOver.swift */; };
 		4D10A20B2B2DE92100CD965E /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D10A20A2B2DE92100CD965E /* PauseView.swift */; };
 		4DA9EC0F2B2F781B005B4BB2 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA9EC0E2B2F781B005B4BB2 /* GameSettings.swift */; };
+		4DCE1EAD2B2FAF7A00ECEAED /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE1EAC2B2FAF7A00ECEAED /* Tutorial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		4D10A2082B2DE3B300CD965E /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		4D10A20A2B2DE92100CD965E /* PauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseView.swift; sourceTree = "<group>"; };
 		4DA9EC0E2B2F781B005B4BB2 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
+		4DCE1EAC2B2FAF7A00ECEAED /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				4D10A2042B2DE2B600CD965E /* GameView.swift */,
 				4D10A2082B2DE3B300CD965E /* GameOver.swift */,
 				4D10A20A2B2DE92100CD965E /* PauseView.swift */,
+				4DCE1EAC2B2FAF7A00ECEAED /* Tutorial.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				4D10A1EF2B2DE07600CD965E /* Priest.swift in Sources */,
 				4D10A1F12B2DE09700CD965E /* Weapon.swift in Sources */,
 				4D10A1F32B2DE0BF00CD965E /* Drop.swift in Sources */,
+				4DCE1EAD2B2FAF7A00ECEAED /* Tutorial.swift in Sources */,
 				4D10A1D52B2DDEAE00CD965E /* StateMachine.swift in Sources */,
 				4D10A1FA2B2DE17F00CD965E /* GameScene.swift in Sources */,
 				4D10A1EB2B2DE04200CD965E /* Fountain.swift in Sources */,
