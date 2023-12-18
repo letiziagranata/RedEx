@@ -13,8 +13,10 @@ import SpriteKit
 class GameSettings: ObservableObject {
     static let shared : GameSettings = GameSettings()
     @Published var isGameOver: Bool = false
+    @Published var checkPauseExit : Bool = false
     func resetVariable(){
         self.isGameOver = false
+        self.checkPauseExit = false
     }
     
 }

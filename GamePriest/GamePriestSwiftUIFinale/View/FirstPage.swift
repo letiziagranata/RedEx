@@ -40,7 +40,6 @@ struct FirstPage: View {
                     Button (action: {
                         self.currentGameState = .playing
                         
-                        
                     }, label: {
                         HStack {
                             Image(systemName: "play")

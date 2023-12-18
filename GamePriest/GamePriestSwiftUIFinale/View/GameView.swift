@@ -14,9 +14,6 @@ import SpriteKit
 
 struct GameView : View {
     
-
-    
-    
     @Binding var currentGameState: GameState
     
     @StateObject var gameSettings : GameSettings = GameSettings.shared
@@ -46,9 +43,9 @@ struct GameView : View {
                 
         }.onChange(of: gameSettings.isGameOver) { _ in
             gameOverState()
-        }.onAppear(perform: {
-            gameSettings.resetVariable()
-        })
+        }.onChange(of: gameSettings.checkPauseExit) { _ in
+            returnToMainScreen()
+        }
          
         
     }
@@ -58,6 +55,10 @@ struct GameView : View {
             currentGameState = .gameOver
     }
     
-    
+    func returnToMainScreen(){
+        gameSettings.resetVariable()
+        currentGameState = .mainScreen
+        print("Changed")
+    }
     
 }

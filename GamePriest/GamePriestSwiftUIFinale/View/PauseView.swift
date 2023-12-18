@@ -10,6 +10,7 @@ import UIKit
 
 class PauseView: UIView {
     
+    var gameSettings : GameSettings = GameSettings.shared
     var resumeButton: UIButton!
     var onResume: (() -> Void)?
     
@@ -79,7 +80,7 @@ class PauseView: UIView {
     
     
     @objc private func QuitButtonTapped() {
-        
+        gameSettings.checkPauseExit = true
     }
     
     
