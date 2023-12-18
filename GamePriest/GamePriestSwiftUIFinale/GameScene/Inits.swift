@@ -246,8 +246,8 @@ extension GameScene {
         
         prete.canShoot = true
         
-        let xRange = SKRange(lowerLimit: -frame.width/2+100, upperLimit: frame.width/2-100)
-        let yRange = SKRange(lowerLimit: -frame.height/2+130 , upperLimit: frame.height/2-100)
+        let xRange = SKRange(lowerLimit: -frame.width/2+45, upperLimit: frame.width/2-45)
+        let yRange = SKRange(lowerLimit: -frame.height/2+100 , upperLimit: frame.height/2-100)
         let xConstraint = SKConstraint.positionX(xRange)
         let yConstraint = SKConstraint.positionY(yRange)
         
