@@ -29,6 +29,10 @@ class GameScene: SKScene {
     var previousDirection: Direction = .straight
     var gocceSparate = 0
     
+    var duration = 1.5
+    var demoncounter = 0
+    var rechargingDuration = 0.3
+    
     var pauseView: PauseView?
     
     //PAUSA
@@ -316,7 +320,7 @@ class GameScene: SKScene {
 
     func startRicaricaMode() {
             
-            let delayAction = SKAction.wait(forDuration: 0.4) // Ritardo di 1 secondo
+            let delayAction = SKAction.wait(forDuration: rechargingDuration) // Ritardo di 1 secondo
             
             let pauseActions = SKAction.sequence([
                 SKAction.run { [weak self] in
@@ -326,7 +330,6 @@ class GameScene: SKScene {
                 SKAction.run { [weak self] in
                     self?.prete.isMoving = false
                 },
-                delayAction,
                 SKAction.run { [weak self] in
                     self?.prete.canShoot = false
                 }
@@ -336,13 +339,12 @@ class GameScene: SKScene {
 
     // Funzione per terminare la modalità di ricarica
     func endRicaricaMode() {
-        
+        self.prete.canShoot = false
         fontana.texture = SKTexture(imageNamed: "fountain1")
         
-        let delayAction = SKAction.wait(forDuration: 0.4) // Ritardo di 1 secondo
+        let delayAction = SKAction.wait(forDuration: rechargingDuration) // Ritardo di 1 secondo
         
         let resumeActions = SKAction.sequence([
-            delayAction,
             SKAction.run { [weak self] in
                 self?.isPriestPaused = false
             },
@@ -350,7 +352,6 @@ class GameScene: SKScene {
             SKAction.run { [weak self] in
                 self?.prete.isMoving = true
             },
-            delayAction,
             SKAction.run { [weak self] in
                 self?.prete.canShoot = true
             }
@@ -368,6 +369,7 @@ class GameScene: SKScene {
         //let gameoverView = GameOverView(frame: view?.bounds ?? CGRect.zero)
        // view?.addSubview(gameoverView)
     }
+    
     
     
 }
