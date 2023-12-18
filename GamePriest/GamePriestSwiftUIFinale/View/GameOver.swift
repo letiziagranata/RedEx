@@ -26,6 +26,14 @@ struct GameOver: View {
                         .frame(width: 350, height: 100, alignment:.topLeading)
                         .offset(y:-150)
                     
+                    
+                    Text("Your score:").foregroundStyle(.orange)
+                        .font(.system(size:33, weight:.bold, design: .monospaced))
+                        .offset(y: -90)
+                    Text("\(gameSettings.score)").foregroundStyle(.orange)
+                        .font(.system(size:33, weight:.bold, design: .monospaced))
+                        .offset(y: -80)
+                    
                     Button(action: {
                         self.currentGameState = .playing
                         gameSettings.resetVariable()

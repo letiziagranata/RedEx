@@ -26,7 +26,7 @@ class PauseView: UIView {
     private func setupPauseView() {
         // Imposta uno sfondo con un colore più visibile
         
-        backgroundColor = UIColor(red: 0.2, green: 0.5, blue: 0.2, alpha: 0.9)
+        backgroundColor = UIColor(red: 0.2, green: 0.5, blue: 0.2, alpha: 0.2)
         
         // Aggiungi un pulsante Resume personalizzato
         resumeButton = UIButton(type: .system)

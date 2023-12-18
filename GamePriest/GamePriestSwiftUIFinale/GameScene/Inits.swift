@@ -18,10 +18,12 @@ extension GameScene {
     }
     
     func spawnPause(){
-        let pauseButton = SKSpriteNode(imageNamed: "Pause")
+        let pauseButton = SKSpriteNode(imageNamed: "PauseFinal")
         pauseButton.alpha = 1.0
+        pauseButton.xScale = 0.5
+        pauseButton.yScale = 0.5
         pauseButton.zPosition = 30
-        pauseButton.position = CGPoint(x: -230, y: 550)
+        pauseButton.position = CGPoint(x: -190, y: 520)
 
         pauseButton.name = "pauseButton"
         
@@ -275,6 +277,12 @@ extension GameScene {
             soundtrack.autoplayLooped = true
             addChild(soundtrack)
         }
+        
+    }
+    
+    func audioStop(){
+        
+        soundtrack.removeFromParent()
         
     }
 

@@ -26,10 +26,10 @@ class Church: SKSpriteNode{
     
     func gameOverfunc(){
         
-        if self.hp == 0 {
             print("hai perso")
             gameSettings.isGameOver = true
-        }
+            
+        
         
     }
     
