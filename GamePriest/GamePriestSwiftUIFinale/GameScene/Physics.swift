@@ -37,7 +37,6 @@ extension GameScene : SKPhysicsContactDelegate {
                     demonNode.explode()
                     punteggio += 1
                     punteggioLabel.text = "SCORE: \(punteggio)"
-                    gameSettings.score = punteggio
                 }
             }
         }
@@ -49,7 +48,6 @@ extension GameScene : SKPhysicsContactDelegate {
                     demonNode.explode()
                     punteggio += 1
                     punteggioLabel.text = "SCORE: \(punteggio)"
-                    gameSettings.score = punteggio
                 }
             }
         }
@@ -77,6 +75,7 @@ extension GameScene : SKPhysicsContactDelegate {
                 chiesa.hp -= 1
                 vita.changeLTexture()
                 if chiesa.hp == 0 {
+                    gameSettings.score = punteggio
                     chiesa.gameOverfunc()
                     audioStop()
                 }
@@ -93,6 +92,7 @@ extension GameScene : SKPhysicsContactDelegate {
                 chiesa.hp -= 1
                 vita.changeLTexture()
                 if chiesa.hp == 0 {
+                    gameSettings.score = punteggio
                     chiesa.gameOverfunc()
                     audioStop()
                 }
