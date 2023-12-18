@@ -174,12 +174,25 @@ extension GameScene {
     }
     
     func cycleSpawnDemon(){
+        demoncounter = demoncounter + 1
         let createDemon = SKAction.run(createDemon)
-        let waitAction = SKAction.wait(forDuration: 1.5)
-        let createAndWaitAction = SKAction.sequence([createDemon, waitAction])
-        let CycleAction = SKAction.repeatForever(createAndWaitAction)
+        let waitAction = SKAction.wait(forDuration: duration)
+        let reduceDurationAction = SKAction.run(reduceDuration)
+        let createAndWaitAction = SKAction.sequence([createDemon, waitAction, reduceDurationAction])
         
-        run(CycleAction)
+        run(createAndWaitAction)
+        
+        
+    }
+    func reduceDuration(){
+        if duration > 0.5 && demoncounter % 20 == 0{
+            duration = duration - 0.1
+            if rechargingDuration > 0.1{
+                rechargingDuration = rechargingDuration - 0.02
+                print(rechargingDuration)
+            }
+        }
+        cycleSpawnDemon()
     }
     
     func createDemon(){

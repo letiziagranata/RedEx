@@ -115,13 +115,13 @@ extension GameScene : SKPhysicsContactDelegate {
                 startRicaricaMode()
                 
                 nodeF.texture = SKTexture(imageNamed: "fountain2")
-                delay(0.3){
+                delay(rechargingDuration){
                     nodeF.texture = SKTexture(imageNamed: "fountain3")
-                    delay(0.3){
+                    delay(self.rechargingDuration){
                         nodeF.texture = SKTexture(imageNamed: "fountain4")
-                        delay(0.3){
+                        delay(self.rechargingDuration){
                             nodeF.texture = SKTexture(imageNamed: "fountain5")
-                            delay(0.3){
+                            delay(self.rechargingDuration){
                                 nodeF.texture = SKTexture(imageNamed: "fountain1")
                                 node.isPaused = false
                                 
@@ -144,13 +144,13 @@ extension GameScene : SKPhysicsContactDelegate {
                 startRicaricaMode()
                 
                 nodeF.texture = SKTexture(imageNamed: "fountain2")
-                delay(0.3){
+                delay(rechargingDuration){
                     nodeF.texture = SKTexture(imageNamed: "fountain3")
-                    delay(0.3){
+                    delay(self.rechargingDuration){
                         nodeF.texture = SKTexture(imageNamed: "fountain4")
-                        delay(0.3){
+                        delay(self.rechargingDuration){
                             nodeF.texture = SKTexture(imageNamed: "fountain5")
-                            delay(0.3){
+                            delay(self.rechargingDuration){
                                 nodeF.texture = SKTexture(imageNamed: "fountain1")
                                 node.isPaused = false
                             }
