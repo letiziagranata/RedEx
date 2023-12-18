@@ -18,10 +18,10 @@ extension GameScene {
     }
     
     func spawnPause(){
-        let pauseButton = SKSpriteNode(imageNamed: "PauseFinal")
+        let pauseButton = SKSpriteNode(imageNamed: "DefinitivePauseButton")
         pauseButton.alpha = 1.0
-        pauseButton.xScale = 0.5
-        pauseButton.yScale = 0.5
+        pauseButton.xScale = 0.3
+        pauseButton.yScale = 0.3
         pauseButton.zPosition = 30
         pauseButton.position = CGPoint(x: -190, y: 520)
 
