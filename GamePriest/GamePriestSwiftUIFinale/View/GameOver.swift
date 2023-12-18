@@ -28,11 +28,11 @@ struct GameOver: View {
                     
                     
                     Text("Your score:").foregroundStyle(.orange)
-                        .font(.system(size:33, weight:.bold, design: .monospaced))
+                        .font(.system(size:33, weight:.bold, design: .monospaced)).shadow(color: .black, radius: 6)
                         .offset(y: -90)
                     Text("\(gameSettings.score)").foregroundStyle(.orange)
                         .font(.system(size:33, weight:.bold, design: .monospaced))
-                        .offset(y: -80)
+                        .offset(y: -80).shadow(color: .black, radius: 6)
                     
                     Button(action: {
                         self.currentGameState = .playing
