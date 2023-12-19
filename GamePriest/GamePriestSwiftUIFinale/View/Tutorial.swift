@@ -123,7 +123,7 @@ struct Tutorial: View {
                 }
                 
             }
-        }.navigationBarBackButtonHidden()
+        }
     }
 }
 
